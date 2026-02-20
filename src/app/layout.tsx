@@ -4,6 +4,7 @@ import "./globals.css";
 import Link from "next/link";
 import { getCurrentUser, isDevUnlocked } from "@/lib/auth";
 import { DevUnlockBanner } from "@/components/DevUnlockBanner";
+import { Analytics } from "@vercel/analytics/next";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -79,6 +80,7 @@ export default async function RootLayout({
         {process.env.NODE_ENV === "development" && (
           <DevUnlockBanner unlocked={devUnlocked} />
         )}
+        <Analytics />
       </body>
     </html>
   );
