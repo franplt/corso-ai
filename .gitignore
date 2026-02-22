@@ -33,6 +33,11 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# Stripe / secrets — never commit backup codes or keys
+stripe_backup_code.txt
+*_backup_code*
+*_backup*.txt
+
 # vercel
 .vercel
 
