@@ -35,7 +35,7 @@ export default async function RootLayout({
   return (
     <html lang="it" className={`${fraunces.variable} ${dmSans.variable}`}>
       <body className="min-h-screen antialiased">
-        <div className="mx-auto min-h-screen max-w-4xl px-5 py-8 sm:px-8 md:px-10">
+        <div className="mx-auto max-w-4xl px-5 py-8 sm:px-8 md:px-10">
           <header className="mb-12 flex items-center justify-between sm:mb-16">
             <Link
               href="/"
@@ -76,6 +76,49 @@ export default async function RootLayout({
             </nav>
           </header>
           {children}
+
+          <footer className="mt-20 border-t border-[var(--border)] py-10 sm:mt-28">
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+              <Link
+                href="/"
+                className="font-heading text-base font-semibold text-[var(--ink)]"
+              >
+                Corso AI in 10 puntate
+              </Link>
+              <nav className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                <Link
+                  href="/chapters"
+                  className="text-sm text-[var(--ink-muted)] hover:text-[var(--ink)] transition-colors"
+                >
+                  Capitoli
+                </Link>
+                <Link
+                  href="/chapters/puntata-1-perche-adesso"
+                  className="text-sm text-[var(--ink-muted)] hover:text-[var(--ink)] transition-colors"
+                >
+                  Inizia gratis
+                </Link>
+                {user ? (
+                  <Link
+                    href="/account"
+                    className="text-sm text-[var(--ink-muted)] hover:text-[var(--ink)] transition-colors"
+                  >
+                    Account
+                  </Link>
+                ) : (
+                  <Link
+                    href="/signup"
+                    className="text-sm text-[var(--ink-muted)] hover:text-[var(--ink)] transition-colors"
+                  >
+                    Iscriviti
+                  </Link>
+                )}
+              </nav>
+            </div>
+            <p className="mt-6 text-xs text-[var(--ink-faint)]">
+              © {new Date().getFullYear()} Corso AI in 10 puntate
+            </p>
+          </footer>
         </div>
         {process.env.NODE_ENV === "development" && (
           <DevUnlockBanner unlocked={devUnlocked} />

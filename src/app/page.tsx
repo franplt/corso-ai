@@ -17,7 +17,7 @@ export default function Home() {
         </h1>
         <p className="mb-10 max-w-xl text-lg leading-relaxed text-[var(--ink-muted)] sm:text-xl">
           Un percorso pensato per chi non è tecnico: pochi minuti a puntata per
-          imparare i concetti che contengono e usare l&apos;AI meglio ogni giorno.
+          imparare i concetti chiave e usare l&apos;AI meglio ogni giorno.
         </p>
         <div className="flex flex-wrap gap-3">
           <Link
@@ -58,7 +58,7 @@ export default function Home() {
       </section>
 
       {/* Chapter preview */}
-      <section>
+      <section className="mb-20">
         <div className="mb-6 flex items-end justify-between gap-4">
           <h2 className="font-heading text-2xl font-semibold text-[var(--ink)] sm:text-3xl">
             Le puntate
@@ -75,6 +75,23 @@ export default function Home() {
             <ChapterCard key={episode.slug} episode={episode} />
           ))}
         </div>
+      </section>
+
+      {/* Author */}
+      <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-elevated)] p-8 sm:p-10">
+        <p className="mb-1 text-sm font-medium uppercase tracking-widest text-[var(--accent)]">
+          Chi c&apos;è dietro al corso
+        </p>
+        <h2 className="font-heading mb-4 text-2xl font-semibold text-[var(--ink)]">
+          Francesco Pletti
+        </h2>
+        <p className="max-w-2xl leading-relaxed text-[var(--ink-muted)]">
+          Lavoro con l&apos;AI ogni giorno e ho scritto questo corso perché continuavo a
+          incontrare persone intelligenti che si sentivano escluse dalla conversazione —
+          non per mancanza di interesse, ma perché nessuno si era preso la briga di
+          spiegarla davvero. Questi dieci capitoli sono quello che avrei voluto leggere
+          io quando ho iniziato.
+        </p>
       </section>
     </main>
   );

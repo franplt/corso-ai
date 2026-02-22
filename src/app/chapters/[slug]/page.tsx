@@ -1,7 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { MarkdownContent } from "@/components/MarkdownContent";
+import { ChapterContent } from "@/components/ChapterContent";
+import { KeyTakeaways } from "@/components/KeyTakeaways";
 import { PaywallCard } from "@/components/PaywallCard";
+import { ReadingProgressBar } from "@/components/ReadingProgressBar";
 import { getCurrentUser, isDevUnlocked, userHasAccess } from "@/lib/auth";
 import { getEpisodeBySlug, getEpisodes } from "@/lib/episodes";
 
@@ -15,6 +18,28 @@ function getTeaser(content: string) {
 
 export async function generateStaticParams() {
   return getEpisodes().map((episode) => ({ slug: episode.slug }));
+}
+
+export async function generateMetadata({ params }: ChapterPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const episode = getEpisodeBySlug(slug);
+  if (!episode) return {};
+  const title = `Puntata ${episode.number}: ${episode.title} — Corso AI in 10 puntate`;
+  const description = episode.description || `Puntata ${episode.number} del corso AI in 10 puntate.`;
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
+    },
+  };
 }
 
 export default async function ChapterPage({ params }: ChapterPageProps) {
@@ -39,6 +64,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
 
   return (
     <main>
+      <ReadingProgressBar />
       {/* Breadcrumb / back */}
       <nav className="mb-8" aria-label="Navigazione">
         <Link
@@ -51,19 +77,34 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
 
       {/* Article header */}
       <header className="mb-10">
-        <p className="mb-2 text-sm font-medium uppercase tracking-widest text-[var(--accent)]">
-          Puntata {episode.number}
-        </p>
+        <div className="mb-2 flex items-center gap-3">
+          <p className="text-sm font-medium uppercase tracking-widest text-[var(--accent)]">
+            Puntata {episode.number} di {allEpisodes.filter((e) => e.isPublished).length}
+          </p>
+          {episode.readingTimeMinutes > 0 && (
+            <>
+              <span className="text-[var(--border)]" aria-hidden>·</span>
+              <span className="text-sm text-[var(--ink-faint)]">
+                {episode.readingTimeMinutes} min di lettura
+              </span>
+            </>
+          )}
+        </div>
         <h1 className="font-heading text-3xl font-semibold leading-tight text-[var(--ink)] sm:text-4xl">
           {episode.title}
         </h1>
+        {episode.description && (
+          <p className="mt-3 text-lg text-[var(--ink-muted)] leading-relaxed max-w-2xl">
+            {episode.description}
+          </p>
+        )}
       </header>
 
       {/* Content */}
       <article className="mb-12">
         {episode.isPublished ? (
           <div className="prose">
-            <MarkdownContent markdown={content} />
+            <ChapterContent episodeNumber={episode.number} content={content} />
           </div>
         ) : (
           <p className="text-[var(--ink-muted)]">
@@ -71,6 +112,11 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
           </p>
         )}
       </article>
+
+      {/* Key takeaways — only show for full readers */}
+      {canReadFull && episode.isPublished && (
+        <KeyTakeaways episodeNumber={episode.number} />
+      )}
 
       {/* Paywall */}
       {!canReadFull && episode.isPublished && (

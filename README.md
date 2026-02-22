@@ -55,9 +55,6 @@ stripe listen --forward-to localhost:3000/api/stripe/webhook
 
 Set `STRIPE_WEBHOOK_SECRET` using the secret shown by `stripe listen`.
 
-## Deploy
+## Deploy (mettere online)
 
-- Deploy app to Vercel
-- Add all env vars in Vercel project settings
-- Configure Stripe webhook endpoint to:
-  - `https://your-domain.com/api/stripe/webhook`
+Guida completa: **[DEPLOY.md](DEPLOY.md)** — Supabase, Stripe e Vercel passo passo.

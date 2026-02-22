@@ -7,7 +7,27 @@ export type Episode = {
   slug: string;
   content: string;
   isPublished: boolean;
+  description: string;
+  readingTimeMinutes: number;
 };
+
+const EPISODE_DESCRIPTIONS: Record<number, string> = {
+  1: "Tre motivi concreti per cui l'AI ha fatto il salto proprio ora — e perché capire come funziona è più utile che mai.",
+  2: "Dal riconoscimento dei gatti ai miliardi di parametri: cosa c'è davvero dentro un modello AI.",
+  3: "Il testo che scrivi non è quello che il modello vede. Scopri i token, l'unità base di ogni LLM.",
+  4: "Come fa un modello a sapere che 'gatto' e 'felino' sono simili? La risposta sono gli embedding.",
+  5: "L'architettura che ha cambiato tutto: come funziona l'attenzione e perché il Transformer scala meglio di tutto il resto.",
+  6: "Pre-training, fine-tuning, RLHF: il percorso completo da un corpus grezzo a un assistente conversazionale.",
+  7: "L'AI non recupera risposte: le costruisce token per token. Temperatura, sampling e perché questo cambia tutto.",
+  8: "Come dare al modello informazioni aggiornate: il pipeline RAG, le API esterne e quando usarli davvero.",
+  9: "Quando il modello smette di rispondere e inizia ad agire: il loop osserva–ragiona–agisce spiegato passo per passo.",
+  10: "Benchmark, costi, context window e velocità: i criteri pratici per scegliere il modello giusto per ogni uso.",
+};
+
+function computeReadingTime(content: string): number {
+  const wordCount = content.trim().split(/\s+/).length;
+  return Math.max(1, Math.ceil(wordCount / 200));
+}
 
 const episodesDir = process.cwd();
 
@@ -45,12 +65,15 @@ function readPublishedEpisodes(): Episode[] {
         return null;
       }
 
+      const content = fs.readFileSync(path.join(episodesDir, filename), "utf8");
       return {
         number: parsed.number,
         title: parsed.title,
         slug: `puntata-${parsed.number}-${slugify(parsed.title)}`,
-        content: fs.readFileSync(path.join(episodesDir, filename), "utf8"),
+        content,
         isPublished: true,
+        description: EPISODE_DESCRIPTIONS[parsed.number] ?? "",
+        readingTimeMinutes: computeReadingTime(content),
       };
     })
     .filter((episode): episode is Episode => episode !== null);
@@ -72,8 +95,10 @@ export function getEpisodes(): Episode[] {
         number,
         title: "In arrivo",
         slug: `puntata-${number}-in-arrivo`,
-        content: "Questa puntata e in arrivo.",
+        content: "Questa puntata è in arrivo.",
         isPublished: false,
+        description: EPISODE_DESCRIPTIONS[number] ?? "",
+        readingTimeMinutes: 0,
       });
     }
   }

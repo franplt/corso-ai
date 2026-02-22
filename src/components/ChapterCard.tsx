@@ -30,15 +30,22 @@ export function ChapterCard({ episode }: ChapterCardProps) {
       <h3 className="font-heading mb-2 text-lg font-semibold leading-snug text-[var(--ink)] group-hover:text-[var(--accent)] transition-colors">
         {episode.title}
       </h3>
-      <p className="mb-4 text-sm text-[var(--ink-muted)]">
-        {isFree
-          ? "Apri e leggi subito."
-          : "Sblocca con l'accesso completo."}
-      </p>
-      <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-[var(--accent)] group-hover:gap-2 transition-all">
-        {isFree ? "Leggi" : "Apri"}
-        <span aria-hidden>→</span>
-      </span>
+      {episode.description && (
+        <p className="mb-4 flex-1 text-sm leading-relaxed text-[var(--ink-muted)]">
+          {episode.description}
+        </p>
+      )}
+      <div className="mt-auto flex items-center justify-between">
+        <span className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--accent)] group-hover:gap-2 transition-all">
+          {isFree ? "Leggi" : "Apri"}
+          <span aria-hidden>→</span>
+        </span>
+        {episode.readingTimeMinutes > 0 && (
+          <span className="text-xs text-[var(--ink-faint)]">
+            {episode.readingTimeMinutes} min
+          </span>
+        )}
+      </div>
     </Link>
   );
 }
