@@ -30,8 +30,12 @@ export function LoginForm() {
       return;
     }
 
-    const nextPath = searchParams.get("next") ?? "/chapters";
-    router.push(nextPath);
+    const next = searchParams.get("next");
+    if (next === "checkout") {
+      router.push("/payment/checkout");
+    } else {
+      router.push(next ?? "/chapters");
+    }
     router.refresh();
   }
 
@@ -42,7 +46,9 @@ export function LoginForm() {
           Accedi
         </h1>
         <p className="text-[var(--ink-muted)]">
-          Rientra nel tuo account per continuare a leggere il corso.
+          {searchParams.get("next") === "checkout"
+            ? "Accedi per procedere con l'acquisto."
+            : "Rientra nel tuo account per continuare a leggere il corso."}
         </p>
       </div>
 
@@ -95,7 +101,7 @@ export function LoginForm() {
       <p className="mt-6 text-center text-sm text-[var(--ink-muted)]">
         Non hai un account?{" "}
         <Link
-          href="/signup"
+          href={searchParams.get("next") === "checkout" ? "/signup?intent=buy" : "/signup"}
           className="font-medium text-[var(--accent)] underline-offset-2 hover:underline"
         >
           Registrati

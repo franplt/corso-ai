@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { FormEvent, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { FormEvent, useState, Suspense } from "react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
-export default function SignupPage() {
+function SignupForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const intentBuy = searchParams.get("intent") === "buy";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -29,56 +31,107 @@ export default function SignupPage() {
       return;
     }
 
-    router.push("/login");
+    // Auto-login after signup
+    const { error: signInError } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (signInError) {
+      // If auto-login fails (e.g. email confirmation required), go to login
+      router.push(intentBuy ? "/login?next=checkout" : "/login");
+      router.refresh();
+      return;
+    }
+
+    // Redirect to checkout if intent was to buy, otherwise to chapters
+    router.push(intentBuy ? "/payment/checkout" : "/chapters");
     router.refresh();
   }
 
   return (
-    <main className="mx-auto max-w-md">
-      <h1 className="mb-2 text-3xl font-semibold">Crea account</h1>
-      <p className="mb-6 text-neutral-600">
-        Registrati per acquistare e sbloccare tutte le puntate.
-      </p>
+    <>
+      <div className="mb-10">
+        <h1 className="font-heading mb-2 text-3xl font-semibold text-[var(--ink)]">
+          Crea account
+        </h1>
+        <p className="text-[var(--ink-muted)]">
+          {intentBuy
+            ? "Registrati per sbloccare tutte le puntate. Dopo la registrazione andrai direttamente al pagamento."
+            : "Registrati per acquistare e sbloccare tutte le puntate."}
+        </p>
+      </div>
 
-      <form className="card space-y-4 p-5" onSubmit={onSubmit}>
-        <div>
-          <label className="label" htmlFor="email">
-            Email
-          </label>
-          <input
-            id="email"
-            className="input"
-            type="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            required
-          />
+      <form
+        className="surface rounded-[var(--radius-lg)] p-6 sm:p-8"
+        onSubmit={onSubmit}
+      >
+        <div className="space-y-5">
+          <div>
+            <label className="label" htmlFor="email">
+              Email
+            </label>
+            <input
+              id="email"
+              className="input"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              autoComplete="email"
+            />
+          </div>
+          <div>
+            <label className="label" htmlFor="password">
+              Password
+            </label>
+            <input
+              id="password"
+              className="input"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              minLength={8}
+              required
+              autoComplete="new-password"
+            />
+          </div>
         </div>
-        <div>
-          <label className="label" htmlFor="password">
-            Password
-          </label>
-          <input
-            id="password"
-            className="input"
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            minLength={8}
-            required
-          />
-        </div>
-        <button className="btn w-full" type="submit" disabled={loading}>
-          {loading ? "Creazione account..." : "Registrati"}
+        <button
+          className="btn btn-primary mt-6 w-full"
+          type="submit"
+          disabled={loading}
+        >
+          {loading
+            ? "Creazione account..."
+            : intentBuy
+              ? "Registrati e vai al pagamento"
+              : "Registrati"}
         </button>
-        {error ? <p className="text-sm text-red-600">{error}</p> : null}
+        {error ? (
+          <p className="mt-4 text-sm font-medium text-red-600">{error}</p>
+        ) : null}
       </form>
-      <p className="mt-4 text-sm text-neutral-600">
-        Hai gia un account?{" "}
-        <Link className="underline" href="/login">
+
+      <p className="mt-6 text-center text-sm text-[var(--ink-muted)]">
+        Hai già un account?{" "}
+        <Link
+          href={intentBuy ? "/login?next=checkout" : "/login"}
+          className="font-medium text-[var(--accent)] underline-offset-2 hover:underline"
+        >
           Accedi
         </Link>
       </p>
+    </>
+  );
+}
+
+export default function SignupPage() {
+  return (
+    <main className="mx-auto max-w-md">
+      <Suspense>
+        <SignupForm />
+      </Suspense>
     </main>
   );
 }

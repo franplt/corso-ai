@@ -51,10 +51,10 @@ export function PaywallCard({ chapterNumber, isLoggedIn }: PaywallCardProps) {
           </div>
         ) : (
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <Link href="/signup" className="btn btn-primary">
+            <Link href="/signup?intent=buy" className="btn btn-primary">
               Crea account e sblocca
             </Link>
-            <Link href="/login" className="btn btn-secondary">
+            <Link href="/login?next=checkout" className="btn btn-secondary">
               Accedi
             </Link>
           </div>
