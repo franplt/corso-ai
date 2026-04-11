@@ -1,6 +1,25 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ChapterCard } from "@/components/ChapterCard";
 import { getEpisodes } from "@/lib/episodes";
+
+const SITE_URL = "https://corso-intelligenza-artificiale.com";
+
+export const metadata: Metadata = {
+  title: "Corso AI in 10 puntate — Capisci davvero come funziona l'AI",
+  description:
+    "Un percorso online per non tecnici: 10 puntate per capire token, modelli, RAG e agenti AI. Prima puntata gratis.",
+  alternates: {
+    canonical: SITE_URL,
+  },
+  openGraph: {
+    title: "Corso AI in 10 puntate",
+    description:
+      "Un percorso online per non tecnici: 10 puntate per capire token, modelli, RAG e agenti AI. Prima puntata gratis.",
+    url: SITE_URL,
+    type: "website",
+  },
+};
 
 export default function Home() {
   const episodes = getEpisodes();

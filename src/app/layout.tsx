@@ -19,9 +19,30 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
+const SITE_URL = "https://corso-intelligenza-artificiale.com";
+
 export const metadata: Metadata = {
-  title: "Corso AI in 10 puntate",
-  description: "Corso pratico e accessibile per capire davvero l'AI.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Corso AI in 10 puntate",
+    template: "%s — Corso AI in 10 puntate",
+  },
+  description:
+    "Corso pratico e accessibile per capire davvero l'AI. 10 puntate per non tecnici, dai token ai modelli agli agenti.",
+  openGraph: {
+    siteName: "Corso AI in 10 puntate",
+    locale: "it_IT",
+    type: "website",
+    url: SITE_URL,
+  },
+  twitter: {
+    card: "summary",
+    site: "@franplt",
+    creator: "@franplt",
+  },
+  alternates: {
+    canonical: SITE_URL,
+  },
 };
 
 export default async function RootLayout({

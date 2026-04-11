@@ -24,15 +24,20 @@ export async function generateMetadata({ params }: ChapterPageProps): Promise<Me
   const { slug } = await params;
   const episode = getEpisodeBySlug(slug);
   if (!episode) return {};
-  const title = `Puntata ${episode.number}: ${episode.title} — Corso AI in 10 puntate`;
+  const title = `Puntata ${episode.number}: ${episode.title}`;
   const description = episode.description || `Puntata ${episode.number} del corso AI in 10 puntate.`;
+  const url = `/chapters/${episode.slug}`;
   return {
     title,
     description,
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
       title,
       description,
       type: "article",
+      url,
     },
     twitter: {
       card: "summary",
