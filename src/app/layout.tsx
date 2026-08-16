@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { Fraunces, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import { getCurrentUser, isDevUnlocked } from "@/lib/auth";
-import { DevUnlockBanner } from "@/components/DevUnlockBanner";
-import { Analytics } from "@vercel/analytics/next";
+import { AuthNav } from "@/components/AuthNav";
+import { CookieConsent } from "@/components/CookieConsent";
+import { ConditionalAnalytics } from "@/components/ConditionalAnalytics";
+import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/site";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -19,40 +20,36 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-const SITE_URL = "https://corso-intelligenza-artificiale.com";
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Corso AI in 10 puntate",
-    template: "%s — Corso AI in 10 puntate",
+    default: SITE_NAME,
+    template: `%s — ${SITE_NAME}`,
   },
-  description:
-    "Corso pratico e accessibile per capire davvero l'AI. 10 puntate per non tecnici, dai token ai modelli agli agenti.",
+  description: SITE_DESCRIPTION,
   openGraph: {
-    siteName: "Corso AI in 10 puntate",
+    siteName: SITE_NAME,
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
     locale: "it_IT",
     type: "website",
     url: SITE_URL,
   },
   twitter: {
-    card: "summary",
-    site: "@franplt",
-    creator: "@franplt",
+    card: "summary_large_image",
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
   },
   alternates: {
     canonical: SITE_URL,
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const user = await getCurrentUser();
-  const devUnlocked = await isDevUnlocked();
-
   return (
     <html lang="it" className={`${fraunces.variable} ${dmSans.variable}`}>
       <body className="min-h-screen antialiased">
@@ -71,29 +68,7 @@ export default async function RootLayout({
               >
                 Capitoli
               </Link>
-              {user ? (
-                <Link
-                  href="/account"
-                  className="rounded-full px-3 py-2 text-sm font-medium text-[var(--ink-muted)] transition-colors hover:bg-[var(--border)] hover:text-[var(--ink)] sm:px-4"
-                >
-                  Account
-                </Link>
-              ) : (
-                <>
-                  <Link
-                    href="/login"
-                    className="rounded-full px-3 py-2 text-sm font-medium text-[var(--ink-muted)] transition-colors hover:bg-[var(--border)] hover:text-[var(--ink)] sm:px-4"
-                  >
-                    Accedi
-                  </Link>
-                  <Link
-                    href="/signup"
-                    className="btn btn-primary btn-sm"
-                  >
-                    Inizia
-                  </Link>
-                </>
-              )}
+              <AuthNav variant="header" />
             </nav>
           </header>
           {children}
@@ -119,32 +94,32 @@ export default async function RootLayout({
                 >
                   Inizia gratis
                 </Link>
-                {user ? (
-                  <Link
-                    href="/account"
-                    className="text-sm text-[var(--ink-muted)] hover:text-[var(--ink)] transition-colors"
-                  >
-                    Account
-                  </Link>
-                ) : (
-                  <Link
-                    href="/signup"
-                    className="text-sm text-[var(--ink-muted)] hover:text-[var(--ink)] transition-colors"
-                  >
-                    Iscriviti
-                  </Link>
-                )}
+                <AuthNav variant="footer" />
               </nav>
             </div>
-            <p className="mt-6 text-xs text-[var(--ink-faint)]">
-              © {new Date().getFullYear()} Corso AI in 10 puntate
-            </p>
+            <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-xs text-[var(--ink-faint)]">
+                © {new Date().getFullYear()} Corso AI in 10 puntate
+              </p>
+              <nav className="flex gap-4">
+                <Link
+                  href="/privacy"
+                  className="text-xs text-[var(--ink-faint)] hover:text-[var(--ink-muted)] transition-colors"
+                >
+                  Privacy
+                </Link>
+                <Link
+                  href="/terms"
+                  className="text-xs text-[var(--ink-faint)] hover:text-[var(--ink-muted)] transition-colors"
+                >
+                  Termini
+                </Link>
+              </nav>
+            </div>
           </footer>
         </div>
-        {process.env.NODE_ENV === "development" && (
-          <DevUnlockBanner unlocked={devUnlocked} />
-        )}
-        <Analytics />
+        <CookieConsent />
+        <ConditionalAnalytics />
       </body>
     </html>
   );

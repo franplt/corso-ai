@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChapterContent } from "@/components/ChapterContent";
+import { DevUnlockBanner } from "@/components/DevUnlockBanner";
 import { KeyTakeaways } from "@/components/KeyTakeaways";
 import { PaywallCard } from "@/components/PaywallCard";
 import { ReadingProgressBar } from "@/components/ReadingProgressBar";
@@ -54,10 +55,15 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
 
   if (!episode) notFound();
 
-  const user = await getCurrentUser();
-  const devUnlocked = await isDevUnlocked();
+  // Episode 1 is free for everyone. Skipping the auth lookups here keeps the
+  // single most-shared page in the funnel statically rendered and CDN-cacheable
+  // instead of paying a Supabase round-trip on every visit.
+  const isFreeEpisode = episode.number === 1;
+
+  const user = isFreeEpisode ? null : await getCurrentUser();
+  const devUnlocked = isFreeEpisode ? false : await isDevUnlocked();
   const hasAccess = devUnlocked || (user ? await userHasAccess(user.id) : false);
-  const canReadFull = episode.number === 1 || hasAccess;
+  const canReadFull = isFreeEpisode || hasAccess;
   const content = canReadFull ? episode.content : getTeaser(episode.content);
 
   const currentIndex = allEpisodes.findIndex((e) => e.slug === slug);
@@ -164,6 +170,10 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
           <span />
         )}
       </nav>
+
+      {process.env.NODE_ENV === "development" && !isFreeEpisode && (
+        <DevUnlockBanner unlocked={devUnlocked} />
+      )}
     </main>
   );
 }
