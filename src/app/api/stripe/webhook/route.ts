@@ -36,7 +36,13 @@ export async function POST(request: Request) {
     const customerId =
       typeof session.customer === "string" ? session.customer : session.customer?.id;
 
-    if (userId) {
+    // The metadata value is attacker-influenced in principle, and it is used as
+    // a primary key against the service-role client. Reject anything that is
+    // not a well-formed Supabase user id before it reaches the database.
+    const uuidRegex =
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+    if (userId && uuidRegex.test(userId)) {
       const supabaseAdmin = createSupabaseAdminClient();
 
       await supabaseAdmin.from("profiles").upsert({

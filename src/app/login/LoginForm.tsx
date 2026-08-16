@@ -34,7 +34,12 @@ export function LoginForm() {
     if (next === "checkout") {
       router.push("/payment/checkout");
     } else {
-      router.push(next ?? "/chapters");
+      // Only ever redirect to a path on this origin. A bare `next` value would
+      // otherwise let a crafted link (?next=//evil.example) bounce a user who
+      // just typed their password straight off the site.
+      const isSafeInternalPath =
+        typeof next === "string" && next.startsWith("/") && !next.startsWith("//");
+      router.push(isSafeInternalPath ? next : "/chapters");
     }
     router.refresh();
   }
@@ -85,6 +90,14 @@ export function LoginForm() {
               autoComplete="current-password"
             />
           </div>
+        </div>
+        <div className="mt-2 text-right">
+          <Link
+            href="/reset-password"
+            className="text-sm text-[var(--ink-muted)] underline-offset-2 hover:text-[var(--accent)] hover:underline"
+          >
+            Password dimenticata?
+          </Link>
         </div>
         <button
           className="btn btn-primary mt-6 w-full"
