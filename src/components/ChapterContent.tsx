@@ -40,8 +40,25 @@ type ChapterContentProps = {
   content: string;
 };
 
+/**
+ * Normalise typographic punctuation to its ASCII equivalent.
+ *
+ * Every replacement is one character for one character, so offsets into the
+ * normalised string still address the original string correctly.
+ */
+function normalizePunctuation(value: string): string {
+  return value
+    .replace(/[\u2018\u2019\u02BC\u00B4]/g, "'")
+    .replace(/[\u201C\u201D]/g, '"');
+}
+
 function splitAt(content: string, anchor: string): { before: string; after: string } | null {
-  const idx = content.indexOf(anchor);
+  // Anchors are matched against prose that is authored in a Markdown editor,
+  // so the same apostrophe may be typed as ' or as the typographic '. Episode 7
+  // silently lost four components for months because the anchor here used the
+  // ASCII apostrophe while the episode text used U+2019. Compare on a
+  // normalised copy so the two forms are interchangeable.
+  const idx = normalizePunctuation(content).indexOf(normalizePunctuation(anchor));
   if (idx === -1) return null;
   return { before: content.slice(0, idx).trimEnd(), after: content.slice(idx) };
 }
