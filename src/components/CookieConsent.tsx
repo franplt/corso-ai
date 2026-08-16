@@ -17,16 +17,22 @@ export function CookieConsent() {
     }
   }, []);
 
-  function accept() {
-    localStorage.setItem("cookie-consent", "accepted");
-    setStatus("accepted");
+  function record(choice: "accepted" | "declined") {
+    localStorage.setItem("cookie-consent", choice);
+    setStatus(choice);
     setVisible(false);
+    // The `storage` event does not fire in the tab that wrote the value, so
+    // without this the visitor who just clicked "Accetta" would not be counted
+    // until they navigated or reloaded.
+    window.dispatchEvent(new Event("cookie-consent-change"));
+  }
+
+  function accept() {
+    record("accepted");
   }
 
   function decline() {
-    localStorage.setItem("cookie-consent", "declined");
-    setStatus("declined");
-    setVisible(false);
+    record("declined");
   }
 
   // Don't render banner if already decided
