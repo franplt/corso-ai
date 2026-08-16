@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getEpisodes } from "@/lib/episodes";
-
-const SITE_URL = "https://corso-intelligenza-artificiale.com";
+import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const episodes = getEpisodes();
