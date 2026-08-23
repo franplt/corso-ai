@@ -102,7 +102,7 @@ export default function Home() {
           Chi c&apos;è dietro al corso
         </p>
         <h2 className="font-heading mb-4 text-2xl font-semibold text-[var(--ink)]">
-          Francesco Pletti
+          Francesco Paltrinieri
         </h2>
         <p className="max-w-2xl leading-relaxed text-[var(--ink-muted)]">
           Lavoro con l&apos;AI ogni giorno e ho scritto questo corso perché continuavo a
