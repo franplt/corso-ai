@@ -21,6 +21,12 @@ Last verified: 2026-08-23
 - The Next.js production build passes.
 - `npm audit` reports zero known vulnerabilities.
 - Stripe test mode uses an active €9.90 one-time EUR price.
+- Checkout is localized in Italian and uses the course colors, typography,
+  wordmark and trust copy. It offers card payments with supported wallets,
+  without unrelated buy-now-pay-later or country-specific methods.
+- Signup and login purchase intents create the Checkout Session directly,
+  without rendering the former intermediate redirect page. Checkout identity
+  validation uses verified JWT claims before the existing access check.
 - A real Stripe test Checkout Session completed successfully for €9.90.
 - Its paid session was delivered as a correctly signed webhook event; the
   handler returned 200 and granted access in Supabase.

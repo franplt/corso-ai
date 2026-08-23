@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { userHasAccess } from "@/lib/auth";
 import { hasSupabaseEnv } from "@/lib/env";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getStripeClient } from "@/lib/stripe";
 
@@ -10,15 +10,29 @@ export async function POST() {
   }
 
   const supabase = await createSupabaseServerClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const { data: claimsData, error: claimsError } = await supabase.auth.getClaims();
+  const userId = claimsData?.claims?.sub;
+  const userEmail = claimsData?.claims?.email;
 
-  if (!user) {
+  if (claimsError || !userId) {
     return NextResponse.json({ error: "Devi essere autenticato." }, { status: 401 });
   }
 
-  if (await userHasAccess(user.id)) {
+  const { data: profile, error: profileError } = await supabase
+    .from("profiles")
+    .select("has_access")
+    .eq("id", userId)
+    .maybeSingle();
+
+  if (profileError) {
+    console.error("Unable to verify course access before checkout", profileError);
+    return NextResponse.json(
+      { error: "Impossibile verificare il tuo accesso. Riprova tra poco." },
+      { status: 502 },
+    );
+  }
+
+  if (profile?.has_access) {
     return NextResponse.json({ url: "/chapters", alreadyActive: true });
   }
 
@@ -36,12 +50,32 @@ export async function POST() {
   try {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
+      locale: "it",
+      payment_method_types: ["card"],
       line_items: [{ price: priceId, quantity: 1 }],
       success_url: `${appUrl}/payment/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${appUrl}/payment/cancel`,
-      customer_email: user.email,
+      customer_email: typeof userEmail === "string" ? userEmail : undefined,
+      submit_type: "pay",
+      branding_settings: {
+        background_color: "#faf8f5",
+        border_style: "rounded",
+        button_color: "#b45309",
+        display_name: SITE_NAME,
+        font_family: "noto_sans",
+        logo: {
+          type: "url",
+          url: `${SITE_URL}/checkout-logo.png`,
+        },
+      },
+      custom_text: {
+        submit: {
+          message:
+            "Pagamento unico. Accesso immediato a tutte le puntate. Transazione sicura gestita da Stripe.",
+        },
+      },
       metadata: {
-        supabase_user_id: user.id,
+        supabase_user_id: userId,
         stripe_price_id: priceId,
       },
     });

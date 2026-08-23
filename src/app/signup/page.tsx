@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FormEvent, useState, Suspense } from "react";
+import { createCheckoutUrl } from "@/lib/checkout-client";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 function SignupForm() {
@@ -44,8 +45,21 @@ function SignupForm() {
       return;
     }
 
-    // Redirect to checkout if intent was to buy, otherwise to chapters
-    router.push(intentBuy ? "/payment/checkout" : "/chapters");
+    if (intentBuy) {
+      try {
+        window.location.assign(await createCheckoutUrl());
+      } catch (checkoutError) {
+        setError(
+          checkoutError instanceof Error
+            ? checkoutError.message
+            : "Impossibile avviare il pagamento. Riprova.",
+        );
+        setLoading(false);
+      }
+      return;
+    }
+
+    router.push("/chapters");
     router.refresh();
   }
 

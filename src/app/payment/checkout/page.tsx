@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createCheckoutUrl } from "@/lib/checkout-client";
 
 export default function CheckoutPage() {
   const [error, setError] = useState<string | null>(null);
@@ -10,20 +11,15 @@ export default function CheckoutPage() {
 
     async function startCheckout() {
       try {
-        const response = await fetch("/api/checkout", { method: "POST" });
-        const data = (await response.json()) as { url?: string; error?: string };
-
-        if (cancelled) return;
-
-        if (!response.ok || !data.url) {
-          setError(data.error ?? "Impossibile avviare il checkout.");
-          return;
-        }
-
-        window.location.href = data.url;
-      } catch {
+        const checkoutUrl = await createCheckoutUrl();
+        if (!cancelled) window.location.assign(checkoutUrl);
+      } catch (checkoutError) {
         if (!cancelled) {
-          setError("Errore di rete. Riprova.");
+          setError(
+            checkoutError instanceof Error
+              ? checkoutError.message
+              : "Errore di rete. Riprova.",
+          );
         }
       }
     }

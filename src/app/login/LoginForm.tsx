@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FormEvent, useState } from "react";
+import { createCheckoutUrl } from "@/lib/checkout-client";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 export function LoginForm() {
@@ -32,15 +33,26 @@ export function LoginForm() {
 
     const next = searchParams.get("next");
     if (next === "checkout") {
-      router.push("/payment/checkout");
-    } else {
-      // Only ever redirect to a path on this origin. A bare `next` value would
-      // otherwise let a crafted link (?next=//evil.example) bounce a user who
-      // just typed their password straight off the site.
-      const isSafeInternalPath =
-        typeof next === "string" && next.startsWith("/") && !next.startsWith("//");
-      router.push(isSafeInternalPath ? next : "/chapters");
+      try {
+        window.location.assign(await createCheckoutUrl());
+        return;
+      } catch (checkoutError) {
+        setError(
+          checkoutError instanceof Error
+            ? checkoutError.message
+            : "Impossibile avviare il pagamento. Riprova.",
+        );
+        setLoading(false);
+        return;
+      }
     }
+
+    // Only ever redirect to a path on this origin. A bare `next` value would
+    // otherwise let a crafted link (?next=//evil.example) bounce a user who
+    // just typed their password straight off the site.
+    const isSafeInternalPath =
+      typeof next === "string" && next.startsWith("/") && !next.startsWith("//");
+    router.push(isSafeInternalPath ? next : "/chapters");
     router.refresh();
   }
 
