@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { FormEvent, useState, Suspense } from "react";
 import { createCheckoutUrl } from "@/lib/checkout-client";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import { trackEvent } from "@/lib/analytics";
 
 function SignupForm() {
   const router = useRouter();
@@ -32,6 +33,11 @@ function SignupForm() {
       return;
     }
 
+    trackEvent("sign_up", {
+      method: "email",
+      purchase_intent: intentBuy,
+    });
+
     // Auto-login after signup
     const { error: signInError } = await supabase.auth.signInWithPassword({
       email,
@@ -47,7 +53,7 @@ function SignupForm() {
 
     if (intentBuy) {
       try {
-        window.location.assign(await createCheckoutUrl());
+        window.location.assign(await createCheckoutUrl("signup"));
       } catch (checkoutError) {
         setError(
           checkoutError instanceof Error

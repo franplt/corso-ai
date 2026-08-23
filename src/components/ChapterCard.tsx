@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { TrackedLink } from "@/components/TrackedLink";
 import type { Episode } from "@/lib/episodes";
 
 type ChapterCardProps = {
@@ -9,8 +9,14 @@ export function ChapterCard({ episode }: ChapterCardProps) {
   const isFree = episode.number === 1;
 
   return (
-    <Link
+    <TrackedLink
       href={`/chapters/${episode.slug}`}
+      eventName="select_content"
+      eventParameters={{
+        content_type: "chapter",
+        content_id: episode.slug,
+        chapter_number: episode.number,
+      }}
       className="group surface surface-hover flex h-full flex-col rounded-[var(--radius-lg)] p-6 transition-all duration-200"
     >
       <div className="mb-4 flex items-center justify-between">
@@ -46,6 +52,6 @@ export function ChapterCard({ episode }: ChapterCardProps) {
           </span>
         )}
       </div>
-    </Link>
+    </TrackedLink>
   );
 }

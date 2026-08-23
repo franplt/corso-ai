@@ -13,7 +13,7 @@ export default function PrivacyPage() {
           Informativa sulla Privacy
         </h1>
         <p className="text-[var(--ink-muted)]">
-          Ultimo aggiornamento: aprile 2026
+          Ultimo aggiornamento: agosto 2026
         </p>
       </div>
 
@@ -96,15 +96,45 @@ export default function PrivacyPage() {
               Privacy policy di Vercel
             </a>
           </li>
+          <li>
+            <strong>Google Analytics 4</strong> (analisi del sito) — previo
+            consenso, misuriamo in forma aggregata pagine visitate, avanzamento
+            nella lettura e passaggi del processo di acquisto. Non inviamo a
+            Google email, password o dati della carta. Puoi cambiare la scelta
+            in qualsiasi momento tramite “Preferenze cookie” nel piè di pagina.{" "}
+            <a
+              href="https://policies.google.com/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Privacy policy di Google
+            </a>
+          </li>
+          <li>
+            <strong>PostHog EU</strong> (analisi del prodotto e replay delle
+            sessioni) — previo consenso, raccogliamo interazioni, errori tecnici
+            e registrazioni della navigazione per individuare problemi nel
+            funnel e nell&apos;esperienza di lettura. I campi dei form sono sempre
+            mascherati e le aree contrassegnate come sensibili sono escluse. I
+            dati sono inviati all&apos;infrastruttura europea di PostHog.{" "}
+            <a
+              href="https://posthog.com/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Privacy policy di PostHog
+            </a>
+          </li>
         </ul>
 
         <h2>Cookie</h2>
         <p>
           Questo sito utilizza cookie tecnici necessari al funzionamento
-          (autenticazione) e, previo consenso, cookie analitici di Vercel
-          Analytics per comprendere come viene utilizzato il sito. Puoi
-          modificare le tue preferenze in qualsiasi momento tramite il banner
-          cookie.
+          (autenticazione) e, previo consenso, cookie analitici di Google
+          Analytics 4, PostHog e Vercel Analytics per comprendere come viene
+          utilizzato il sito. PostHog può registrare la sessione con i campi dei
+          form mascherati. Puoi modificare la scelta in qualsiasi momento
+          tramite “Preferenze cookie” nel piè di pagina.
         </p>
 
         <h2>I tuoi diritti (GDPR)</h2>

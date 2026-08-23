@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChapterContent } from "@/components/ChapterContent";
+import { ChapterAnalytics } from "@/components/ChapterAnalytics";
 import { DevUnlockBanner } from "@/components/DevUnlockBanner";
 import { KeyTakeaways } from "@/components/KeyTakeaways";
 import { PaywallCard } from "@/components/PaywallCard";
@@ -85,6 +86,12 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
   return (
     <main>
       <ReadingProgressBar />
+      <ChapterAnalytics
+        episodeNumber={episode.number}
+        episodeTitle={episode.title}
+        access={isFreeEpisode ? "free" : canReadFull ? "premium" : "preview"}
+        readingTimeMinutes={episode.readingTimeMinutes}
+      />
       {/* Breadcrumb / back */}
       <nav className="mb-8" aria-label="Navigazione">
         <Link

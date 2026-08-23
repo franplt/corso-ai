@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { createCheckoutUrl } from "@/lib/checkout-client";
 
-export function CheckoutButton() {
+export function CheckoutButton({ source = "paywall" }: { source?: string }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -12,7 +12,7 @@ export function CheckoutButton() {
     setError(null);
 
     try {
-      window.location.assign(await createCheckoutUrl());
+      window.location.assign(await createCheckoutUrl(source));
     } catch (checkoutError) {
       setError(
         checkoutError instanceof Error

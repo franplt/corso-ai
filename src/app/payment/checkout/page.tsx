@@ -11,7 +11,7 @@ export default function CheckoutPage() {
 
     async function startCheckout() {
       try {
-        const checkoutUrl = await createCheckoutUrl();
+        const checkoutUrl = await createCheckoutUrl("checkout_page");
         if (!cancelled) window.location.assign(checkoutUrl);
       } catch (checkoutError) {
         if (!cancelled) {

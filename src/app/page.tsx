@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ChapterCard } from "@/components/ChapterCard";
+import { TrackedLink } from "@/components/TrackedLink";
 import { getEpisodes } from "@/lib/episodes";
 
 const SITE_URL = "https://corso-intelligenza-artificiale.com";
@@ -39,15 +40,22 @@ export default function Home() {
           imparare i concetti chiave e usare l&apos;AI meglio ogni giorno.
         </p>
         <div className="flex flex-wrap gap-3">
-          <Link
+          <TrackedLink
             href="/chapters/puntata-1-perche-adesso"
             className="btn btn-primary"
+            eventName="select_content"
+            eventParameters={{ content_type: "hero_cta", content_id: "free_chapter" }}
           >
             Leggi la prima puntata gratis
-          </Link>
-          <Link href="/chapters" className="btn btn-secondary">
+          </TrackedLink>
+          <TrackedLink
+            href="/chapters"
+            className="btn btn-secondary"
+            eventName="select_content"
+            eventParameters={{ content_type: "hero_cta", content_id: "chapter_catalog" }}
+          >
             Vedi tutti i capitoli
-          </Link>
+          </TrackedLink>
         </div>
       </section>
 

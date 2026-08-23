@@ -6,6 +6,8 @@ const scriptSources = [
   "'unsafe-inline'",
   "https://js.stripe.com",
   "https://va.vercel-scripts.com",
+  "https://www.googletagmanager.com",
+  "https://*.posthog.com",
 ];
 
 if (process.env.NODE_ENV === "development") {
@@ -27,7 +29,8 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: blob: https:",
-      "connect-src 'self' https://*.supabase.co https://api.stripe.com https://va.vercel-scripts.com",
+      "connect-src 'self' https://*.supabase.co https://api.stripe.com https://va.vercel-scripts.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.posthog.com",
+      "worker-src 'self' blob: data:",
       "frame-src https://js.stripe.com",
       "base-uri 'self'",
       "form-action 'self'",

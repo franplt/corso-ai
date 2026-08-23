@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AuthNav } from "@/components/AuthNav";
 import { CookieConsent } from "@/components/CookieConsent";
 import { ConditionalAnalytics } from "@/components/ConditionalAnalytics";
+import { CookiePreferences } from "@/components/CookiePreferences";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/site";
 
 const fraunces = Fraunces({
@@ -107,6 +108,7 @@ export default function RootLayout({
                 © {new Date().getFullYear()} Corso AI in 10 puntate
               </p>
               <nav className="flex gap-4">
+                <CookiePreferences />
                 <Link
                   href="/privacy"
                   className="text-xs text-[var(--ink-faint)] hover:text-[var(--ink-muted)] transition-colors"

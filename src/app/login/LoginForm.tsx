@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { createCheckoutUrl } from "@/lib/checkout-client";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import { trackEvent } from "@/lib/analytics";
 
 export function LoginForm() {
   const router = useRouter();
@@ -31,10 +32,15 @@ export function LoginForm() {
       return;
     }
 
+    trackEvent("login", {
+      method: "email",
+      purchase_intent: searchParams.get("next") === "checkout",
+    });
+
     const next = searchParams.get("next");
     if (next === "checkout") {
       try {
-        window.location.assign(await createCheckoutUrl());
+        window.location.assign(await createCheckoutUrl("login"));
         return;
       } catch (checkoutError) {
         setError(

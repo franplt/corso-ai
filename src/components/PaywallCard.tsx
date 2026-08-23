@@ -1,5 +1,6 @@
-import Link from "next/link";
+import { AnalyticsEvent } from "@/components/AnalyticsEvent";
 import { CheckoutButton } from "@/components/checkout-button";
+import { TrackedLink } from "@/components/TrackedLink";
 
 type PaywallCardProps = {
   isLoggedIn: boolean;
@@ -14,11 +15,16 @@ const INCLUDED = [
 
 export function PaywallCard({ isLoggedIn }: PaywallCardProps) {
   return (
-    <aside
-      className="rounded-[var(--radius-lg)] border-2 border-[var(--accent)] bg-[var(--accent-muted)]/30 p-8 sm:p-10"
-      role="region"
-      aria-label="Sblocca il corso"
-    >
+    <>
+      <AnalyticsEvent
+        name="paywall_view"
+        parameters={{ authentication_status: isLoggedIn ? "signed_in" : "anonymous" }}
+      />
+      <aside
+        className="rounded-[var(--radius-lg)] border-2 border-[var(--accent)] bg-[var(--accent-muted)]/30 p-8 sm:p-10"
+        role="region"
+        aria-label="Sblocca il corso"
+      >
       <div className="mx-auto max-w-xl">
         <div className="text-center">
           <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
@@ -46,19 +52,30 @@ export function PaywallCard({ isLoggedIn }: PaywallCardProps) {
 
         {isLoggedIn ? (
           <div className="text-center">
-            <CheckoutButton />
+            <CheckoutButton source="chapter_paywall" />
           </div>
         ) : (
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <Link href="/signup?intent=buy" className="btn btn-primary">
+            <TrackedLink
+              href="/signup?intent=buy"
+              className="btn btn-primary"
+              eventName="paywall_cta_click"
+              eventParameters={{ action: "signup" }}
+            >
               Crea account e sblocca
-            </Link>
-            <Link href="/login?next=checkout" className="btn btn-secondary">
+            </TrackedLink>
+            <TrackedLink
+              href="/login?next=checkout"
+              className="btn btn-secondary"
+              eventName="paywall_cta_click"
+              eventParameters={{ action: "login" }}
+            >
               Accedi
-            </Link>
+            </TrackedLink>
           </div>
         )}
       </div>
-    </aside>
+      </aside>
+    </>
   );
 }

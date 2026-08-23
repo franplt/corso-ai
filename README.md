@@ -30,10 +30,19 @@ cp .env.example .env.local
 - `NEXT_PUBLIC_APP_URL`
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `NEXT_PUBLIC_GA_MEASUREMENT_ID` (ID GA4 nel formato `G-XXXXXXXXXX`)
+- `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN` (token pubblico del progetto PostHog)
+- `NEXT_PUBLIC_POSTHOG_HOST` (endpoint di ingestione, predefinito EU)
 - `SUPABASE_SERVICE_ROLE_KEY`
 - `STRIPE_SECRET_KEY`
 - `STRIPE_WEBHOOK_SECRET`
 - `STRIPE_PRICE_ID`
+
+## Analytics e conversioni
+
+Google Analytics 4 e PostHog vengono caricati solo dopo il consenso ai cookie.
+Gli eventi del funnel, dell'acquisto e della lettura sono descritti in
+[`docs/ANALYTICS.md`](docs/ANALYTICS.md).
 
 4) Run database migrations in Supabase SQL editor:
 - `supabase/migrations/001_profiles.sql`

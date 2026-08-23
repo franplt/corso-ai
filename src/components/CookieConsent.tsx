@@ -66,7 +66,9 @@ export function CookieConsent() {
     >
       <div className="mx-auto flex max-w-4xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-[var(--ink-muted)]">
-          Questo sito usa cookie analitici per migliorare l&apos;esperienza.{" "}
+          Con il tuo consenso, Google Analytics, PostHog e Vercel misurano
+          visite, letture e acquisti per migliorare il corso. PostHog può anche
+          registrare la sessione con tutti i campi dei form mascherati.{" "}
           <a
             href="/privacy"
             className="font-medium text-[var(--accent)] underline-offset-2 hover:underline"

@@ -23,7 +23,7 @@ export default async function AccountPage() {
       <h1 className="mb-4 text-3xl font-semibold">Account</h1>
       <div className="card mb-5 p-5">
         <p className="mb-2 text-sm text-neutral-500">Email</p>
-        <p className="mb-5">{user.email}</p>
+        <p className="mb-5" data-ph-mask>{user.email}</p>
         <p className="mb-2 text-sm text-neutral-500">Accesso corso</p>
         <p className={hasAccess ? "text-green-700" : "text-neutral-700"}>
           {hasAccess ? "Attivo (premium sbloccato)" : "Non attivo"}
