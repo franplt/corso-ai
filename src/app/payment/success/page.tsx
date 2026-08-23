@@ -8,11 +8,11 @@ export default function PaymentSuccessPage() {
           ✓
         </div>
         <h1 className="font-heading mb-3 text-3xl font-semibold text-[var(--ink)]">
-          Pagamento completato
+          Pagamento ricevuto
         </h1>
         <p className="mb-8 text-[var(--ink-muted)]">
-          Perfetto, il tuo accesso premium è stato attivato. Ora puoi leggere
-          tutte e 10 le puntate.
+          Stiamo attivando il tuo accesso premium. Di solito bastano pochi
+          secondi: apri i capitoli e, se necessario, aggiorna la pagina.
         </p>
         <Link href="/chapters" className="btn btn-primary">
           Vai ai capitoli

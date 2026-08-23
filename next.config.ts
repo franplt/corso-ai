@@ -1,6 +1,17 @@
 import type { NextConfig } from "next";
 import path from "path";
 
+const scriptSources = [
+  "'self'",
+  "'unsafe-inline'",
+  "https://js.stripe.com",
+  "https://va.vercel-scripts.com",
+];
+
+if (process.env.NODE_ENV === "development") {
+  scriptSources.push("'unsafe-eval'");
+}
+
 const securityHeaders = [
   { key: "X-DNS-Prefetch-Control", value: "on" },
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
@@ -12,7 +23,7 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://va.vercel-scripts.com",
+      `script-src ${scriptSources.join(" ")}`,
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: blob: https:",
@@ -25,6 +36,7 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  agentRules: false,
   turbopack: {
     root: path.join(__dirname),
   },
