@@ -212,7 +212,7 @@ Already has the agent loop diagram.
 - [x] **Code syntax highlighting** — added `shiki` to `MarkdownContent` (async server component).
 - [ ] **Inline glossary/tooltip** — first occurrence of key terms gets a hover tooltip definition.
 - [x] **Callout component** — styled `<aside>` for "Lo sapevi?", "Nella pratica", "Attenzione" boxes. Needed across many episodes.
-- [ ] **Mobile experience audit** — full pass on phone: font sizes, tap targets, diagrams, interactive components.
+- [x] **Mobile experience audit** — verified all 10 chapters at 390 px with no horizontal overflow (2026-08-23).
 - [ ] **Dark mode** — optional polish.
 - [—] ~~Email capture after Episode 1~~ — on hold per decision.
 
@@ -251,6 +251,7 @@ Already has the agent loop diagram.
 - **2026-02-22:** Phase 2 Steps 1 & 2 completed in Session 2. All shared components built (Callout, BeforeAfterCard, shiki syntax highlighting). All 8 new diagrams and 5 new interactive components built and wired into ChapterContent.tsx. Build passes.
 - Architecture: interactive components use `ChapterContent.tsx` wrapper that splits markdown at text anchors and injects React components between halves. Works with `markdown-it`, no MDX migration needed.
 - Email capture dropped for now (user decision).
+- **2026-08-23:** Launch QA completed locally: all 10 chapters render at desktop and mobile sizes, cookie consent persists, lint/build pass, and no visible placeholders remain. Production release is blocked by stale Supabase credentials plus missing GitHub/Vercel authentication; see `docs/LAUNCH_STATUS.md`.
 
 ---
 

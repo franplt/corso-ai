@@ -29,7 +29,9 @@ function computeReadingTime(content: string): number {
   return Math.max(1, Math.ceil(wordCount / 200));
 }
 
-const episodesDir = process.cwd();
+// Keep course content in a dedicated directory so Next.js output tracing does
+// not include the entire repository in server bundles.
+const episodesDir = path.join(process.cwd(), "content", "episodes");
 
 function slugify(input: string): string {
   return input

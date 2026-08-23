@@ -1,6 +1,6 @@
 ## Corso AI in 10 puntate
 
-Un solo progetto: **testi del corso** (file `.md` nella root) e **sito Next.js** (app in `src/`, ecc.). L’app legge le puntate direttamente dai file numerati nella root (`1. Perché adesso?.md`, ecc.).
+Un solo progetto: **testi del corso** (file `.md` in `content/episodes/`) e **sito Next.js** (app in `src/`, ecc.). L’app legge le puntate direttamente dai file numerati nella directory dei contenuti (`1. Perché adesso?.md`, ecc.).
 
 Stack:
 - Next.js (App Router)
@@ -38,6 +38,7 @@ cp .env.example .env.local
 4) Run database migrations in Supabase SQL editor:
 - `supabase/migrations/001_profiles.sql`
 - `supabase/migrations/002_entitlements.sql`
+- `supabase/migrations/003_lock_has_access.sql`
 
 5) Start dev server:
 ```bash
@@ -58,3 +59,5 @@ Set `STRIPE_WEBHOOK_SECRET` using the secret shown by `stripe listen`.
 ## Deploy (mettere online)
 
 Guida completa: **[DEPLOY.md](DEPLOY.md)** — Supabase, Stripe e Vercel passo passo.
+
+Stato verificato e blocchi correnti: **[docs/LAUNCH_STATUS.md](docs/LAUNCH_STATUS.md)**.
