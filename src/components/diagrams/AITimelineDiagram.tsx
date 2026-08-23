@@ -39,11 +39,11 @@ export function AITimelineDiagram() {
       <div className="relative">
         {/* Vertical line */}
         <div
-          className="absolute left-[54px] top-0 h-full w-px sm:left-[62px]"
+          className="absolute left-[70px] top-0 h-full w-px sm:left-[78px]"
           style={{ background: "var(--border)" }}
         />
 
-        <ol className="space-y-4">
+        <ol className="m-0 list-none space-y-4 p-0">
           {EVENTS.map((ev, i) => {
             const style = CATEGORY_STYLE[ev.category];
             return (

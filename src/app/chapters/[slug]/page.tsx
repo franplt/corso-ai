@@ -14,7 +14,16 @@ type ChapterPageProps = {
 };
 
 function getTeaser(content: string) {
-  return content.slice(0, 1000).trimEnd();
+  const targetLength = 1000;
+  const nextParagraphBreak = content.indexOf("\n\n", targetLength);
+
+  if (nextParagraphBreak !== -1 && nextParagraphBreak <= targetLength + 400) {
+    return content.slice(0, nextParagraphBreak).trimEnd();
+  }
+
+  const previousParagraphBreak = content.lastIndexOf("\n\n", targetLength);
+  const end = previousParagraphBreak > 0 ? previousParagraphBreak : targetLength;
+  return content.slice(0, end).trimEnd();
 }
 
 export async function generateStaticParams() {
@@ -112,11 +121,9 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
       </header>
 
       {/* Content */}
-      <article className="mb-12">
+      <article className={canReadFull ? "mb-12" : "teaser-preview"}>
         {episode.isPublished ? (
-          <div className="prose">
-            <ChapterContent episodeNumber={episode.number} content={content} />
-          </div>
+          <ChapterContent episodeNumber={episode.number} content={content} />
         ) : (
           <p className="text-[var(--ink-muted)]">
             Questa puntata non è ancora online. Intanto puoi leggere le altre.

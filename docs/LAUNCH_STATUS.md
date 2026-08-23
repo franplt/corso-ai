@@ -7,6 +7,12 @@ Last verified: 2026-08-23
 - All 10 episodes render in full with their diagrams and interactive demos.
 - Episode 1 is public. Episodes 2–10 use the authenticated paywall.
 - Desktop and 390 px mobile layouts have no horizontal overflow.
+- All 29 embedded diagrams and interactive demos were rendered and visually
+  reviewed individually at 1280 px and 390 px.
+- Embedded components no longer inherit article paragraph and list spacing;
+  the episode 1 timeline is aligned and compact at both widths.
+- Premium previews end at a paragraph boundary and fade into the paywall
+  instead of cutting a word abruptly.
 - Cookie consent persists for accept and decline. Analytics load only after
   acceptance, without a returning-visitor banner flash.
 - Privacy, terms, password reset, 404, sitemap, robots and Open Graph routes
