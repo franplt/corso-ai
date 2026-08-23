@@ -23,6 +23,10 @@
 # misc
 .DS_Store
 *.pem
+*.bundle
+
+# local agent configuration
+.claude/
 
 # debug
 npm-debug.log*
