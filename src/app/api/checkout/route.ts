@@ -63,9 +63,9 @@ export async function POST() {
         button_color: "#b45309",
         display_name: SITE_NAME,
         font_family: "noto_sans",
-        logo: {
+        icon: {
           type: "url",
-          url: `${SITE_URL}/checkout-logo.png`,
+          url: `${SITE_URL}/checkout-icon.png`,
         },
       },
       custom_text: {

@@ -52,6 +52,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="it" className={`${fraunces.variable} ${dmSans.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://checkout.stripe.com" />
+        <link rel="preconnect" href="https://js.stripe.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://checkout.stripe.com" />
+      </head>
       <body className="min-h-screen antialiased">
         <div className="mx-auto max-w-4xl px-5 py-8 sm:px-8 md:px-10">
           <header className="mb-12 flex items-center justify-between sm:mb-16">
