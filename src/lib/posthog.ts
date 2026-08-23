@@ -4,6 +4,7 @@ import posthog from "posthog-js";
 import type { AnalyticsParameters } from "@/lib/analytics";
 
 let initialized = false;
+let capturingActive = false;
 
 function hasConsent() {
   return (
@@ -17,8 +18,11 @@ export function initPostHog() {
   if (!token || !hasConsent()) return false;
 
   if (initialized) {
-    posthog.opt_in_capturing();
-    posthog.startSessionRecording();
+    if (!capturingActive) {
+      posthog.opt_in_capturing();
+      posthog.startSessionRecording();
+      capturingActive = true;
+    }
     return true;
   }
 
@@ -40,6 +44,7 @@ export function initPostHog() {
     },
   });
   initialized = true;
+  capturingActive = true;
   return true;
 }
 
@@ -66,5 +71,5 @@ export function stopPostHog() {
   if (!initialized) return;
   posthog.stopSessionRecording();
   posthog.opt_out_capturing();
+  capturingActive = false;
 }
-
