@@ -131,7 +131,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
 
       {/* Paywall */}
       {!canReadFull && episode.isPublished && (
-        <PaywallCard chapterNumber={episode.number} isLoggedIn={Boolean(user)} />
+        <PaywallCard isLoggedIn={Boolean(user)} />
       )}
 
       {/* Prev / Next */}

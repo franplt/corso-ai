@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Simple 2D loss landscape: f(x) = (x-3)^2 + noise bumps
 function lossAt(x: number): number {
@@ -52,23 +52,34 @@ export function GradientDescentDemo() {
   const [trail, setTrail] = useState<number[]>([0.5]);
   const [playing, setPlaying] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const ballXRef = useRef(0.5);
+  const stepCountRef = useRef(0);
 
   function reset() {
     if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = null;
+    ballXRef.current = 0.5;
+    stepCountRef.current = 0;
     setPlaying(false);
     setBallX(0.5);
     setTrail([0.5]);
   }
 
+  function advance() {
+    const previous = ballXRef.current;
+    const next = previous - lr * gradientAt(previous);
+    const clamped = Math.max(X_MIN + 0.1, Math.min(X_MAX - 0.1, next));
+
+    ballXRef.current = clamped;
+    stepCountRef.current += 1;
+    setBallX(clamped);
+    setTrail((current) => [...current.slice(-30), clamped]);
+
+    return stepCountRef.current > 5 && Math.abs(clamped - previous) < 0.001;
+  }
+
   function step() {
-    setBallX((prev) => {
-      const grad = gradientAt(prev);
-      const next = prev - lr * grad;
-      // Clamp to bounds
-      const clamped = Math.max(X_MIN + 0.1, Math.min(X_MAX - 0.1, next));
-      setTrail((t) => [...t.slice(-30), clamped]);
-      return clamped;
-    });
+    advance();
   }
 
   function play() {
@@ -78,24 +89,18 @@ export function GradientDescentDemo() {
       return;
     }
     setPlaying(true);
-    intervalRef.current = setInterval(step, 200);
+    intervalRef.current = setInterval(() => {
+      if (advance()) {
+        if (intervalRef.current) clearInterval(intervalRef.current);
+        intervalRef.current = null;
+        setPlaying(false);
+      }
+    }, 200);
   }
 
   useEffect(() => {
     return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
   }, []);
-
-  // Stop if converged
-  useEffect(() => {
-    if (playing && trail.length >= 2) {
-      const last = trail[trail.length - 1];
-      const prev = trail[trail.length - 2];
-      if (Math.abs(last - prev) < 0.001 && trail.length > 5) {
-        if (intervalRef.current) clearInterval(intervalRef.current);
-        setPlaying(false);
-      }
-    }
-  }, [trail, playing]);
 
   const ballY = lossAt(ballX);
   const converged = trail.length > 5 && Math.abs(gradientAt(ballX)) < 0.5;

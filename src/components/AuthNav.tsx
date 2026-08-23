@@ -17,16 +17,16 @@ type AuthState = "loading" | "signedIn" | "signedOut";
  * homepage, the chapter index and the free episode render statically.
  */
 export function AuthNav({ variant }: { variant: "header" | "footer" }) {
-  const [state, setState] = useState<AuthState>("loading");
+  const hasSupabaseConfig = Boolean(
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  );
+  const [state, setState] = useState<AuthState>(() =>
+    hasSupabaseConfig ? "loading" : "signedOut",
+  );
 
   useEffect(() => {
-    if (
-      !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-      !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-    ) {
-      setState("signedOut");
-      return;
-    }
+    if (!hasSupabaseConfig) return;
 
     const supabase = createSupabaseBrowserClient();
     let active = true;
@@ -43,7 +43,7 @@ export function AuthNav({ variant }: { variant: "header" | "footer" }) {
       active = false;
       sub.subscription.unsubscribe();
     };
-  }, []);
+  }, [hasSupabaseConfig]);
 
   if (variant === "footer") {
     // Render a stable placeholder while loading so the footer doesn't jump.

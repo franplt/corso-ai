@@ -2,7 +2,6 @@ import Link from "next/link";
 import { CheckoutButton } from "@/components/checkout-button";
 
 type PaywallCardProps = {
-  chapterNumber: number;
   isLoggedIn: boolean;
 };
 
@@ -13,7 +12,7 @@ const INCLUDED = [
   "Leggi da qualsiasi dispositivo",
 ];
 
-export function PaywallCard({ chapterNumber, isLoggedIn }: PaywallCardProps) {
+export function PaywallCard({ isLoggedIn }: PaywallCardProps) {
   return (
     <aside
       className="rounded-[var(--radius-lg)] border-2 border-[var(--accent)] bg-[var(--accent-muted)]/30 p-8 sm:p-10"
@@ -26,7 +25,7 @@ export function PaywallCard({ chapterNumber, isLoggedIn }: PaywallCardProps) {
             Accesso completo
           </p>
           <h2 className="font-heading mb-3 text-2xl font-semibold text-[var(--ink)] sm:text-3xl">
-            Sblocca le puntate {chapterNumber}–10
+            Sblocca le puntate 2–10
           </h2>
           <p className="mb-6 text-[var(--ink-muted)]">
             Un solo pagamento di{" "}

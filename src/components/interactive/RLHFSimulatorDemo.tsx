@@ -55,7 +55,6 @@ export function RLHFSimulatorDemo() {
   const choice = choices[roundIdx];
   const isCorrect = choice === round.betterIs;
   const totalRounds = ROUNDS.length;
-  const answeredAll = Object.keys(choices).length === totalRounds;
 
   function choose(pick: "A" | "B") {
     if (choice) return;

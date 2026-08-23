@@ -1,30 +1,49 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 type ConsentStatus = "pending" | "accepted" | "declined";
 
-export function CookieConsent() {
-  const [status, setStatus] = useState<ConsentStatus>("pending");
-  const [visible, setVisible] = useState(false);
+const CONSENT_KEY = "cookie-consent";
+const CONSENT_EVENT = "cookie-consent-change";
 
-  useEffect(() => {
-    const stored = localStorage.getItem("cookie-consent");
-    if (stored === "accepted" || stored === "declined") {
-      setStatus(stored);
-    } else {
-      setVisible(true);
-    }
-  }, []);
+function getConsentSnapshot(): ConsentStatus {
+  const stored = localStorage.getItem(CONSENT_KEY);
+  return stored === "accepted" || stored === "declined" ? stored : "pending";
+}
+
+function subscribeToConsent(onStoreChange: () => void) {
+  window.addEventListener("storage", onStoreChange);
+  window.addEventListener(CONSENT_EVENT, onStoreChange);
+  return () => {
+    window.removeEventListener("storage", onStoreChange);
+    window.removeEventListener(CONSENT_EVENT, onStoreChange);
+  };
+}
+
+function subscribeToHydration(onStoreChange: () => void) {
+  queueMicrotask(onStoreChange);
+  return () => undefined;
+}
+
+export function CookieConsent() {
+  const hydrated = useSyncExternalStore(
+    subscribeToHydration,
+    () => true,
+    () => false,
+  );
+  const status = useSyncExternalStore(
+    subscribeToConsent,
+    getConsentSnapshot,
+    () => "pending",
+  );
 
   function record(choice: "accepted" | "declined") {
-    localStorage.setItem("cookie-consent", choice);
-    setStatus(choice);
-    setVisible(false);
+    localStorage.setItem(CONSENT_KEY, choice);
     // The `storage` event does not fire in the tab that wrote the value, so
     // without this the visitor who just clicked "Accetta" would not be counted
     // until they navigated or reloaded.
-    window.dispatchEvent(new Event("cookie-consent-change"));
+    window.dispatchEvent(new Event(CONSENT_EVENT));
   }
 
   function accept() {
@@ -35,11 +54,9 @@ export function CookieConsent() {
     record("declined");
   }
 
-  // Don't render banner if already decided
-  if (!visible) return null;
-
-  // Don't render during SSR
-  if (status !== "pending") return null;
+  // Never render the banner in the server HTML: returning visitors should not
+  // see it flash before their saved decision is available in the browser.
+  if (!hydrated || status !== "pending") return null;
 
   return (
     <div

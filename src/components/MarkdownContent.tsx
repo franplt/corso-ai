@@ -1,12 +1,6 @@
 import MarkdownIt from "markdown-it";
 import { createHighlighter } from "shiki";
 
-const md = new MarkdownIt({
-  html: false,
-  linkify: true,
-  breaks: true,
-});
-
 let highlighterPromise: ReturnType<typeof createHighlighter> | null = null;
 
 function getHighlighter() {

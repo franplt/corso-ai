@@ -75,7 +75,6 @@ export function BenchmarkDecoderDemo() {
   const [selectedIdx, setSelectedIdx] = useState(0);
 
   const bench = BENCHMARKS[selectedIdx];
-  const maxScore = Math.max(...bench.scores.map((s) => s.score));
 
   return (
     <div className="my-8 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-elevated)] p-5 sm:p-7">

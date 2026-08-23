@@ -55,7 +55,6 @@ export function HumanInTheLoopDemo() {
 
   const action = ACTIONS[currentAction];
   const done = currentAction >= ACTIONS.length;
-  const decision = decisions[currentAction];
 
   function handleAutoApprove() {
     setAutoAnimating(true);
