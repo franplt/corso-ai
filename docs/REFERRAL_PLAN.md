@@ -10,7 +10,7 @@ Piano product per la feature di referral (modello asimmetrico): l'invitato ottie
 
 - **Referrer**: si iscrive → ottiene link → condivide → al **1° amico confermato** riceve accesso gratis
 - **Invitato**: clicca il link → si iscrive → ottiene accesso gratis **immediatamente** (senza aspettare nulla)
-- **Organico**: arriva senza link → vede paywall → paga €9.99 OPPURE usa il proprio link referral per invitare 1 amico
+- **Organico**: arriva senza link → vede paywall → paga €9.90 OPPURE usa il proprio link referral per invitare 1 amico
 
 Il modello è asimmetrico per design: l'invitato viene sempre premiato subito (massima incentivo a cliccare il link), il referrer deve solo portare 1 persona. Basta condividere su WhatsApp a un amico e siete entrambi dentro.
 
@@ -23,7 +23,7 @@ Il modello è asimmetrico per design: l'invitato viene sempre premiato subito (m
 ```
 Arriva sul sito
    → Legge ep. 1 gratis
-   → Urta paywall: "€9.99 — oppure invita 1 amico e accedi gratis"
+   → Urta paywall: "€9.90 — oppure invita 1 amico e accedi gratis"
    → Si registra (email + password)
    → Vede il suo link personale: corsoai.it/?ref=ABC123
    → Copia il link e lo condivide (WhatsApp, social, ecc.)
@@ -79,7 +79,7 @@ Seguendo il principio "più semplice possibile":
 | Link referral usato da chi ha già pagato                 | Codice ignorato, `has_access` già true, nessun cambio                             |
 | Codice referral inesistente/manomesso                    | Ignorato silenziosamente, signup normale                                          |
 | Auto-referral (stesso utente con email diversa)          | Non rilevabile al 100%; la conferma email limita gli abusi                        |
-| Stessa persona crea 2 account fake                       | Email confirmation richiesta prima di contare; per €9.99 è protezione sufficiente |
+| Stessa persona crea 2 account fake                       | Email confirmation richiesta prima di contare; per €9.90 è protezione sufficiente |
 | Link condiviso pubblicamente → 100 iscrizioni            | Tutti ottengono accesso gratis (voluto!); il referrer sblocca al 1°               |
 | Invitato non conferma mai l'email                        | Non conta come referral valido per il referrer                                    |
 | Referrer sblocca ma il suo amico cancella l'account dopo | Accesso non revocato (keep it simple)                                             |
@@ -130,7 +130,7 @@ WHERE referred_by = :user_id
 
 ### AC-5: UI — Paywall
 
-- Il paywall mostra due opzioni chiare: paga €9.99 **oppure** invita 1 amico e accedi gratis
+- Il paywall mostra due opzioni chiare: paga €9.90 **oppure** invita 1 amico e accedi gratis
 - Il link referral è visibile e copiabile con un click (pulsante "Copia link")
 - Mostra lo stato: "In attesa del tuo amico" oppure "Accesso sbloccato!"
 

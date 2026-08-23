@@ -8,7 +8,7 @@
 The course site (Next.js + Supabase Auth + Stripe) is functionally complete but missing legal, UX, and SEO pieces required before launch.
 
 **Seller**: Francesco Paltrinieri, independent contractor registered in Portugal.
-**Product**: "Corso AI in 10 puntate" — digital course, €9.99 one-time payment.
+**Product**: "Corso AI in 10 puntate" — digital course, €9.90 one-time payment.
 **Refund policy**: 14-day money-back guarantee.
 
 ---
@@ -32,7 +32,7 @@ The course site (Next.js + Supabase Auth + Stripe) is functionally complete but 
 - Written in Italian
 - Covers:
   - Description of the service (digital course, 10 episodes)
-  - Pricing: €9.99 one-time, episode 1 free
+  - Pricing: €9.90 one-time, episode 1 free
   - 14-day refund policy (money-back guarantee, request via email)
   - License: personal use only, no redistribution
   - Account responsibility

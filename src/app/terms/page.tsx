@@ -34,7 +34,7 @@ export default function TermsPage() {
           </li>
           <li>
             <strong>Episodi 2-10</strong> richiedono un pagamento unico di{" "}
-            <strong>&euro;9,99</strong>.
+            <strong>&euro;9,90</strong>.
           </li>
           <li>
             Una volta effettuato il pagamento, l&apos;accesso ai contenuti premium

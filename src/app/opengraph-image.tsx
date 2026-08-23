@@ -78,7 +78,7 @@ export default async function OGImage() {
               fontWeight: 600,
             }}
           >
-            10 episodi · €9,99
+            10 episodi · €9,90
           </div>
         </div>
         <div

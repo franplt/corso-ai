@@ -35,7 +35,7 @@ export function CheckoutButton() {
         onClick={handleCheckout}
         type="button"
       >
-        {loading ? "Reindirizzamento..." : "Sblocca ora · €9,99"}
+        {loading ? "Reindirizzamento..." : "Sblocca ora · €9,90"}
       </button>
       {error ? (
         <p className="text-sm font-medium text-red-600">{error}</p>

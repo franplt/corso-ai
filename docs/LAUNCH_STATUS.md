@@ -14,7 +14,7 @@ Last verified: 2026-08-23
 - Lint passes without errors or warnings.
 - The Next.js production build passes.
 - `npm audit` reports zero known vulnerabilities.
-- Stripe test mode uses an active €9.99 one-time EUR price.
+- Stripe test mode uses an active €9.90 one-time EUR price.
 - A signed unpaid webhook event is acknowledged without granting access.
 - A paid event returns a retryable error when Supabase is unavailable.
 - The complete launch history is published on `main` at commit `731f0b1`.

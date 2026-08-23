@@ -13,7 +13,7 @@
 
 ## 2. Stripe
 
-- [x] Prodotto test configurato: pagamento una tantum da €9,99 in EUR.
+- [x] Prodotto test configurato: pagamento una tantum da €9,90 in EUR.
 - [x] Il codice concede accesso solo a sessioni con `payment_status=paid`.
 - [x] Il webhook restituisce un errore a Stripe se la scrittura su Supabase
   fallisce, così l'evento viene ritentato.

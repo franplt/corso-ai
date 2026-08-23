@@ -12,7 +12,7 @@ Stack:
 - Episode 1 free
 - Episodes 2-10 gated behind payment
 - Email/password signup and login
-- One-time payment (€9.99) to unlock premium access
+- One-time payment (€9.90) to unlock premium access
 
 ## Local setup
 

@@ -29,7 +29,7 @@ export function PaywallCard({ isLoggedIn }: PaywallCardProps) {
           </h2>
           <p className="mb-6 text-[var(--ink-muted)]">
             Un solo pagamento di{" "}
-            <strong className="text-[var(--ink)]">€9,99</strong>.
+            <strong className="text-[var(--ink)]">€9,90</strong>.
           </p>
         </div>
 

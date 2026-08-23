@@ -12,7 +12,7 @@ export default function ChaptersPage() {
         </h1>
         <p className="max-w-xl text-[var(--ink-muted)]">
           La puntata 1 è gratuita. Dalla 2 alla 10 sblocchi tutto il corso con un
-          unico pagamento di €9,99.
+          unico pagamento di €9,90.
         </p>
       </div>
       <section className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
