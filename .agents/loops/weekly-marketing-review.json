@@ -1,0 +1,10 @@
+{
+  "loop": "weekly-marketing-review",
+  "version": 1,
+  "last_run_at": null,
+  "last_success_at": null,
+  "last_outcome": "not_started",
+  "current_weekly_priority": "Establish a reliable funnel baseline and fix the closest measurable conversion issue.",
+  "runs": 0,
+  "failures": 0
+}

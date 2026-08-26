@@ -1,0 +1,227 @@
+name: Cloud marketing agents
+
+on:
+  schedule:
+    - cron: "0 8 * * 1"
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Agent to run
+        required: true
+        default: execution
+        type: choice
+        options:
+          - execution
+          - strategy
+
+concurrency:
+  group: cloud-marketing-agent
+  cancel-in-progress: false
+
+jobs:
+  marketing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+
+    env:
+      BOT_BRANCH: codex/cloud-marketing-agent
+
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Select agent mode and check configuration
+        id: setup
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_SCHEDULE: ${{ github.event.schedule }}
+          MANUAL_MODE: ${{ inputs.mode }}
+          CODEX_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            mode="$MANUAL_MODE"
+          elif [ "$EVENT_SCHEDULE" = "0 8 * * 1" ]; then
+            mode="strategy"
+          else
+            mode="execution"
+          fi
+
+          if [ "$mode" = "strategy" ]; then
+            prompt_file=".github/codex/prompts/marketing-strategy.md"
+          else
+            prompt_file=".github/codex/prompts/marketing-execution.md"
+          fi
+
+          if [ -n "$CODEX_KEY" ]; then
+            configured="true"
+          else
+            configured="false"
+            echo "OPENAI_API_KEY is not configured; cloud agent skipped." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+          echo "prompt_file=$prompt_file" >> "$GITHUB_OUTPUT"
+          echo "configured=$configured" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare persistent automation branch
+        id: branch
+        if: steps.setup.outputs.configured == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git fetch origin main
+          open_pr="$(gh pr list --head "$BOT_BRANCH" --base main --state open --json url --jq '.[0].url')"
+          if [ -n "$open_pr" ]; then
+            echo "blocked=true" >> "$GITHUB_OUTPUT"
+            echo "Waiting for approval on $open_pr" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          echo "blocked=false" >> "$GITHUB_OUTPUT"
+
+          if git ls-remote --exit-code --heads origin "$BOT_BRANCH" >/dev/null 2>&1; then
+            git fetch origin "$BOT_BRANCH"
+            git switch -C "$BOT_BRANCH" origin/main
+          else
+            git switch -c "$BOT_BRANCH"
+          fi
+
+      - name: Install dependencies
+        if: steps.setup.outputs.configured == 'true' && steps.branch.outputs.blocked == 'false'
+        run: npm ci --no-audit --no-fund
+
+      - name: Install pinned marketing skills
+        if: steps.setup.outputs.configured == 'true' && steps.branch.outputs.blocked == 'false'
+        env:
+          CODEX_HOME_DIR: ${{ runner.temp }}/codex-home
+          MARKETING_SKILLS_SHA: becd60ee9df07f7d595c26e092253ba49f7a9ffc
+          OPEN_SEO_SHA: c469a48ae90ab58413b198fe3d1ac1aa90a9b070
+        run: |
+          skill_source="$(mktemp -d)"
+          mkdir -p "$CODEX_HOME_DIR/skills"
+
+          git clone --quiet https://github.com/coreyhaines31/marketingskills.git "$skill_source/marketing"
+          git -C "$skill_source/marketing" checkout --quiet "$MARKETING_SKILLS_SHA"
+          for skill in marketing-loops product-marketing analytics attribution content-strategy cro copywriting customer-research emails free-tools offers programmatic-seo referrals schema social; do
+            cp -R "$skill_source/marketing/skills/$skill" "$CODEX_HOME_DIR/skills/$skill"
+          done
+
+          git clone --quiet https://github.com/every-app/open-seo.git "$skill_source/open-seo"
+          git -C "$skill_source/open-seo" checkout --quiet "$OPEN_SEO_SHA"
+          for skill in competitive-landscape competitor-analysis keyword-clustering keyword-research link-prospecting seo-audit seo-project-setup; do
+            cp -R "$skill_source/open-seo/.agents/skills/$skill" "$CODEX_HOME_DIR/skills/$skill"
+          done
+
+      - name: Run cloud marketing agent
+        if: steps.setup.outputs.configured == 'true' && steps.branch.outputs.blocked == 'false'
+        id: codex
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          codex-home: ${{ runner.temp }}/codex-home
+          permission-profile: ":workspace"
+          safety-strategy: drop-sudo
+          prompt-file: ${{ steps.setup.outputs.prompt_file }}
+
+      - name: Enforce marketing guardrails
+        id: guardrails
+        if: steps.setup.outputs.configured == 'true' && steps.branch.outputs.blocked == 'false'
+        env:
+          MODE: ${{ steps.setup.outputs.mode }}
+        run: |
+          mapfile -t changed < <(git ls-files --modified --deleted --others --exclude-standard)
+          if [ "${#changed[@]}" -eq 0 ]; then
+            echo "No changes proposed." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          for path in "${changed[@]}"; do
+            case "$path" in
+                .github/*|package.json|package-lock.json|next.config.*|middleware.*|.env*|supabase/*|src/app/api/*)
+                echo "Forbidden path changed: $path" >&2
+                exit 1
+                ;;
+            esac
+
+            if [ "$MODE" = "strategy" ]; then
+              case "$path" in
+                .agents/*|docs/marketing/*) ;;
+                *) echo "Strategy mode cannot change: $path" >&2; exit 1 ;;
+              esac
+            else
+              case "$path" in
+                .agents/*|docs/marketing/*|src/app/*|src/components/*|src/lib/*|content/episodes/*|public/*) ;;
+                *) echo "Execution mode cannot change: $path" >&2; exit 1 ;;
+              esac
+              case "$path" in
+                *stripe*|*checkout*|*supabase*|*auth*|*entitlement*)
+                  echo "Sensitive product surface changed: $path" >&2
+                  exit 1
+                  ;;
+              esac
+            fi
+          done
+
+          approval_required="true"
+          if jq -e '.approval_required == false' .agents/run-decision.json >/dev/null 2>&1; then
+            approval_required="false"
+          fi
+          if [ "${#changed[@]}" -gt 15 ]; then
+            approval_required="true"
+            echo "More than 15 changed files: approval required." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo "approval_required=$approval_required" >> "$GITHUB_OUTPUT"
+
+      - name: Validate proposal
+        if: steps.setup.outputs.configured == 'true' && steps.branch.outputs.blocked == 'false'
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            exit 0
+          fi
+          npm run lint
+          npm run build
+
+      - name: Commit and update pull request
+        if: steps.setup.outputs.configured == 'true' && steps.branch.outputs.blocked == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MODE: ${{ steps.setup.outputs.mode }}
+          APPROVAL_REQUIRED: ${{ steps.guardrails.outputs.approval_required }}
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            exit 0
+          fi
+
+          gh auth setup-git
+          git config core.hooksPath /dev/null
+          git config user.name "codex-cloud-marketing[bot]"
+          git config user.email "codex-cloud-marketing[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "marketing: run cloud $MODE agent"
+          git push --force-with-lease origin "HEAD:$BOT_BRANCH"
+
+          existing_pr="$(gh pr list --head "$BOT_BRANCH" --base main --state open --json url --jq '.[0].url')"
+          if [ -z "$existing_pr" ]; then
+            existing_pr="$(gh pr create \
+              --base main \
+              --head "$BOT_BRANCH" \
+              --title "marketing: cloud agent proposals" \
+              --body "Automated cloud work toward a low-maintenance revenue stream. The agent may prepare substantial, coherent improvements, while consequential external actions, spend and sensitive product areas require explicit approval. Lint and build must pass. See .agents/marketing-operating-system.md and .agents/approval-queue.md.")"
+          fi
+
+          if [ "$APPROVAL_REQUIRED" = "false" ]; then
+            gh pr merge "$existing_pr" --squash --delete-branch
+            echo "Validated Level A change merged automatically: $existing_pr" >> "$GITHUB_STEP_SUMMARY"
+          else
+            gh label create "approval-required" --color "B60205" --description "Requires owner approval before merge" 2>/dev/null || true
+            gh pr edit "$existing_pr" --add-label "approval-required"
+            echo "Approval required: $existing_pr" >> "$GITHUB_STEP_SUMMARY"
+          fi
