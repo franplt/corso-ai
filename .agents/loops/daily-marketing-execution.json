@@ -1,0 +1,10 @@
+{
+  "loop": "daily-marketing-execution",
+  "version": 1,
+  "last_run_at": null,
+  "last_success_at": null,
+  "last_outcome": "not_started",
+  "last_task": null,
+  "runs": 0,
+  "failures": 0
+}
