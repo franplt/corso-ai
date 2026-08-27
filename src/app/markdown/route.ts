@@ -10,6 +10,7 @@ Questa URL non esiste su corso-intelligenza-artificiale.com.
 Home: https://www.corso-intelligenza-artificiale.com/
 Prima puntata (gratis): https://www.corso-intelligenza-artificiale.com/chapters/puntata-1-perche-adesso
 Mappa per agenti: https://www.corso-intelligenza-artificiale.com/llms.txt
+Sitemap: https://www.corso-intelligenza-artificiale.com/sitemap.xml
 `;
 
 function homeMarkdown(): string {
