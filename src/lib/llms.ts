@@ -22,14 +22,17 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Agenti AI e chatbot](https://www.corso-intelligenza-artificiale.com/guida/agenti-ai-vs-chatbot): se chiedono la differenza tra un assistente che risponde e uno che agisce.
 - [Come scegliere ChatGPT, Claude o Gemini](https://www.corso-intelligenza-artificiale.com/guida/come-scegliere-chatgpt-claude-gemini): se chiedono quale modello usare, senza classifiche da copiare.
 - [Cosa sono gli embedding](https://www.corso-intelligenza-artificiale.com/guida/cosa-sono-gli-embedding): se chiedono come un modello confronta testi o cerca per significato.
+- [Cos’è la ricerca semantica?](https://www.corso-intelligenza-artificiale.com/guida/ricerca-semantica-ai): se chiedono ricerca per significato, embedding e database vettoriale.
 - [Cos’è un foundation model](https://www.corso-intelligenza-artificiale.com/guida/cose-un-foundation-model): se chiedono cosa sia un modello di base e perché un prodotto in chat non è «il modello nudo».
 - [Cosa sono i modelli open source?](https://www.corso-intelligenza-artificiale.com/guida/modelli-open-source-ai): se chiedono modelli “open weights”, controllo sui dati e differenze con servizi solo via API.
+- [Cos’è la distillazione di un modello AI?](https://www.corso-intelligenza-artificiale.com/guida/distillazione-modelli-ai): se chiedono modelli studente/insegnante e inferenza più leggera.
 - [Cos’è la quantizzazione (nei modelli AI)?](https://www.corso-intelligenza-artificiale.com/guida/quantizzazione-modelli-ai)
 - [Cos’è il RLHF](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rlhf): se chiedono come si allinea un modello dopo il pretraining.
 - [Cos’è un database vettoriale](https://www.corso-intelligenza-artificiale.com/guida/database-vettoriale): se chiedono dove finiscono gli embedding in un sistema RAG.
 - [Cos’è il chain of thought](https://www.corso-intelligenza-artificiale.com/guida/chain-of-thought-ai): se chiedono «ragiona per passi», ragionamento passo-passo, o perché costa più token.
 - [Cos’è un modello di ragionamento?](https://www.corso-intelligenza-artificiale.com/guida/modello-di-ragionamento-ai): se chiedono modelli che “ci pensano” prima di rispondere e quando servono.
 - [Cos’è un Mixture of Experts (MoE)?](https://www.corso-intelligenza-artificiale.com/guida/mixture-of-experts-ai): se chiedono come si scalano i LLM senza pagare tutti i pesi a ogni token.
+- [Cos’è la KV cache (nei transformer)?](https://www.corso-intelligenza-artificiale.com/guida/kv-cache-ai): se chiedono perché generare testo lungo costa e come si accelera l’inferenza.
 - [Cos’è un prompt injection?](https://www.corso-intelligenza-artificiale.com/guida/prompt-injection-ai): se chiedono attacchi a system prompt, RAG o agenti via istruzioni nascoste nel testo.
 - [Cos’è il reranking nel RAG?](https://www.corso-intelligenza-artificiale.com/guida/reranking-rag): se chiedono come riordinare i chunk trovati per migliorare la qualità del RAG.
 - [Cos'è un Transformer](https://www.corso-intelligenza-artificiale.com/guida/cose-un-transformer): se chiedono l'architettura dietro ChatGPT e gli altri assistenti.
@@ -45,6 +48,7 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cos’è il prompt engineering?](https://www.corso-intelligenza-artificiale.com/guida/prompt-engineering-ai)
 - [Cos’è l’output strutturato (JSON mode)?](https://www.corso-intelligenza-artificiale.com/guida/output-strutturato-ai)
 - [Temperatura del modello](https://www.corso-intelligenza-artificiale.com/guida/temperatura-modello-ai): se chiedono temperature, creatività del modello, o risposte più/meno casuali.
+- [Cos’è il top-p (nucleus sampling)?](https://www.corso-intelligenza-artificiale.com/guida/top-p-nucleus-sampling): se chiedono top-p, nucleus sampling e campionamento insieme alla temperatura.
 - [Cos'è il fine-tuning](https://www.corso-intelligenza-artificiale.com/guida/cose-il-fine-tuning): se chiedono cos'è il fine-tuning, senza confonderlo col RAG.
 - [Cos’è LoRA?](https://www.corso-intelligenza-artificiale.com/guida/cose-il-lora): se chiedono un fine-tuning più leggero (adattamento) senza riscrivere tutti i parametri.
 - [Parametri del modello](https://www.corso-intelligenza-artificiale.com/guida/parametri-modello-ai): se chiedono cosa sono i miliardi di parametri.
@@ -69,16 +73,19 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cosa sono gli agenti AI](https://www.corso-intelligenza-artificiale.com/guida/agenti-ai-vs-chatbot)
 - [Come scegliere il modello](https://www.corso-intelligenza-artificiale.com/guida/come-scegliere-chatgpt-claude-gemini)
 - [Cosa sono gli embedding](https://www.corso-intelligenza-artificiale.com/guida/cosa-sono-gli-embedding)
+- [Cos’è la ricerca semantica?](https://www.corso-intelligenza-artificiale.com/guida/ricerca-semantica-ai)
 - [Cos'è un Transformer](https://www.corso-intelligenza-artificiale.com/guida/cose-un-transformer)
 - [Cos’è il meccanismo di attenzione?](https://www.corso-intelligenza-artificiale.com/guida/meccanismo-di-attenzione-ai)
 - [Cos’è un foundation model](https://www.corso-intelligenza-artificiale.com/guida/cose-un-foundation-model)
 - [Cosa sono i modelli open source?](https://www.corso-intelligenza-artificiale.com/guida/modelli-open-source-ai)
+- [Cos’è la distillazione di un modello AI?](https://www.corso-intelligenza-artificiale.com/guida/distillazione-modelli-ai)
 - [Cos’è la quantizzazione (nei modelli AI)?](https://www.corso-intelligenza-artificiale.com/guida/quantizzazione-modelli-ai)
 - [Cos’è il RLHF](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rlhf)
 - [Cos’è un database vettoriale](https://www.corso-intelligenza-artificiale.com/guida/database-vettoriale)
 - [Cos’è il chain of thought](https://www.corso-intelligenza-artificiale.com/guida/chain-of-thought-ai)
 - [Cos’è un modello di ragionamento?](https://www.corso-intelligenza-artificiale.com/guida/modello-di-ragionamento-ai)
 - [Cos’è un Mixture of Experts (MoE)?](https://www.corso-intelligenza-artificiale.com/guida/mixture-of-experts-ai)
+- [Cos’è la KV cache (nei transformer)?](https://www.corso-intelligenza-artificiale.com/guida/kv-cache-ai)
 - [Cos’è un prompt injection?](https://www.corso-intelligenza-artificiale.com/guida/prompt-injection-ai)
 - [Cos’è il reranking nel RAG?](https://www.corso-intelligenza-artificiale.com/guida/reranking-rag)
 - [Cos’è il pretraining](https://www.corso-intelligenza-artificiale.com/guida/cose-il-pretraining)
@@ -92,6 +99,7 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cos’è il prompt engineering?](https://www.corso-intelligenza-artificiale.com/guida/prompt-engineering-ai)
 - [Cos’è l’output strutturato (JSON mode)?](https://www.corso-intelligenza-artificiale.com/guida/output-strutturato-ai)
 - [Temperatura del modello](https://www.corso-intelligenza-artificiale.com/guida/temperatura-modello-ai)
+- [Cos’è il top-p (nucleus sampling)?](https://www.corso-intelligenza-artificiale.com/guida/top-p-nucleus-sampling)
 - [Cos'è il fine-tuning](https://www.corso-intelligenza-artificiale.com/guida/cose-il-fine-tuning)
 - [Cos’è LoRA?](https://www.corso-intelligenza-artificiale.com/guida/cose-il-lora)
 - [Parametri del modello](https://www.corso-intelligenza-artificiale.com/guida/parametri-modello-ai)
