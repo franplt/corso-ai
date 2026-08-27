@@ -11,6 +11,26 @@ const GUIDE_FAQ_BY_SLUG: Record<string, GuideFaq> = {
     answer:
       "Un LLM è un modello di linguaggio grande: un programma addestrato su moltissimo testo, che predice il pezzo successivo. Non è un database e non è una persona. ChatGPT, Claude e Gemini sono interfacce sopra modelli di questo tipo.",
   },
+  "cose-un-prompt": {
+    question: "Cos'è un prompt?",
+    answer:
+      "Un prompt è il messaggio che mandi al modello: la domanda, il compito, il contesto. Non è magia: è testo. Il modello legge quel testo e predice la risposta pezzo per pezzo.",
+  },
+  "temperatura-modello-ai": {
+    question: "Cos’è la temperatura di un modello AI?",
+    answer:
+      "La temperatura è un’impostazione che regola quanto il modello azzarda quando sceglie la parola successiva. Valori bassi: risposte più ripetibili. Valori alti: più varietà e più rischio.",
+  },
+  "cose-il-fine-tuning": {
+    question: "Cos’è il fine-tuning?",
+    answer:
+      "Il fine-tuning è un passo di allenamento in più: prendi un modello già addestrato e lo ritocchi con i tuoi esempi, così risponde in uno stile o su un compito più stretto.",
+  },
+  "parametri-modello-ai": {
+    question: "Cosa sono i parametri di un modello AI?",
+    answer:
+      "I parametri sono i numeri interni che il modello ha imparato in allenamento: i pesi che decidono come trasformare l’input in output. «70 miliardi di parametri» misura la dimensione, non la comprensione umana.",
+  },
   "allucinazioni-ai": {
     question: "Perché l'AI inventa?",
     answer:

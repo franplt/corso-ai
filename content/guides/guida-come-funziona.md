@@ -12,6 +12,10 @@ Se vuoi entrare nel dettaglio, da qui:
 - Cos'è il RAG → /guida/cose-il-rag
 - RAG o fine-tuning → /guida/rag-o-fine-tuning
 - Finestra di contesto → /guida/finestra-di-contesto
+- Cos'è un prompt → /guida/cose-un-prompt
+- Temperatura del modello → /guida/temperatura-modello-ai
+- Cos'è il fine-tuning → /guida/cose-il-fine-tuning
+- Parametri del modello → /guida/parametri-modello-ai
 - Agenti AI e chatbot → /guida/agenti-ai-vs-chatbot
 - Come scegliere ChatGPT, Claude o Gemini → /guida/come-scegliere-chatgpt-claude-gemini
 - Cosa sono gli embedding → /guida/cosa-sono-gli-embedding
