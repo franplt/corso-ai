@@ -36,15 +36,16 @@ export async function POST() {
   }
 
   const priceId = process.env.STRIPE_PRICE_ID;
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL;
   const stripe = getStripeClient();
 
-  if (!priceId || !appUrl) {
+  if (!priceId) {
     return NextResponse.json(
       { error: "Configurazione Stripe incompleta." },
       { status: 500 },
     );
   }
+
+  const checkoutOrigin = new URL(SITE_URL).origin;
 
   try {
     const session = await stripe.checkout.sessions.create({
@@ -52,8 +53,8 @@ export async function POST() {
       locale: "it",
       payment_method_types: ["card"],
       line_items: [{ price: priceId, quantity: 1 }],
-      success_url: `${appUrl}/payment/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${appUrl}/payment/cancel`,
+      success_url: `${checkoutOrigin}/payment/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${checkoutOrigin}/payment/cancel`,
       customer_email: typeof userEmail === "string" ? userEmail : undefined,
       submit_type: "pay",
       branding_settings: {
