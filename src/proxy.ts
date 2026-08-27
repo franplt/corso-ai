@@ -1,9 +1,21 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
 
+const PUBLIC_DOC_VARY =
+  "Accept, RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch";
+
 function wantsMarkdown(request: NextRequest): boolean {
   const accept = request.headers.get("accept");
   return Boolean(accept && accept.toLowerCase().includes("text/markdown"));
+}
+
+function isPublicDocRoute(pathname: string): boolean {
+  if (pathname === "/") return true;
+  if (pathname === "/il-corso") return true;
+  if (pathname === "/contatti") return true;
+  if (pathname.startsWith("/guida/")) return true;
+  // Unknown URLs still produce an HTML 404 document; include Accept in Vary there too.
+  return true;
 }
 
 function isMarkdownExcludedPath(pathname: string): boolean {
@@ -53,9 +65,15 @@ export async function proxy(request: NextRequest) {
     return updateSession(request);
   }
 
-  return NextResponse.next({
-    request,
-  });
+  const response = NextResponse.next({ request });
+
+  // Ensure public HTML documents also vary on Accept so CDNs do not serve cached
+  // HTML to clients requesting markdown.
+  if (!isMarkdownExcludedPath(pathname) && isPublicDocRoute(pathname)) {
+    response.headers.set("Vary", PUBLIC_DOC_VARY);
+  }
+
+  return response;
 }
 
 export const config = {
