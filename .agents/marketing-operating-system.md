@@ -12,11 +12,12 @@ Far avanzare marketing, traffico e conversioni anche quando il Mac personale e' 
 
 ## Politica costi dei modelli
 
-- Esecuzione quotidiana: `gpt-5.6-luna` con reasoning `low`, per il lavoro frequente e cost-sensitive.
-- Strategia settimanale: `gpt-5.6-terra` con reasoning `low`, per bilanciare qualita' decisionale e costo.
+- Strategia settimanale: `gpt-5.6-luna` con reasoning `low`, per triage, backlog e decisioni documentali cost-sensitive.
+- Esecuzione quotidiana: `gpt-5.6-terra` con reasoning `low`, per bilanciare affidabilita' agentica e costo nelle modifiche al prodotto.
 - L'uso di `gpt-5.6-sol` richiede un avvio manuale con qualita' `important`; non viene mai selezionato dalle schedulazioni automatiche.
 - La qualita' `important` e' riservata a decisioni o implementazioni complesse con un impatto economico plausibile che giustifichi il costo superiore.
 - Un errore va diagnosticato prima di rilanciare: non ripetere run a pagamento identiche senza una modifica o una nuova evidenza.
+- Il passaggio agentico ha un timeout di 30 minuti per limitare le run bloccate o improduttive.
 - Una pull request aperta blocca le run successive prima della chiamata al modello, evitando lavoro e consumo duplicati.
 
 Gli orari UTC corrispondono circa alle 09:00/10:00 in Italia e Portogallo a seconda dell'ora legale. GitHub puo' avviare i job schedulati con qualche minuto di ritardo.
