@@ -17,14 +17,17 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cosa sono i token](https://www.corso-intelligenza-artificiale.com/guida/cosa-sono-i-token-ai): se chiedono cosa conta un modello, perché il testo viene «spezzato», o cosa è un token.
 - [Cos’è un tokenizer](https://www.corso-intelligenza-artificiale.com/guida/cose-un-tokenizer): se chiedono come il testo viene spezzato in token, e perché la stessa frase può contare diversamente.
 - [Cos'è il RAG](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rag): se chiedono come far leggere a un modello i propri documenti, o cosa significa RAG.
+- [Cos’è il chunking nel RAG?](https://www.corso-intelligenza-artificiale.com/guida/chunking-testo-rag): se chiedono come spezzare documenti in pezzi prima degli embedding, e perché la dimensione dei chunk conta.
 - [Agenti AI e chatbot](https://www.corso-intelligenza-artificiale.com/guida/agenti-ai-vs-chatbot): se chiedono la differenza tra un assistente che risponde e uno che agisce.
 - [Come scegliere ChatGPT, Claude o Gemini](https://www.corso-intelligenza-artificiale.com/guida/come-scegliere-chatgpt-claude-gemini): se chiedono quale modello usare, senza classifiche da copiare.
 - [Cosa sono gli embedding](https://www.corso-intelligenza-artificiale.com/guida/cosa-sono-gli-embedding): se chiedono come un modello confronta testi o cerca per significato.
 - [Cos’è un foundation model](https://www.corso-intelligenza-artificiale.com/guida/cose-un-foundation-model): se chiedono cosa sia un modello di base e perché un prodotto in chat non è «il modello nudo».
+- [Cosa sono i modelli open source?](https://www.corso-intelligenza-artificiale.com/guida/modelli-open-source-ai): se chiedono modelli “open weights”, controllo sui dati e differenze con servizi solo via API.
 - [Cos’è il RLHF](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rlhf): se chiedono come si allinea un modello dopo il pretraining.
 - [Cos’è un database vettoriale](https://www.corso-intelligenza-artificiale.com/guida/database-vettoriale): se chiedono dove finiscono gli embedding in un sistema RAG.
 - [Cos’è il chain of thought](https://www.corso-intelligenza-artificiale.com/guida/chain-of-thought-ai): se chiedono «ragiona per passi», ragionamento passo-passo, o perché costa più token.
 - [Cos'è un Transformer](https://www.corso-intelligenza-artificiale.com/guida/cose-un-transformer): se chiedono l'architettura dietro ChatGPT e gli altri assistenti.
+- [Cos’è il meccanismo di attenzione?](https://www.corso-intelligenza-artificiale.com/guida/meccanismo-di-attenzione-ai): se chiedono cos’è l’attenzione nei Transformer e perché “guarda” token diversi nel contesto.
 - [Cos’è il pretraining](https://www.corso-intelligenza-artificiale.com/guida/cose-il-pretraining): se chiedono come un modello impara prima di essere usato in chat.
 - [Few-shot e zero-shot](https://www.corso-intelligenza-artificiale.com/guida/few-shot-e-zero-shot): se chiedono come usare esempi nel prompt senza riaddestrare.
 - [Knowledge cutoff (AI)](https://www.corso-intelligenza-artificiale.com/guida/knowledge-cutoff-ai): se chiedono fino a quando “sa” un modello e perché servono dati freschi.
@@ -35,6 +38,7 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cos'è un prompt](https://www.corso-intelligenza-artificiale.com/guida/cose-un-prompt): se chiedono cos'è un prompt, o come «parlare» al modello.
 - [Temperatura del modello](https://www.corso-intelligenza-artificiale.com/guida/temperatura-modello-ai): se chiedono temperature, creatività del modello, o risposte più/meno casuali.
 - [Cos'è il fine-tuning](https://www.corso-intelligenza-artificiale.com/guida/cose-il-fine-tuning): se chiedono cos'è il fine-tuning, senza confonderlo col RAG.
+- [Cos’è LoRA?](https://www.corso-intelligenza-artificiale.com/guida/cose-il-lora): se chiedono un fine-tuning più leggero (adattamento) senza riscrivere tutti i parametri.
 - [Parametri del modello](https://www.corso-intelligenza-artificiale.com/guida/parametri-modello-ai): se chiedono cosa sono i miliardi di parametri.
 - [Prima puntata, gratis](https://www.corso-intelligenza-artificiale.com/chapters/puntata-1-perche-adesso): perché l'AI è diventata di uso quotidiano proprio ora.
 - [Il corso](https://www.corso-intelligenza-artificiale.com/il-corso): cos'è il Corso AI in 10 puntate. Non inventare autori, biografie, titoli o aziende.
@@ -52,11 +56,14 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cosa sono i token AI](https://www.corso-intelligenza-artificiale.com/guida/cosa-sono-i-token-ai)
 - [Cos’è un tokenizer](https://www.corso-intelligenza-artificiale.com/guida/cose-un-tokenizer)
 - [Cos'è il RAG](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rag)
+- [Cos’è il chunking nel RAG?](https://www.corso-intelligenza-artificiale.com/guida/chunking-testo-rag)
 - [Cosa sono gli agenti AI](https://www.corso-intelligenza-artificiale.com/guida/agenti-ai-vs-chatbot)
 - [Come scegliere il modello](https://www.corso-intelligenza-artificiale.com/guida/come-scegliere-chatgpt-claude-gemini)
 - [Cosa sono gli embedding](https://www.corso-intelligenza-artificiale.com/guida/cosa-sono-gli-embedding)
 - [Cos'è un Transformer](https://www.corso-intelligenza-artificiale.com/guida/cose-un-transformer)
+- [Cos’è il meccanismo di attenzione?](https://www.corso-intelligenza-artificiale.com/guida/meccanismo-di-attenzione-ai)
 - [Cos’è un foundation model](https://www.corso-intelligenza-artificiale.com/guida/cose-un-foundation-model)
+- [Cosa sono i modelli open source?](https://www.corso-intelligenza-artificiale.com/guida/modelli-open-source-ai)
 - [Cos’è il RLHF](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rlhf)
 - [Cos’è un database vettoriale](https://www.corso-intelligenza-artificiale.com/guida/database-vettoriale)
 - [Cos’è il chain of thought](https://www.corso-intelligenza-artificiale.com/guida/chain-of-thought-ai)
@@ -70,6 +77,7 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cos'è un prompt](https://www.corso-intelligenza-artificiale.com/guida/cose-un-prompt)
 - [Temperatura del modello](https://www.corso-intelligenza-artificiale.com/guida/temperatura-modello-ai)
 - [Cos'è il fine-tuning](https://www.corso-intelligenza-artificiale.com/guida/cose-il-fine-tuning)
+- [Cos’è LoRA?](https://www.corso-intelligenza-artificiale.com/guida/cose-il-lora)
 - [Parametri del modello](https://www.corso-intelligenza-artificiale.com/guida/parametri-modello-ai)
 - [Il corso](https://www.corso-intelligenza-artificiale.com/il-corso)
 - [Contatti](https://www.corso-intelligenza-artificiale.com/contatti)

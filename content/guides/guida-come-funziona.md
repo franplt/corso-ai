@@ -10,15 +10,18 @@ Se vuoi entrare nel dettaglio, da qui:
 - Cos’è un tokenizer → /guida/cose-un-tokenizer
 - Cos'è un LLM → /guida/cose-un-llm
 - Cos’è un foundation model → /guida/cose-un-foundation-model
+- Modelli open source → /guida/modelli-open-source-ai
 - Cos’è il RLHF → /guida/cose-il-rlhf
 - Perché l'AI inventa → /guida/allucinazioni-ai
 - Cos'è il RAG → /guida/cose-il-rag
+- Chunking (nel RAG) → /guida/chunking-testo-rag
 - Cos’è il pretraining → /guida/cose-il-pretraining
 - RAG o fine-tuning → /guida/rag-o-fine-tuning
 - Finestra di contesto → /guida/finestra-di-contesto
 - Cos'è un prompt → /guida/cose-un-prompt
 - Temperatura del modello → /guida/temperatura-modello-ai
 - Cos'è il fine-tuning → /guida/cose-il-fine-tuning
+- Cos’è LoRA → /guida/cose-il-lora
 - Parametri del modello → /guida/parametri-modello-ai
 - Cos’è un system prompt → /guida/cose-un-system-prompt
 - Tools e function calling → /guida/tools-e-function-calling
@@ -31,6 +34,7 @@ Se vuoi entrare nel dettaglio, da qui:
 - Knowledge cutoff → /guida/knowledge-cutoff-ai
 - Cos’è un database vettoriale → /guida/database-vettoriale
 - Cos'è un Transformer → /guida/cose-un-transformer
+- Meccanismo di attenzione → /guida/meccanismo-di-attenzione-ai
 - Cos’è il chain of thought → /guida/chain-of-thought-ai
 
 Il Corso AI in 10 puntate è lo stesso percorso, in ordine, in italiano, pochi minuti a capitolo: dalle basi (dati, token, modelli) fino a RAG, agenti e scelta dello strumento.

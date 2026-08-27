@@ -141,6 +141,26 @@ const GUIDE_FAQ_BY_SLUG: Record<string, GuideFaq> = {
     answer:
       "Il Transformer è l'architettura dietro quasi tutti gli assistenti in chat. L'idea centrale è l'attenzione: il modello decide a quali pezzi del testo dare peso, invece di leggerli solo in fila.",
   },
+  "meccanismo-di-attenzione-ai": {
+    question: "Cos’è il meccanismo di attenzione?",
+    answer:
+      "Il meccanismo di attenzione è la parte del Transformer che pesa quali token contano di più per prevedere il successivo. Non è comprensione umana né RAG: collega pezzi di testo nel contesto e costa più calcolo con finestre lunghe.",
+  },
+  "chunking-testo-rag": {
+    question: "Cos’è il chunking nel RAG?",
+    answer:
+      "Il chunking spezza i documenti in pezzi prima di crearne gli embedding per il RAG. Il modello recupera i chunk più vicini alla domanda. Tagliare male porta al brano sbagliato; non è fine-tuning e non elimina le allucinazioni.",
+  },
+  "modelli-open-source-ai": {
+    question: "Cosa sono i modelli open source?",
+    answer:
+      "Un modello open source (o open weights) ha pesi scaricabili da far girare in proprio. Dà più controllo su dati e costi a volume, ma non è automaticamente più sicuro né gratis: paghi hardware e manutenzione, e restano allucinazioni e limiti di licenza.",
+  },
+  "cose-il-lora": {
+    question: "Cos’è LoRA?",
+    answer:
+      "LoRA è un fine-tuning leggero: si allenano piccole matrici di adattamento senza riscrivere tutti i parametri del foundation model. Utile per stile o dominio; per documenti freschi spesso conviene il RAG. Non elimina le allucinazioni.",
+  },
 };
 
 export function getGuideFaqJsonLd(urlPath: string) {
