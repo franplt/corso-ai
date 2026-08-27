@@ -16,6 +16,10 @@ Se vuoi entrare nel dettaglio, da qui:
 - Temperatura del modello → /guida/temperatura-modello-ai
 - Cos'è il fine-tuning → /guida/cose-il-fine-tuning
 - Parametri del modello → /guida/parametri-modello-ai
+- Cos’è un system prompt → /guida/cose-un-system-prompt
+- Tools e function calling → /guida/tools-e-function-calling
+- Cos’è l’inferenza → /guida/cose-linferenza-ai
+- Modelli multimodali → /guida/modelli-multimodali
 - Agenti AI e chatbot → /guida/agenti-ai-vs-chatbot
 - Come scegliere ChatGPT, Claude o Gemini → /guida/come-scegliere-chatgpt-claude-gemini
 - Cosa sono gli embedding → /guida/cosa-sono-gli-embedding

@@ -11,6 +11,26 @@ const GUIDE_FAQ_BY_SLUG: Record<string, GuideFaq> = {
     answer:
       "Un LLM è un modello di linguaggio grande: un programma addestrato su moltissimo testo, che predice il pezzo successivo. Non è un database e non è una persona. ChatGPT, Claude e Gemini sono interfacce sopra modelli di questo tipo.",
   },
+  "cose-un-system-prompt": {
+    question: "Cos’è un system prompt?",
+    answer:
+      "Il system prompt (o istruzioni di sistema) è il testo che guida il modello prima del tuo messaggio: tono, regole, ruolo, limiti. Tu scrivi la domanda; il system prompt dice come deve rispondere.",
+  },
+  "tools-e-function-calling": {
+    question: "Cosa sono tools e function calling?",
+    answer:
+      "I tools (o function calling) sono strumenti esterni che il modello può chiamare: cercare sul web, leggere un file, eseguire una funzione. Il modello propone quando usarli; il sistema esegue e gli restituisce il risultato.",
+  },
+  "cose-linferenza-ai": {
+    question: "Cos’è l’inferenza in AI?",
+    answer:
+      "L’inferenza è il momento in cui usi un modello già addestrato: gli dai un input e lui genera l’output. Allenare costa settimane; l’inferenza è far girare il modello sul tuo prompt adesso.",
+  },
+  "modelli-multimodali": {
+    question: "Cosa sono i modelli multimodali?",
+    answer:
+      "Un modello multimodale lavora con più tipi di input: testo, immagini, audio, video. Trasforma pixel o audio in rappresentazioni interne e le collega al linguaggio, così puoi chiedere cosa c’è in una foto.",
+  },
   "cose-un-prompt": {
     question: "Cos'è un prompt?",
     answer:
