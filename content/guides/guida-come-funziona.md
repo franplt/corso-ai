@@ -24,8 +24,11 @@ Se vuoi entrare nel dettaglio, da qui:
 - Output strutturato → /guida/output-strutturato-ai
 - Temperatura del modello → /guida/temperatura-modello-ai
 - Cos'è il fine-tuning → /guida/cose-il-fine-tuning
+- Cos’è il SFT (supervised fine-tuning)? → /guida/cose-il-sft
 - Cos’è LoRA → /guida/cose-il-lora
+- Cos’è QLoRA? → /guida/cose-il-qlora
 - Quantizzazione → /guida/quantizzazione-modelli-ai
+- Modelli AI locali → /guida/modelli-ai-locali
 - Parametri del modello → /guida/parametri-modello-ai
 - Cos’è un system prompt → /guida/cose-un-system-prompt
 - Tools e function calling → /guida/tools-e-function-calling
@@ -48,6 +51,7 @@ Se vuoi entrare nel dettaglio, da qui:
 - Mixture of Experts (MoE) → /guida/mixture-of-experts-ai
 - Prompt injection → /guida/prompt-injection-ai
 - Reranking (nel RAG) → /guida/reranking-rag
+- Hybrid search (nel RAG) → /guida/hybrid-search-rag
 - Top-p (nucleus sampling) → /guida/top-p-nucleus-sampling
 - KV cache → /guida/kv-cache-ai
 - Distillazione modelli → /guida/distillazione-modelli-ai

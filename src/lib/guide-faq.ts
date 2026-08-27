@@ -76,6 +76,16 @@ const GUIDE_FAQ_BY_SLUG: Record<string, GuideFaq> = {
     answer:
       "DPO (Direct Preference Optimization) allinea un LLM alle preferenze umane senza un reward model a parte. È un’alternativa al RLHF; non è RAG e non elimina le allucinazioni.",
   },
+  "cose-il-sft": {
+    question: "Cos’è il SFT (supervised fine-tuning)?",
+    answer:
+      "SFT è un fine-tuning su coppie domanda-risposta buona, dopo il pretraining. Trasforma un LLM nudo in un modello instruct. Non è RAG e non elimina le allucinazioni.",
+  },
+  "cose-il-qlora": {
+    question: "Cos’è QLoRA?",
+    answer:
+      "QLoRA fa fine-tuning con poca memoria: modello quantizzato più adapter LoRA. Non è un modello nuovo né distillazione; per i documenti tuoi resta più adatto il RAG.",
+  },
   "mcp-model-context-protocol": {
     question: "Cos’è MCP (Model Context Protocol)?",
     answer:
@@ -85,6 +95,16 @@ const GUIDE_FAQ_BY_SLUG: Record<string, GuideFaq> = {
     question: "Come si valuta un modello AI?",
     answer:
       "Si valuta un LLM su compiti concreti (benchmark, eval tuoi, confronti umani), non sull’intelligenza in astratto. Un punteggio alto non garantisce i tuoi documenti né l’assenza di allucinazioni.",
+  },
+  "modelli-ai-locali": {
+    question: "Cosa sono i modelli AI locali?",
+    answer:
+      "Un modello AI locale è un LLM che gira sul tuo computer, di solito open source e quantizzato (GGUF). Serve per privacy e costi; non è automaticamente più vero né un fine-tuning.",
+  },
+  "hybrid-search-rag": {
+    question: "Cos’è l’hybrid search (nel RAG)?",
+    answer:
+      "L’hybrid search mescola ricerca lessicale (parole esatte) e ricerca semantica con embedding. È un pezzo del recupero nel RAG, non un LLM e non elimina gli errori se il pezzo è sbagliato.",
   },
   "few-shot-e-zero-shot": {
     question: "Cosa sono few-shot e zero-shot?",

@@ -106,6 +106,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${SITE_URL}/guida/modelli-ai-locali`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: `${SITE_URL}/guida/cose-il-rlhf`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -113,6 +119,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/guida/cose-il-dpo`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/guida/cose-il-sft`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/guida/cose-il-qlora`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
@@ -131,6 +149,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/guida/chunking-testo-rag`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/guida/hybrid-search-rag`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
