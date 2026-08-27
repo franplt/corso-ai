@@ -10,6 +10,15 @@ Far avanzare marketing, traffico e conversioni anche quando il Mac personale e' 
 - Ogni giorno alle 09:00 UTC — esecuzione: continua l'obiettivo attivo o prende la priorita' `Ready` piu' importante, porta avanti il lavoro e aggiorna stato e log.
 - Manuale — entrambi i modi possono essere avviati dalla pagina Actions di GitHub.
 
+## Politica costi dei modelli
+
+- Esecuzione quotidiana: `gpt-5.6-luna` con reasoning `low`, per il lavoro frequente e cost-sensitive.
+- Strategia settimanale: `gpt-5.6-terra` con reasoning `low`, per bilanciare qualita' decisionale e costo.
+- L'uso di `gpt-5.6-sol` richiede un avvio manuale con qualita' `important`; non viene mai selezionato dalle schedulazioni automatiche.
+- La qualita' `important` e' riservata a decisioni o implementazioni complesse con un impatto economico plausibile che giustifichi il costo superiore.
+- Un errore va diagnosticato prima di rilanciare: non ripetere run a pagamento identiche senza una modifica o una nuova evidenza.
+- Una pull request aperta blocca le run successive prima della chiamata al modello, evitando lavoro e consumo duplicati.
+
 Gli orari UTC corrispondono circa alle 09:00/10:00 in Italia e Portogallo a seconda dell'ora legale. GitHub puo' avviare i job schedulati con qualche minuto di ritardo.
 
 ## Flusso
