@@ -94,6 +94,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${SITE_URL}/guida/modelli-open-source-ai`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: `${SITE_URL}/guida/cose-il-rlhf`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -107,6 +113,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/guida/cose-il-rag`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/guida/chunking-testo-rag`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
@@ -143,6 +155,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/guida/cose-il-fine-tuning`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/guida/cose-il-lora`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
@@ -191,6 +209,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/guida/cose-un-transformer`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/guida/meccanismo-di-attenzione-ai`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
