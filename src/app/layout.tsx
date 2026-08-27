@@ -34,15 +34,11 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     locale: "it_IT",
     type: "website",
-    url: SITE_URL,
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
-  },
-  alternates: {
-    canonical: SITE_URL,
   },
 };
 

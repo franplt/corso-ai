@@ -14,8 +14,8 @@ Stabilire una baseline affidabile del funnel, quindi scegliere il collo di botti
 
 | Stato | Priorita' | Intervento | Segnale di successo | Note |
 | --- | --- | --- | --- | --- |
-| Ready | P1 | Eseguire un audit tecnico SEO e risolvere le opportunita' on-page ad alto impatto supportate da evidenze | Build valida; canonical, metadata, indicizzazione e linking coerenti | Puo' diventare un intervento multi-file coerente |
 | Ready | P1 | Verificare che il percorso prima puntata → paywall → registrazione → checkout abbia CTA e messaggi coerenti | Nessun punto morto; eventi esistenti preservati | Usare solo evidenze nel prodotto |
+| Ready | P1 | Ridurre il tempo di risposta delle puntate premium | Le 9 anteprime premium scendono dalla baseline di circa 1,99–2,10 s | Verificare auth/Supabase e possibilita' di caching senza indebolire l'accesso |
 | Research | P2 | Definire 3–5 cluster di ricerca in italiano coerenti con il corso | Intento, pagina target e ipotesi annotati | Richiede verifica SERP/keyword prima di creare pagine |
 | Research | P2 | Preparare un piano di riuso dei contenuti del corso per canali organici | 4 settimane di temi, senza pubblicazione automatica | Nessuna affermazione non verificata |
 | Blocked | P1 | Analizzare conversione reale del funnel in PostHog/GA4 | Baseline per ogni passaggio e principale drop-off | Manca accesso dati in sola lettura dal cloud |
@@ -33,4 +33,4 @@ Nessun progetto attivo.
 
 ## Completati
 
-Nessuno dal sistema cloud.
+- 2026-08-27 — Audit tecnico OpenSEO e correzione indicizzazione: uniformato il canonical sul dominio `www`, assegnati canonical autonomi a indice e pagine legali, rimossa l'ereditarieta' del canonical homepage e impostato `noindex, nofollow` su login/signup. Baseline audit: 16 URL, 6 canonicalizzate verso una pagina diversa, 2 pagine auth indicizzabili e sottili. Obiettivo alla prossima scansione: 0 conflitti canonical tra le 6 URL segnalate e pagine auth escluse dall'indice.

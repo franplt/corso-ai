@@ -1,5 +1,14 @@
+import type { Metadata } from "next";
 import { Suspense } from "react";
 import { LoginForm } from "./LoginForm";
+
+export const metadata: Metadata = {
+  title: "Accedi",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 function LoginFormFallback() {
   return (

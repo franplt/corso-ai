@@ -3,8 +3,7 @@ import Link from "next/link";
 import { ChapterCard } from "@/components/ChapterCard";
 import { TrackedLink } from "@/components/TrackedLink";
 import { getEpisodes } from "@/lib/episodes";
-
-const SITE_URL = "https://corso-intelligenza-artificiale.com";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Corso AI in 10 puntate — Capisci davvero come funziona l'AI",
