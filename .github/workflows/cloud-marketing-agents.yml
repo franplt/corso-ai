@@ -76,10 +76,10 @@ jobs:
             model="gpt-5.6-sol"
             effort="medium"
           elif [ "$mode" = "strategy" ]; then
-            model="gpt-5.6-terra"
+            model="gpt-5.6-luna"
             effort="low"
           else
-            model="gpt-5.6-luna"
+            model="gpt-5.6-terra"
             effort="low"
           fi
 
@@ -148,6 +148,7 @@ jobs:
       - name: Run cloud marketing agent
         if: steps.setup.outputs.configured == 'true' && steps.branch.outputs.blocked == 'false'
         id: codex
+        timeout-minutes: 30
         uses: openai/codex-action@v1
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
