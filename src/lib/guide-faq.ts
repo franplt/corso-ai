@@ -6,6 +6,26 @@ type GuideFaq = {
 };
 
 const GUIDE_FAQ_BY_SLUG: Record<string, GuideFaq> = {
+  "prompt-engineering-ai": {
+    question: "Cos’è il prompt engineering?",
+    answer:
+      "Il prompt engineering è scrivere istruzioni chiare per un LLM: compito, formato, limiti ed esempi. Non è fine-tuning né magia; riduce risposte vaghe ma non garantisce verità e non sostituisce RAG per i tuoi documenti.",
+  },
+  "quantizzazione-modelli-ai": {
+    question: "Cos’è la quantizzazione nei modelli AI?",
+    answer:
+      "La quantizzazione riduce la precisione dei parametri di un modello così pesa meno e gira più in fretta in inferenza (es. formati Q4/GGUF). Non è fine-tuning né RAG: è compressione dei pesi, con un possibile calo di qualità.",
+  },
+  "output-strutturato-ai": {
+    question: "Cos’è l’output strutturato (JSON mode)?",
+    answer:
+      "L’output strutturato è far rispondere un LLM in un formato fisso, spesso JSON, così un’app può leggere i campi. Si collega a tools/function calling; non rende i fatti veri e va validato dopo l’inferenza.",
+  },
+  "guardrail-ai": {
+    question: "Cosa sono i guardrail nell’AI?",
+    answer:
+      "I guardrail sono regole e filtri intorno a un LLM che limitano cosa può dire o quali tools può usare. Completano l’allineamento (es. RLHF) a runtime; non sono una garanzia assoluta e non eliminano le allucinazioni sui fatti.",
+  },
   "cose-un-tokenizer": {
     question: "Cos’è un tokenizer?",
     answer:

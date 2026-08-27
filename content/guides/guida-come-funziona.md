@@ -19,12 +19,16 @@ Se vuoi entrare nel dettaglio, da qui:
 - RAG o fine-tuning → /guida/rag-o-fine-tuning
 - Finestra di contesto → /guida/finestra-di-contesto
 - Cos'è un prompt → /guida/cose-un-prompt
+- Prompt engineering → /guida/prompt-engineering-ai
+- Output strutturato → /guida/output-strutturato-ai
 - Temperatura del modello → /guida/temperatura-modello-ai
 - Cos'è il fine-tuning → /guida/cose-il-fine-tuning
 - Cos’è LoRA → /guida/cose-il-lora
+- Quantizzazione → /guida/quantizzazione-modelli-ai
 - Parametri del modello → /guida/parametri-modello-ai
 - Cos’è un system prompt → /guida/cose-un-system-prompt
 - Tools e function calling → /guida/tools-e-function-calling
+- Guardrail → /guida/guardrail-ai
 - Cos’è l’inferenza → /guida/cose-linferenza-ai
 - Modelli multimodali → /guida/modelli-multimodali
 - Agenti AI e chatbot → /guida/agenti-ai-vs-chatbot

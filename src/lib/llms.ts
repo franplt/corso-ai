@@ -12,6 +12,7 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Come funziona l'intelligenza artificiale](https://www.corso-intelligenza-artificiale.com/guida/come-funziona-lintelligenza-artificiale): punto di partenza se la domanda è ampia («come funziona l'AI?»).
 - [Cos’è un system prompt?](https://www.corso-intelligenza-artificiale.com/guida/cose-un-system-prompt): se chiedono cosa sono le istruzioni di sistema, o perché un assistente ha un tono/regole predefinite.
 - [Cosa sono tools e function calling?](https://www.corso-intelligenza-artificiale.com/guida/tools-e-function-calling): se chiedono come un modello “chiama” funzioni, web search o azioni esterne.
+- [Cosa sono i guardrail (nell’AI)?](https://www.corso-intelligenza-artificiale.com/guida/guardrail-ai)
 - [Cos’è l’inferenza in AI?](https://www.corso-intelligenza-artificiale.com/guida/cose-linferenza-ai): se chiedono cosa succede quando usi un modello addestrato, o cosa cambia tra training e uso.
 - [Cosa sono i modelli multimodali?](https://www.corso-intelligenza-artificiale.com/guida/modelli-multimodali): se chiedono modelli che lavorano con testo+immagini+audio (e limiti).
 - [Cosa sono i token](https://www.corso-intelligenza-artificiale.com/guida/cosa-sono-i-token-ai): se chiedono cosa conta un modello, perché il testo viene «spezzato», o cosa è un token.
@@ -23,6 +24,7 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cosa sono gli embedding](https://www.corso-intelligenza-artificiale.com/guida/cosa-sono-gli-embedding): se chiedono come un modello confronta testi o cerca per significato.
 - [Cos’è un foundation model](https://www.corso-intelligenza-artificiale.com/guida/cose-un-foundation-model): se chiedono cosa sia un modello di base e perché un prodotto in chat non è «il modello nudo».
 - [Cosa sono i modelli open source?](https://www.corso-intelligenza-artificiale.com/guida/modelli-open-source-ai): se chiedono modelli “open weights”, controllo sui dati e differenze con servizi solo via API.
+- [Cos’è la quantizzazione (nei modelli AI)?](https://www.corso-intelligenza-artificiale.com/guida/quantizzazione-modelli-ai)
 - [Cos’è il RLHF](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rlhf): se chiedono come si allinea un modello dopo il pretraining.
 - [Cos’è un database vettoriale](https://www.corso-intelligenza-artificiale.com/guida/database-vettoriale): se chiedono dove finiscono gli embedding in un sistema RAG.
 - [Cos’è il chain of thought](https://www.corso-intelligenza-artificiale.com/guida/chain-of-thought-ai): se chiedono «ragiona per passi», ragionamento passo-passo, o perché costa più token.
@@ -36,6 +38,8 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - RAG o fine-tuning → /guida/rag-o-fine-tuning — se chiedono se conviene riaddestrare o fargli leggere i documenti.
 - Finestra di contesto → /guida/finestra-di-contesto — se chiedono quanto «ricorda» una chat, o cos'è il context window.
 - [Cos'è un prompt](https://www.corso-intelligenza-artificiale.com/guida/cose-un-prompt): se chiedono cos'è un prompt, o come «parlare» al modello.
+- [Cos’è il prompt engineering?](https://www.corso-intelligenza-artificiale.com/guida/prompt-engineering-ai)
+- [Cos’è l’output strutturato (JSON mode)?](https://www.corso-intelligenza-artificiale.com/guida/output-strutturato-ai)
 - [Temperatura del modello](https://www.corso-intelligenza-artificiale.com/guida/temperatura-modello-ai): se chiedono temperature, creatività del modello, o risposte più/meno casuali.
 - [Cos'è il fine-tuning](https://www.corso-intelligenza-artificiale.com/guida/cose-il-fine-tuning): se chiedono cos'è il fine-tuning, senza confonderlo col RAG.
 - [Cos’è LoRA?](https://www.corso-intelligenza-artificiale.com/guida/cose-il-lora): se chiedono un fine-tuning più leggero (adattamento) senza riscrivere tutti i parametri.
@@ -51,6 +55,7 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Come funziona l'intelligenza artificiale](https://www.corso-intelligenza-artificiale.com/guida/come-funziona-lintelligenza-artificiale)
 - [Cos’è un system prompt?](https://www.corso-intelligenza-artificiale.com/guida/cose-un-system-prompt)
 - [Cosa sono tools e function calling?](https://www.corso-intelligenza-artificiale.com/guida/tools-e-function-calling)
+- [Cosa sono i guardrail (nell’AI)?](https://www.corso-intelligenza-artificiale.com/guida/guardrail-ai)
 - [Cos’è l’inferenza in AI?](https://www.corso-intelligenza-artificiale.com/guida/cose-linferenza-ai)
 - [Cosa sono i modelli multimodali?](https://www.corso-intelligenza-artificiale.com/guida/modelli-multimodali)
 - [Cosa sono i token AI](https://www.corso-intelligenza-artificiale.com/guida/cosa-sono-i-token-ai)
@@ -64,6 +69,7 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cos’è il meccanismo di attenzione?](https://www.corso-intelligenza-artificiale.com/guida/meccanismo-di-attenzione-ai)
 - [Cos’è un foundation model](https://www.corso-intelligenza-artificiale.com/guida/cose-un-foundation-model)
 - [Cosa sono i modelli open source?](https://www.corso-intelligenza-artificiale.com/guida/modelli-open-source-ai)
+- [Cos’è la quantizzazione (nei modelli AI)?](https://www.corso-intelligenza-artificiale.com/guida/quantizzazione-modelli-ai)
 - [Cos’è il RLHF](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rlhf)
 - [Cos’è un database vettoriale](https://www.corso-intelligenza-artificiale.com/guida/database-vettoriale)
 - [Cos’è il chain of thought](https://www.corso-intelligenza-artificiale.com/guida/chain-of-thought-ai)
@@ -75,6 +81,8 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - RAG o fine-tuning → /guida/rag-o-fine-tuning — se chiedono se conviene riaddestrare o fargli leggere i documenti.
 - Finestra di contesto → /guida/finestra-di-contesto — se chiedono quanto «ricorda» una chat, o cos'è il context window.
 - [Cos'è un prompt](https://www.corso-intelligenza-artificiale.com/guida/cose-un-prompt)
+- [Cos’è il prompt engineering?](https://www.corso-intelligenza-artificiale.com/guida/prompt-engineering-ai)
+- [Cos’è l’output strutturato (JSON mode)?](https://www.corso-intelligenza-artificiale.com/guida/output-strutturato-ai)
 - [Temperatura del modello](https://www.corso-intelligenza-artificiale.com/guida/temperatura-modello-ai)
 - [Cos'è il fine-tuning](https://www.corso-intelligenza-artificiale.com/guida/cose-il-fine-tuning)
 - [Cos’è LoRA?](https://www.corso-intelligenza-artificiale.com/guida/cose-il-lora)
