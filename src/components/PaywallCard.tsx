@@ -55,23 +55,36 @@ export function PaywallCard({ isLoggedIn }: PaywallCardProps) {
             <CheckoutButton source="chapter_paywall" />
           </div>
         ) : (
-          <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <TrackedLink
-              href="/signup?intent=buy"
-              className="btn btn-primary"
-              eventName="paywall_cta_click"
-              eventParameters={{ action: "signup" }}
-            >
-              Crea account e sblocca
-            </TrackedLink>
-            <TrackedLink
-              href="/login?next=checkout"
-              className="btn btn-secondary"
-              eventName="paywall_cta_click"
-              eventParameters={{ action: "login" }}
-            >
-              Accedi
-            </TrackedLink>
+          <div className="text-center">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+              <TrackedLink
+                href="/payment/checkout?source=chapter_paywall"
+                className="btn btn-primary"
+                eventName="paywall_cta_click"
+                eventParameters={{ action: "checkout" }}
+              >
+                Vai al pagamento · €9,90
+              </TrackedLink>
+              <TrackedLink
+                href="/login?next=checkout"
+                className="btn btn-secondary"
+                eventName="paywall_cta_click"
+                eventParameters={{ action: "login" }}
+              >
+                Accedi
+              </TrackedLink>
+            </div>
+            <p className="mt-4 text-sm text-[var(--ink-muted)]">
+              Preferisci creare un account prima?{" "}
+              <TrackedLink
+                href="/signup?intent=buy"
+                className="font-medium text-[var(--accent)] underline-offset-2 hover:underline"
+                eventName="paywall_cta_click"
+                eventParameters={{ action: "signup" }}
+              >
+                Registrati
+              </TrackedLink>
+            </p>
           </div>
         )}
       </div>

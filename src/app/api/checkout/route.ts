@@ -13,27 +13,26 @@ export async function POST() {
   const { data: claimsData, error: claimsError } = await supabase.auth.getClaims();
   const userId = claimsData?.claims?.sub;
   const userEmail = claimsData?.claims?.email;
+  const isAuthenticated = !claimsError && typeof userId === "string" && userId.length > 0;
 
-  if (claimsError || !userId) {
-    return NextResponse.json({ error: "Devi essere autenticato." }, { status: 401 });
-  }
+  if (isAuthenticated) {
+    const { data: profile, error: profileError } = await supabase
+      .from("profiles")
+      .select("has_access")
+      .eq("id", userId)
+      .maybeSingle();
 
-  const { data: profile, error: profileError } = await supabase
-    .from("profiles")
-    .select("has_access")
-    .eq("id", userId)
-    .maybeSingle();
+    if (profileError) {
+      console.error("Unable to verify course access before checkout", profileError);
+      return NextResponse.json(
+        { error: "Impossibile verificare il tuo accesso. Riprova tra poco." },
+        { status: 502 },
+      );
+    }
 
-  if (profileError) {
-    console.error("Unable to verify course access before checkout", profileError);
-    return NextResponse.json(
-      { error: "Impossibile verificare il tuo accesso. Riprova tra poco." },
-      { status: 502 },
-    );
-  }
-
-  if (profile?.has_access) {
-    return NextResponse.json({ url: "/chapters", alreadyActive: true });
+    if (profile?.has_access) {
+      return NextResponse.json({ url: "/chapters", alreadyActive: true });
+    }
   }
 
   const priceId = process.env.STRIPE_PRICE_ID;
@@ -75,7 +74,7 @@ export async function POST() {
         },
       },
       metadata: {
-        supabase_user_id: userId,
+        ...(isAuthenticated ? { supabase_user_id: userId } : {}),
         stripe_price_id: priceId,
       },
     });
