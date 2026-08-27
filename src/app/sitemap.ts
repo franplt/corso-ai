@@ -112,6 +112,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${SITE_URL}/guida/cose-ollama`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/guida/formato-gguf`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: `${SITE_URL}/guida/cose-il-rlhf`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -148,6 +160,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${SITE_URL}/guida/grounding-citazioni-ai`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: `${SITE_URL}/guida/chunking-testo-rag`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -179,6 +197,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/guida/cose-un-prompt`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/guida/prompt-caching-ai`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,

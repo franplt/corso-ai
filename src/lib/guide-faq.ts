@@ -6,6 +6,26 @@ type GuideFaq = {
 };
 
 const GUIDE_FAQ_BY_SLUG: Record<string, GuideFaq> = {
+  "cose-ollama": {
+    question: "Cos’è Ollama?",
+    answer:
+      "Ollama è un runtime per far girare LLM in locale sul tuo computer. Non è un modello: scarichi un checkpoint (spesso GGUF) e fai inferenza senza cloud. Non elimina le allucinazioni.",
+  },
+  "formato-gguf": {
+    question: "Cos’è il formato GGUF?",
+    answer:
+      "GGUF è un formato per salvare LLM quantizzati e farli girare in locale con poca RAM. Non è fine-tuning né un modello nuovo; è un contenitore dei pesi per l’inferenza.",
+  },
+  "prompt-caching-ai": {
+    question: "Cos’è il prompt caching?",
+    answer:
+      "Il prompt caching riusa pezzi già processati di un prompt lungo per tagliare costo e latenza in inferenza. Non è fine-tuning né memoria a lungo termine, e non elimina le allucinazioni.",
+  },
+  "grounding-citazioni-ai": {
+    question: "Cos’è il grounding (citazioni) nell’AI?",
+    answer:
+      "Il grounding ancora la risposta di un LLM a fonti esplicite, spesso con citazioni (tipico nel RAG). Non è fine-tuning e non garantisce verità se il pezzo recuperato è sbagliato.",
+  },
   "prompt-engineering-ai": {
     question: "Cos’è il prompt engineering?",
     answer:

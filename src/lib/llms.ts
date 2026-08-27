@@ -19,6 +19,7 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cosa sono i token](https://www.corso-intelligenza-artificiale.com/guida/cosa-sono-i-token-ai): se chiedono cosa conta un modello, perché il testo viene «spezzato», o cosa è un token.
 - [Cos’è un tokenizer](https://www.corso-intelligenza-artificiale.com/guida/cose-un-tokenizer): se chiedono come il testo viene spezzato in token, e perché la stessa frase può contare diversamente.
 - [Cos'è il RAG](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rag): se chiedono come far leggere a un modello i propri documenti, o cosa significa RAG.
+- [Cos’è il grounding (citazioni) nell’AI?](https://www.corso-intelligenza-artificiale.com/guida/grounding-citazioni-ai)
 - [Cos’è il chunking nel RAG?](https://www.corso-intelligenza-artificiale.com/guida/chunking-testo-rag): se chiedono come spezzare documenti in pezzi prima degli embedding, e perché la dimensione dei chunk conta.
 - [Agenti AI e chatbot](https://www.corso-intelligenza-artificiale.com/guida/agenti-ai-vs-chatbot): se chiedono la differenza tra un assistente che risponde e uno che agisce.
 - [Come scegliere ChatGPT, Claude o Gemini](https://www.corso-intelligenza-artificiale.com/guida/come-scegliere-chatgpt-claude-gemini): se chiedono quale modello usare, senza classifiche da copiare.
@@ -31,6 +32,8 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cos’è la distillazione di un modello AI?](https://www.corso-intelligenza-artificiale.com/guida/distillazione-modelli-ai): se chiedono modelli studente/insegnante e inferenza più leggera.
 - [Cos’è la quantizzazione (nei modelli AI)?](https://www.corso-intelligenza-artificiale.com/guida/quantizzazione-modelli-ai)
 - [Cosa sono i modelli AI locali?](https://www.corso-intelligenza-artificiale.com/guida/modelli-ai-locali)
+- [Cos’è Ollama?](https://www.corso-intelligenza-artificiale.com/guida/cose-ollama)
+- [Cos’è il formato GGUF?](https://www.corso-intelligenza-artificiale.com/guida/formato-gguf)
 - [Cos’è il RLHF](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rlhf): se chiedono come si allinea un modello dopo il pretraining.
 - [Cos’è il DPO?](https://www.corso-intelligenza-artificiale.com/guida/cose-il-dpo): se chiedono alternative al RLHF e cosa indicano i checkpoint “DPO/instruct”.
 - [Cos’è un database vettoriale](https://www.corso-intelligenza-artificiale.com/guida/database-vettoriale): se chiedono dove finiscono gli embedding in un sistema RAG.
@@ -51,6 +54,7 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - RAG o fine-tuning → /guida/rag-o-fine-tuning — se chiedono se conviene riaddestrare o fargli leggere i documenti.
 - Finestra di contesto → /guida/finestra-di-contesto — se chiedono quanto «ricorda» una chat, o cos'è il context window.
 - [Cos'è un prompt](https://www.corso-intelligenza-artificiale.com/guida/cose-un-prompt): se chiedono cos'è un prompt, o come «parlare» al modello.
+- [Cos’è il prompt caching?](https://www.corso-intelligenza-artificiale.com/guida/prompt-caching-ai)
 - [Cos’è il prompt engineering?](https://www.corso-intelligenza-artificiale.com/guida/prompt-engineering-ai)
 - [Cos’è l’output strutturato (JSON mode)?](https://www.corso-intelligenza-artificiale.com/guida/output-strutturato-ai)
 - [Temperatura del modello](https://www.corso-intelligenza-artificiale.com/guida/temperatura-modello-ai): se chiedono temperature, creatività del modello, o risposte più/meno casuali.
@@ -78,6 +82,7 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cosa sono i token AI](https://www.corso-intelligenza-artificiale.com/guida/cosa-sono-i-token-ai)
 - [Cos’è un tokenizer](https://www.corso-intelligenza-artificiale.com/guida/cose-un-tokenizer)
 - [Cos'è il RAG](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rag)
+- [Cos’è il grounding (citazioni) nell’AI?](https://www.corso-intelligenza-artificiale.com/guida/grounding-citazioni-ai)
 - [Cos’è il chunking nel RAG?](https://www.corso-intelligenza-artificiale.com/guida/chunking-testo-rag)
 - [Cosa sono gli agenti AI](https://www.corso-intelligenza-artificiale.com/guida/agenti-ai-vs-chatbot)
 - [Come scegliere il modello](https://www.corso-intelligenza-artificiale.com/guida/come-scegliere-chatgpt-claude-gemini)
@@ -92,6 +97,8 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cos’è la distillazione di un modello AI?](https://www.corso-intelligenza-artificiale.com/guida/distillazione-modelli-ai)
 - [Cos’è la quantizzazione (nei modelli AI)?](https://www.corso-intelligenza-artificiale.com/guida/quantizzazione-modelli-ai)
 - [Cosa sono i modelli AI locali?](https://www.corso-intelligenza-artificiale.com/guida/modelli-ai-locali)
+- [Cos’è Ollama?](https://www.corso-intelligenza-artificiale.com/guida/cose-ollama)
+- [Cos’è il formato GGUF?](https://www.corso-intelligenza-artificiale.com/guida/formato-gguf)
 - [Cos’è il RLHF](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rlhf)
 - [Cos’è il DPO?](https://www.corso-intelligenza-artificiale.com/guida/cose-il-dpo)
 - [Cos’è un database vettoriale](https://www.corso-intelligenza-artificiale.com/guida/database-vettoriale)
@@ -110,6 +117,7 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - RAG o fine-tuning → /guida/rag-o-fine-tuning — se chiedono se conviene riaddestrare o fargli leggere i documenti.
 - Finestra di contesto → /guida/finestra-di-contesto — se chiedono quanto «ricorda» una chat, o cos'è il context window.
 - [Cos'è un prompt](https://www.corso-intelligenza-artificiale.com/guida/cose-un-prompt)
+- [Cos’è il prompt caching?](https://www.corso-intelligenza-artificiale.com/guida/prompt-caching-ai)
 - [Cos’è il prompt engineering?](https://www.corso-intelligenza-artificiale.com/guida/prompt-engineering-ai)
 - [Cos’è l’output strutturato (JSON mode)?](https://www.corso-intelligenza-artificiale.com/guida/output-strutturato-ai)
 - [Temperatura del modello](https://www.corso-intelligenza-artificiale.com/guida/temperatura-modello-ai)

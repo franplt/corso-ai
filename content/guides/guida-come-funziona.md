@@ -56,6 +56,10 @@ Se vuoi entrare nel dettaglio, da qui:
 - KV cache → /guida/kv-cache-ai
 - Distillazione modelli → /guida/distillazione-modelli-ai
 - Ricerca semantica → /guida/ricerca-semantica-ai
+- Cos’è Ollama? → /guida/cose-ollama
+- Cos’è il formato GGUF? → /guida/formato-gguf
+- Cos’è il prompt caching? → /guida/prompt-caching-ai
+- Cos’è il grounding (citazioni) nell’AI? → /guida/grounding-citazioni-ai
 
 Il Corso AI in 10 puntate è lo stesso percorso, in ordine, in italiano, pochi minuti a capitolo: dalle basi (dati, token, modelli) fino a RAG, agenti e scelta dello strumento.
 
