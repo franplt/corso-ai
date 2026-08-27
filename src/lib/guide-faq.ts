@@ -6,6 +6,26 @@ type GuideFaq = {
 };
 
 const GUIDE_FAQ_BY_SLUG: Record<string, GuideFaq> = {
+  "cose-un-foundation-model": {
+    question: "Cos’è un foundation model?",
+    answer:
+      "Un foundation model è un modello di base, di solito un LLM, addestrato su moltissimi dati e compiti e poi riusato come materia prima. I prodotti in chat (ChatGPT, Claude, Gemini) stanno sopra, non sono il modello nudo.",
+  },
+  "cose-il-rlhf": {
+    question: "Cos’è il RLHF?",
+    answer:
+      "RLHF è una fase dopo il pretraining: persone confrontano due risposte e il modello impara a preferire quella giudicata meglio. Non insegna fatti nuovi: insegna uno stile più utile e cauto. Non elimina le allucinazioni.",
+  },
+  "database-vettoriale": {
+    question: "Cos’è un database vettoriale?",
+    answer:
+      "Un database vettoriale conserva embedding e, data una domanda, trova i pezzi di testo più vicini per significato. È il magazzino dietro molti sistemi RAG: non capisce, misura vicinanza, e non aggiorna i pesi del modello.",
+  },
+  "chain-of-thought-ai": {
+    question: "Cos’è il chain of thought?",
+    answer:
+      "Il chain of thought è far scrivere al modello i passaggi prima della risposta. Non dà conoscenza nuova: usa meglio il contesto. Costa più token e non elimina le allucinazioni: può inventare anche i passaggi.",
+  },
   "cose-un-llm": {
     question: "Cos'è un LLM?",
     answer:

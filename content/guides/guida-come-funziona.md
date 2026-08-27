@@ -8,6 +8,8 @@ Non è un database di risposte pronte e non è un motore di ricerca. È una macc
 Se vuoi entrare nel dettaglio, da qui:
 - Cosa sono i token → /guida/cosa-sono-i-token-ai
 - Cos'è un LLM → /guida/cose-un-llm
+- Cos’è un foundation model → /guida/cose-un-foundation-model
+- Cos’è il RLHF → /guida/cose-il-rlhf
 - Perché l'AI inventa → /guida/allucinazioni-ai
 - Cos'è il RAG → /guida/cose-il-rag
 - RAG o fine-tuning → /guida/rag-o-fine-tuning
@@ -15,7 +17,9 @@ Se vuoi entrare nel dettaglio, da qui:
 - Agenti AI e chatbot → /guida/agenti-ai-vs-chatbot
 - Come scegliere ChatGPT, Claude o Gemini → /guida/come-scegliere-chatgpt-claude-gemini
 - Cosa sono gli embedding → /guida/cosa-sono-gli-embedding
+- Cos’è un database vettoriale → /guida/database-vettoriale
 - Cos'è un Transformer → /guida/cose-un-transformer
+- Cos’è il chain of thought → /guida/chain-of-thought-ai
 
 Il Corso AI in 10 puntate è lo stesso percorso, in ordine, in italiano, pochi minuti a capitolo: dalle basi (dati, token, modelli) fino a RAG, agenti e scelta dello strumento.
 
