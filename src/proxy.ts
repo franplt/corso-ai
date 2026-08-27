@@ -8,7 +8,7 @@ function wantsMarkdown(request: NextRequest): boolean {
 
 function isMarkdownExcludedPath(pathname: string): boolean {
   if (pathname === "/llms.txt") return true;
-  if (pathname === "/__markdown") return true;
+  if (pathname === "/markdown") return true;
   if (pathname.startsWith("/_next")) return true;
   if (pathname.startsWith("/api")) return true;
   if (pathname.startsWith("/account")) return true;
@@ -43,7 +43,7 @@ export async function proxy(request: NextRequest) {
 
   if (wantsMarkdown(request) && !isMarkdownExcludedPath(pathname)) {
     const url = request.nextUrl.clone();
-    url.pathname = "/__markdown";
+    url.pathname = "/markdown";
     url.search = "";
     url.searchParams.set("path", pathname);
     return NextResponse.rewrite(url);
