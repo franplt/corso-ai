@@ -77,7 +77,7 @@ function SignupForm() {
         </h1>
         <p className="text-[var(--ink-muted)]">
           {intentBuy
-            ? "Registrati per sbloccare tutte le puntate. Dopo la registrazione andrai direttamente al pagamento."
+            ? "Registrati per sbloccare tutte le puntate. Pagamento unico di €9,90 su Stripe: dopo la registrazione andrai direttamente al pagamento."
             : "Registrati per acquistare e sbloccare tutte le puntate."}
         </p>
       </div>
@@ -125,7 +125,7 @@ function SignupForm() {
           {loading
             ? "Creazione account..."
             : intentBuy
-              ? "Registrati e vai al pagamento"
+              ? "Registrati e vai al pagamento · €9,90"
               : "Registrati"}
         </button>
         {error ? (

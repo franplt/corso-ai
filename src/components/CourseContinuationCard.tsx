@@ -20,7 +20,7 @@ export function CourseContinuationCard() {
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <TrackedLink
-            href="/signup?intent=buy"
+            href="/payment/checkout?source=free_chapter_completion"
             className="btn btn-primary"
             eventName="select_content"
             eventParameters={{
@@ -29,7 +29,7 @@ export function CourseContinuationCard() {
               chapter_number: 1,
             }}
           >
-            Sblocca il corso completo
+            Sblocca il corso completo · €9,90
           </TrackedLink>
           <TrackedLink
             href="/chapters"
