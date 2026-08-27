@@ -6,8 +6,14 @@ function wantsMarkdown(request: NextRequest): boolean {
   return Boolean(accept && accept.toLowerCase().includes("text/markdown"));
 }
 
+function isRscRequest(request: NextRequest): boolean {
+  const accept = request.headers.get("accept");
+  return Boolean(accept && accept.toLowerCase().includes("text/x-component"));
+}
+
 function isMarkdownExcludedPath(pathname: string): boolean {
   if (pathname === "/llms.txt") return true;
+  if (pathname === "/html") return true;
   if (pathname === "/markdown") return true;
   if (pathname.startsWith("/_next")) return true;
   if (pathname.startsWith("/api")) return true;
@@ -41,9 +47,24 @@ function needsSessionRefresh(pathname: string): boolean {
 export async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
+  if (request.headers.get("x-internal-html-proxy") === "1") {
+    return NextResponse.next({ request });
+  }
+
   if (wantsMarkdown(request) && !isMarkdownExcludedPath(pathname)) {
     const url = request.nextUrl.clone();
     url.pathname = "/markdown";
+    url.search = "";
+    url.searchParams.set("path", pathname);
+    return NextResponse.rewrite(url);
+  }
+
+  // For public HTML documents, Next.js may override custom `Vary` headers in the
+  // final response stage. Serve HTML through a route handler that can safely add
+  // `Accept` to `Vary` without breaking markdown negotiation.
+  if (!isMarkdownExcludedPath(pathname) && !isRscRequest(request)) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/html";
     url.search = "";
     url.searchParams.set("path", pathname);
     return NextResponse.rewrite(url);
@@ -53,15 +74,7 @@ export async function proxy(request: NextRequest) {
     return updateSession(request);
   }
 
-  const response = NextResponse.next({ request });
-
-  // Ensure public HTML documents also vary on Accept so CDNs do not serve cached
-  // HTML to clients requesting markdown.
-  if (!isMarkdownExcludedPath(pathname)) {
-    response.headers.append("Vary", "Accept");
-  }
-
-  return response;
+  return NextResponse.next({ request });
 }
 
 export const config = {
