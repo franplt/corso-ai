@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChapterContent } from "@/components/ChapterContent";
 import { ChapterAnalytics } from "@/components/ChapterAnalytics";
+import { CourseContinuationCard } from "@/components/CourseContinuationCard";
 import { DevUnlockBanner } from "@/components/DevUnlockBanner";
 import { KeyTakeaways } from "@/components/KeyTakeaways";
 import { PaywallCard } from "@/components/PaywallCard";
@@ -142,6 +143,8 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
       {canReadFull && episode.isPublished && (
         <KeyTakeaways episodeNumber={episode.number} />
       )}
+
+      {isFreeEpisode && <CourseContinuationCard />}
 
       {/* Paywall */}
       {!canReadFull && episode.isPublished && (
