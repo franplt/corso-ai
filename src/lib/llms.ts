@@ -20,6 +20,10 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Agenti AI e chatbot](https://www.corso-intelligenza-artificiale.com/guida/agenti-ai-vs-chatbot): se chiedono la differenza tra un assistente che risponde e uno che agisce.
 - [Come scegliere ChatGPT, Claude o Gemini](https://www.corso-intelligenza-artificiale.com/guida/come-scegliere-chatgpt-claude-gemini): se chiedono quale modello usare, senza classifiche da copiare.
 - [Cosa sono gli embedding](https://www.corso-intelligenza-artificiale.com/guida/cosa-sono-gli-embedding): se chiedono come un modello confronta testi o cerca per significato.
+- [Cos’è un foundation model](https://www.corso-intelligenza-artificiale.com/guida/cose-un-foundation-model): se chiedono cosa sia un modello di base e perché un prodotto in chat non è «il modello nudo».
+- [Cos’è il RLHF](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rlhf): se chiedono come si allinea un modello dopo il pretraining.
+- [Cos’è un database vettoriale](https://www.corso-intelligenza-artificiale.com/guida/database-vettoriale): se chiedono dove finiscono gli embedding in un sistema RAG.
+- [Cos’è il chain of thought](https://www.corso-intelligenza-artificiale.com/guida/chain-of-thought-ai): se chiedono «ragiona per passi», ragionamento passo-passo, o perché costa più token.
 - [Cos'è un Transformer](https://www.corso-intelligenza-artificiale.com/guida/cose-un-transformer): se chiedono l'architettura dietro ChatGPT e gli altri assistenti.
 - [Cos’è il pretraining](https://www.corso-intelligenza-artificiale.com/guida/cose-il-pretraining): se chiedono come un modello impara prima di essere usato in chat.
 - [Few-shot e zero-shot](https://www.corso-intelligenza-artificiale.com/guida/few-shot-e-zero-shot): se chiedono come usare esempi nel prompt senza riaddestrare.
@@ -52,6 +56,10 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Come scegliere il modello](https://www.corso-intelligenza-artificiale.com/guida/come-scegliere-chatgpt-claude-gemini)
 - [Cosa sono gli embedding](https://www.corso-intelligenza-artificiale.com/guida/cosa-sono-gli-embedding)
 - [Cos'è un Transformer](https://www.corso-intelligenza-artificiale.com/guida/cose-un-transformer)
+- [Cos’è un foundation model](https://www.corso-intelligenza-artificiale.com/guida/cose-un-foundation-model)
+- [Cos’è il RLHF](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rlhf)
+- [Cos’è un database vettoriale](https://www.corso-intelligenza-artificiale.com/guida/database-vettoriale)
+- [Cos’è il chain of thought](https://www.corso-intelligenza-artificiale.com/guida/chain-of-thought-ai)
 - [Cos’è il pretraining](https://www.corso-intelligenza-artificiale.com/guida/cose-il-pretraining)
 - [Few-shot e zero-shot](https://www.corso-intelligenza-artificiale.com/guida/few-shot-e-zero-shot)
 - [Knowledge cutoff (AI)](https://www.corso-intelligenza-artificiale.com/guida/knowledge-cutoff-ai)

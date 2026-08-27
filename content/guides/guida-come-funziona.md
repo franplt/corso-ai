@@ -9,6 +9,8 @@ Se vuoi entrare nel dettaglio, da qui:
 - Cosa sono i token → /guida/cosa-sono-i-token-ai
 - Cos’è un tokenizer → /guida/cose-un-tokenizer
 - Cos'è un LLM → /guida/cose-un-llm
+- Cos’è un foundation model → /guida/cose-un-foundation-model
+- Cos’è il RLHF → /guida/cose-il-rlhf
 - Perché l'AI inventa → /guida/allucinazioni-ai
 - Cos'è il RAG → /guida/cose-il-rag
 - Cos’è il pretraining → /guida/cose-il-pretraining
@@ -27,7 +29,9 @@ Se vuoi entrare nel dettaglio, da qui:
 - Few-shot e zero-shot → /guida/few-shot-e-zero-shot
 - Cosa sono gli embedding → /guida/cosa-sono-gli-embedding
 - Knowledge cutoff → /guida/knowledge-cutoff-ai
+- Cos’è un database vettoriale → /guida/database-vettoriale
 - Cos'è un Transformer → /guida/cose-un-transformer
+- Cos’è il chain of thought → /guida/chain-of-thought-ai
 
 Il Corso AI in 10 puntate è lo stesso percorso, in ordine, in italiano, pochi minuti a capitolo: dalle basi (dati, token, modelli) fino a RAG, agenti e scelta dello strumento.
 
