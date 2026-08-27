@@ -51,6 +51,7 @@ export async function POST() {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       locale: "it",
+      adaptive_pricing: { enabled: false },
       payment_method_types: ["card"],
       line_items: [{ price: priceId, quantity: 1 }],
       success_url: `${checkoutOrigin}/payment/success?session_id={CHECKOUT_SESSION_ID}`,
