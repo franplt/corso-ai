@@ -19,14 +19,14 @@ const CONTACT_PAGE_JSON_LD = {
 export const metadata: Metadata = {
   title: "Contatti",
   description:
-    "Per domande sul Corso AI in 10 puntate, sull'account o sui tuoi dati, usa i recapiti già indicati nella informativa sulla privacy (/privacy).",
+    "Per domande sul Corso AI in 10 puntate, sull'account o sui tuoi dati, usa i recapiti già indicati nella informativa sulla privacy.",
   alternates: {
     canonical: "/contatti",
   },
   openGraph: {
     title: "Contatti",
     description:
-      "Per domande sul Corso AI in 10 puntate, sull'account o sui tuoi dati, usa i recapiti già indicati nella informativa sulla privacy (/privacy).",
+      "Per domande sul Corso AI in 10 puntate, sull'account o sui tuoi dati, usa i recapiti già indicati nella informativa sulla privacy.",
     url: "/contatti",
     type: "article",
   },
