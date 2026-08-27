@@ -7,9 +7,11 @@ Non è un database di risposte pronte e non è un motore di ricerca. È una macc
 
 Se vuoi entrare nel dettaglio, da qui:
 - Cosa sono i token → /guida/cosa-sono-i-token-ai
+- Cos’è un tokenizer → /guida/cose-un-tokenizer
 - Cos'è un LLM → /guida/cose-un-llm
 - Perché l'AI inventa → /guida/allucinazioni-ai
 - Cos'è il RAG → /guida/cose-il-rag
+- Cos’è il pretraining → /guida/cose-il-pretraining
 - RAG o fine-tuning → /guida/rag-o-fine-tuning
 - Finestra di contesto → /guida/finestra-di-contesto
 - Cos'è un prompt → /guida/cose-un-prompt
@@ -22,7 +24,9 @@ Se vuoi entrare nel dettaglio, da qui:
 - Modelli multimodali → /guida/modelli-multimodali
 - Agenti AI e chatbot → /guida/agenti-ai-vs-chatbot
 - Come scegliere ChatGPT, Claude o Gemini → /guida/come-scegliere-chatgpt-claude-gemini
+- Few-shot e zero-shot → /guida/few-shot-e-zero-shot
 - Cosa sono gli embedding → /guida/cosa-sono-gli-embedding
+- Knowledge cutoff → /guida/knowledge-cutoff-ai
 - Cos'è un Transformer → /guida/cose-un-transformer
 
 Il Corso AI in 10 puntate è lo stesso percorso, in ordine, in italiano, pochi minuti a capitolo: dalle basi (dati, token, modelli) fino a RAG, agenti e scelta dello strumento.

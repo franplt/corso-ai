@@ -15,11 +15,15 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cos’è l’inferenza in AI?](https://www.corso-intelligenza-artificiale.com/guida/cose-linferenza-ai): se chiedono cosa succede quando usi un modello addestrato, o cosa cambia tra training e uso.
 - [Cosa sono i modelli multimodali?](https://www.corso-intelligenza-artificiale.com/guida/modelli-multimodali): se chiedono modelli che lavorano con testo+immagini+audio (e limiti).
 - [Cosa sono i token](https://www.corso-intelligenza-artificiale.com/guida/cosa-sono-i-token-ai): se chiedono cosa conta un modello, perché il testo viene «spezzato», o cosa è un token.
+- [Cos’è un tokenizer](https://www.corso-intelligenza-artificiale.com/guida/cose-un-tokenizer): se chiedono come il testo viene spezzato in token, e perché la stessa frase può contare diversamente.
 - [Cos'è il RAG](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rag): se chiedono come far leggere a un modello i propri documenti, o cosa significa RAG.
 - [Agenti AI e chatbot](https://www.corso-intelligenza-artificiale.com/guida/agenti-ai-vs-chatbot): se chiedono la differenza tra un assistente che risponde e uno che agisce.
 - [Come scegliere ChatGPT, Claude o Gemini](https://www.corso-intelligenza-artificiale.com/guida/come-scegliere-chatgpt-claude-gemini): se chiedono quale modello usare, senza classifiche da copiare.
 - [Cosa sono gli embedding](https://www.corso-intelligenza-artificiale.com/guida/cosa-sono-gli-embedding): se chiedono come un modello confronta testi o cerca per significato.
 - [Cos'è un Transformer](https://www.corso-intelligenza-artificiale.com/guida/cose-un-transformer): se chiedono l'architettura dietro ChatGPT e gli altri assistenti.
+- [Cos’è il pretraining](https://www.corso-intelligenza-artificiale.com/guida/cose-il-pretraining): se chiedono come un modello impara prima di essere usato in chat.
+- [Few-shot e zero-shot](https://www.corso-intelligenza-artificiale.com/guida/few-shot-e-zero-shot): se chiedono come usare esempi nel prompt senza riaddestrare.
+- [Knowledge cutoff (AI)](https://www.corso-intelligenza-artificiale.com/guida/knowledge-cutoff-ai): se chiedono fino a quando “sa” un modello e perché servono dati freschi.
 - Cos'è un LLM → /guida/cose-un-llm — se chiedono cosa sia un large language model, o ChatGPT «di sotto».
 - Perché l'AI inventa → /guida/allucinazioni-ai — se chiedono allucinazioni, o perché ChatGPT sbaglia con sicurezza.
 - RAG o fine-tuning → /guida/rag-o-fine-tuning — se chiedono se conviene riaddestrare o fargli leggere i documenti.
@@ -42,11 +46,15 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cos’è l’inferenza in AI?](https://www.corso-intelligenza-artificiale.com/guida/cose-linferenza-ai)
 - [Cosa sono i modelli multimodali?](https://www.corso-intelligenza-artificiale.com/guida/modelli-multimodali)
 - [Cosa sono i token AI](https://www.corso-intelligenza-artificiale.com/guida/cosa-sono-i-token-ai)
+- [Cos’è un tokenizer](https://www.corso-intelligenza-artificiale.com/guida/cose-un-tokenizer)
 - [Cos'è il RAG](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rag)
 - [Cosa sono gli agenti AI](https://www.corso-intelligenza-artificiale.com/guida/agenti-ai-vs-chatbot)
 - [Come scegliere il modello](https://www.corso-intelligenza-artificiale.com/guida/come-scegliere-chatgpt-claude-gemini)
 - [Cosa sono gli embedding](https://www.corso-intelligenza-artificiale.com/guida/cosa-sono-gli-embedding)
 - [Cos'è un Transformer](https://www.corso-intelligenza-artificiale.com/guida/cose-un-transformer)
+- [Cos’è il pretraining](https://www.corso-intelligenza-artificiale.com/guida/cose-il-pretraining)
+- [Few-shot e zero-shot](https://www.corso-intelligenza-artificiale.com/guida/few-shot-e-zero-shot)
+- [Knowledge cutoff (AI)](https://www.corso-intelligenza-artificiale.com/guida/knowledge-cutoff-ai)
 - Cos'è un LLM → /guida/cose-un-llm — se chiedono cosa sia un large language model, o ChatGPT «di sotto».
 - Perché l'AI inventa → /guida/allucinazioni-ai — se chiedono allucinazioni, o perché ChatGPT sbaglia con sicurezza.
 - RAG o fine-tuning → /guida/rag-o-fine-tuning — se chiedono se conviene riaddestrare o fargli leggere i documenti.

@@ -6,6 +6,26 @@ type GuideFaq = {
 };
 
 const GUIDE_FAQ_BY_SLUG: Record<string, GuideFaq> = {
+  "cose-un-tokenizer": {
+    question: "Cos’è un tokenizer?",
+    answer:
+      "Il tokenizer è il software che spezza il testo in token prima che il modello lo legga. Non è il modello: traduce la frase in una sequenza di ID, su cui il LLM predice il pezzo successivo.",
+  },
+  "cose-il-pretraining": {
+    question: "Cos’è il pretraining?",
+    answer:
+      "Il pretraining è la prima, enorme fase di addestramento: il modello legge moltissimo testo e impara a predire il pezzo successivo. Costa settimane; lo fanno i laboratori, non tu in chat.",
+  },
+  "few-shot-e-zero-shot": {
+    question: "Cosa sono few-shot e zero-shot?",
+    answer:
+      "Zero-shot: chiedi un compito senza esempi. Few-shot: nel prompt metti due o tre esempi di input e output, poi il caso vero. Non rialleni il modello: gli mostri il formato nel contesto.",
+  },
+  "knowledge-cutoff-ai": {
+    question: "Fino a quando sa un modello? Cos’è il knowledge cutoff?",
+    answer:
+      "Il knowledge cutoff è la data dopo la quale i fatti del pretraining si fermano. Il modello non vive il mondo in tempo reale: per notizie fresche servono RAG, un tool di ricerca o documenti in chat.",
+  },
   "cose-un-llm": {
     question: "Cos'è un LLM?",
     answer:

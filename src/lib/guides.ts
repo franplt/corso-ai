@@ -13,7 +13,7 @@ const guidesDir = path.join(process.cwd(), "content", "guides");
 function parseSlugLine(firstLine: string): string | null {
   const match = firstLine
     .trim()
-    .match(/^<!--\s*(?:slug:\s*)?(\/guida\/[a-z0-9-]+)\s*-->$/);
+    .match(/^<!--\s*(?:slug:\s*)?(\/guida\/[a-z0-9-]+)\s*-->$/i);
   if (!match) return null;
   return match[1];
 }
