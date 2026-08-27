@@ -59,7 +59,6 @@ export default async function GuidePage({ params }: GuidePageProps) {
       {faqJsonLd && (
         <script
           type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       )}
