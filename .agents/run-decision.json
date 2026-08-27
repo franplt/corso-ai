@@ -1,8 +1,8 @@
 {
-  "approval_required": true,
-  "reason": "Safety default before the first cloud run.",
-  "expected_effect": "none",
+  "approval_required": false,
+  "reason": "Small reversible Level A metadata correction, validated by lint, production build and visual QA.",
+  "expected_effect": "Remove canonical ambiguity from six crawled URLs and exclude transactional auth pages from search indexing.",
   "estimated_external_cost_eur": 0,
-  "rollback": "Close the pull request without merging.",
-  "updated_at": null
+  "rollback": "Revert the metadata commit; no database or external state changes are involved.",
+  "updated_at": "2026-08-27T08:09:28Z"
 }

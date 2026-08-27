@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Termini di Servizio — Corso AI in 10 puntate",
-  description: "Termini e condizioni per l'utilizzo del corso.",
+  title: "Termini di Servizio",
+  description:
+    "Consulta le condizioni di acquisto, accesso, rimborso e utilizzo del corso digitale Corso AI in 10 puntate.",
+  alternates: {
+    canonical: "/terms",
+  },
 };
 
 export default function TermsPage() {

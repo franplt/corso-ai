@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Corso AI in 10 puntate",
-  description: "Informativa sulla privacy e sul trattamento dei dati personali.",
+  title: "Privacy Policy",
+  description:
+    "Scopri quali dati personali tratta Corso AI in 10 puntate, per quali finalità e come esercitare i tuoi diritti.",
+  alternates: {
+    canonical: "/privacy",
+  },
 };
 
 export default function PrivacyPage() {

@@ -1,5 +1,22 @@
+import type { Metadata } from "next";
 import { ChapterCard } from "@/components/ChapterCard";
 import { getEpisodes } from "@/lib/episodes";
+
+export const metadata: Metadata = {
+  title: "Tutte le puntate",
+  description:
+    "Scopri le 10 puntate del corso AI per non tecnici: dai token ai Transformer, fino a RAG e agenti. La prima puntata è gratuita.",
+  alternates: {
+    canonical: "/chapters",
+  },
+  openGraph: {
+    title: "Tutte le puntate — Corso AI in 10 puntate",
+    description:
+      "Scopri le 10 puntate del corso AI per non tecnici. La prima puntata è gratuita.",
+    url: "/chapters",
+    type: "website",
+  },
+};
 
 export default function ChaptersPage() {
   const episodes = getEpisodes();
