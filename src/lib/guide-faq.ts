@@ -6,6 +6,26 @@ type GuideFaq = {
 };
 
 const GUIDE_FAQ_BY_SLUG: Record<string, GuideFaq> = {
+  "cose-llamacpp": {
+    question: "Cos’è llama.cpp?",
+    answer:
+      "llama.cpp è un runtime per far girare LLM in locale, di solito da file GGUF, su CPU o GPU. Non è un modello: è il motore che esegue i pesi. Non elimina le allucinazioni.",
+  },
+  "cose-hugging-face": {
+    question: "Cos’è Hugging Face?",
+    answer:
+      "Hugging Face è un hub di modelli, dataset e tool per scaricare e provare l’AI. Non è un LLM né ChatGPT. Trovare un modello lì non lo rende sicuro o aggiornato.",
+  },
+  "small-language-model": {
+    question: "Cos’è uno SLM (small language model)?",
+    answer:
+      "Uno SLM è un LLM piccolo, spesso per inferenza locale o a basso costo. Si ottiene con distillazione, quantizzazione o addestramento stretto. Non elimina le allucinazioni.",
+  },
+  "streaming-token-ai": {
+    question: "Cos’è lo streaming dei token?",
+    answer:
+      "Lo streaming manda i token di un LLM man mano che vengono generati, invece di aspettare la risposta intera. Non cambia la conoscenza del modello e non elimina le allucinazioni.",
+  },
   "cose-ollama": {
     question: "Cos’è Ollama?",
     answer:

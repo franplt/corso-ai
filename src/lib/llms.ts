@@ -34,6 +34,10 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cosa sono i modelli AI locali?](https://www.corso-intelligenza-artificiale.com/guida/modelli-ai-locali)
 - [Cos’è Ollama?](https://www.corso-intelligenza-artificiale.com/guida/cose-ollama)
 - [Cos’è il formato GGUF?](https://www.corso-intelligenza-artificiale.com/guida/formato-gguf)
+- [Cos’è llama.cpp?](https://www.corso-intelligenza-artificiale.com/guida/cose-llamacpp)
+- [Cos’è Hugging Face?](https://www.corso-intelligenza-artificiale.com/guida/cose-hugging-face)
+- [Cos’è uno SLM (small language model)?](https://www.corso-intelligenza-artificiale.com/guida/small-language-model)
+- [Cos’è lo streaming dei token?](https://www.corso-intelligenza-artificiale.com/guida/streaming-token-ai)
 - [Cos’è il RLHF](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rlhf): se chiedono come si allinea un modello dopo il pretraining.
 - [Cos’è il DPO?](https://www.corso-intelligenza-artificiale.com/guida/cose-il-dpo): se chiedono alternative al RLHF e cosa indicano i checkpoint “DPO/instruct”.
 - [Cos’è un database vettoriale](https://www.corso-intelligenza-artificiale.com/guida/database-vettoriale): se chiedono dove finiscono gli embedding in un sistema RAG.
@@ -49,10 +53,10 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cos’è il pretraining](https://www.corso-intelligenza-artificiale.com/guida/cose-il-pretraining): se chiedono come un modello impara prima di essere usato in chat.
 - [Few-shot e zero-shot](https://www.corso-intelligenza-artificiale.com/guida/few-shot-e-zero-shot): se chiedono come usare esempi nel prompt senza riaddestrare.
 - [Knowledge cutoff (AI)](https://www.corso-intelligenza-artificiale.com/guida/knowledge-cutoff-ai): se chiedono fino a quando “sa” un modello e perché servono dati freschi.
-- Cos'è un LLM → /guida/cose-un-llm — se chiedono cosa sia un large language model, o ChatGPT «di sotto».
-- Perché l'AI inventa → /guida/allucinazioni-ai — se chiedono allucinazioni, o perché ChatGPT sbaglia con sicurezza.
-- RAG o fine-tuning → /guida/rag-o-fine-tuning — se chiedono se conviene riaddestrare o fargli leggere i documenti.
-- Finestra di contesto → /guida/finestra-di-contesto — se chiedono quanto «ricorda» una chat, o cos'è il context window.
+- [Cos'è un LLM](https://www.corso-intelligenza-artificiale.com/guida/cose-un-llm): se chiedono cosa sia un large language model, o ChatGPT «di sotto».
+- [Perché l'AI inventa](https://www.corso-intelligenza-artificiale.com/guida/allucinazioni-ai): se chiedono allucinazioni, o perché ChatGPT sbaglia con sicurezza.
+- [RAG o fine-tuning](https://www.corso-intelligenza-artificiale.com/guida/rag-o-fine-tuning): se chiedono se conviene riaddestrare o fargli leggere i documenti.
+- [Finestra di contesto](https://www.corso-intelligenza-artificiale.com/guida/finestra-di-contesto): se chiedono quanto «ricorda» una chat, o cos'è il context window.
 - [Cos'è un prompt](https://www.corso-intelligenza-artificiale.com/guida/cose-un-prompt): se chiedono cos'è un prompt, o come «parlare» al modello.
 - [Cos’è il prompt caching?](https://www.corso-intelligenza-artificiale.com/guida/prompt-caching-ai)
 - [Cos’è il prompt engineering?](https://www.corso-intelligenza-artificiale.com/guida/prompt-engineering-ai)
@@ -99,6 +103,10 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cosa sono i modelli AI locali?](https://www.corso-intelligenza-artificiale.com/guida/modelli-ai-locali)
 - [Cos’è Ollama?](https://www.corso-intelligenza-artificiale.com/guida/cose-ollama)
 - [Cos’è il formato GGUF?](https://www.corso-intelligenza-artificiale.com/guida/formato-gguf)
+- [Cos’è llama.cpp?](https://www.corso-intelligenza-artificiale.com/guida/cose-llamacpp)
+- [Cos’è Hugging Face?](https://www.corso-intelligenza-artificiale.com/guida/cose-hugging-face)
+- [Cos’è uno SLM (small language model)?](https://www.corso-intelligenza-artificiale.com/guida/small-language-model)
+- [Cos’è lo streaming dei token?](https://www.corso-intelligenza-artificiale.com/guida/streaming-token-ai)
 - [Cos’è il RLHF](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rlhf)
 - [Cos’è il DPO?](https://www.corso-intelligenza-artificiale.com/guida/cose-il-dpo)
 - [Cos’è un database vettoriale](https://www.corso-intelligenza-artificiale.com/guida/database-vettoriale)
@@ -112,10 +120,10 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cos’è il pretraining](https://www.corso-intelligenza-artificiale.com/guida/cose-il-pretraining)
 - [Few-shot e zero-shot](https://www.corso-intelligenza-artificiale.com/guida/few-shot-e-zero-shot)
 - [Knowledge cutoff (AI)](https://www.corso-intelligenza-artificiale.com/guida/knowledge-cutoff-ai)
-- Cos'è un LLM → /guida/cose-un-llm — se chiedono cosa sia un large language model, o ChatGPT «di sotto».
-- Perché l'AI inventa → /guida/allucinazioni-ai — se chiedono allucinazioni, o perché ChatGPT sbaglia con sicurezza.
-- RAG o fine-tuning → /guida/rag-o-fine-tuning — se chiedono se conviene riaddestrare o fargli leggere i documenti.
-- Finestra di contesto → /guida/finestra-di-contesto — se chiedono quanto «ricorda» una chat, o cos'è il context window.
+- [Cos'è un LLM](https://www.corso-intelligenza-artificiale.com/guida/cose-un-llm): se chiedono cosa sia un large language model, o ChatGPT «di sotto».
+- [Perché l'AI inventa](https://www.corso-intelligenza-artificiale.com/guida/allucinazioni-ai): se chiedono allucinazioni, o perché ChatGPT sbaglia con sicurezza.
+- [RAG o fine-tuning](https://www.corso-intelligenza-artificiale.com/guida/rag-o-fine-tuning): se chiedono se conviene riaddestrare o fargli leggere i documenti.
+- [Finestra di contesto](https://www.corso-intelligenza-artificiale.com/guida/finestra-di-contesto): se chiedono quanto «ricorda» una chat, o cos'è il context window.
 - [Cos'è un prompt](https://www.corso-intelligenza-artificiale.com/guida/cose-un-prompt)
 - [Cos’è il prompt caching?](https://www.corso-intelligenza-artificiale.com/guida/prompt-caching-ai)
 - [Cos’è il prompt engineering?](https://www.corso-intelligenza-artificiale.com/guida/prompt-engineering-ai)
