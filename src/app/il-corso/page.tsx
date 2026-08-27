@@ -2,6 +2,20 @@ import type { Metadata } from "next";
 import { MarkdownContent } from "@/components/MarkdownContent";
 import { getPublicPageMarkdown } from "@/lib/public-pages";
 
+const ABOUT_PAGE_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "Il Corso AI in 10 puntate",
+  url: "https://www.corso-intelligenza-artificiale.com/il-corso",
+  inLanguage: "it",
+  isPartOf: {
+    "@type": "WebSite",
+    name: "Corso AI in 10 puntate",
+    url: "https://www.corso-intelligenza-artificiale.com/",
+  },
+  about: { "@id": "https://www.corso-intelligenza-artificiale.com/#course" },
+};
+
 export const metadata: Metadata = {
   title: "Il Corso AI in 10 puntate",
   description:
@@ -22,6 +36,10 @@ export default async function IlCorsoPage() {
   const markdown = getPublicPageMarkdown("il-corso");
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(ABOUT_PAGE_JSON_LD) }}
+      />
       <MarkdownContent markdown={markdown} />
     </main>
   );
