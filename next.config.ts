@@ -43,6 +43,25 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.join(__dirname),
   },
+  async redirects() {
+    return [
+      {
+        source: "/about",
+        destination: "/il-corso",
+        permanent: true,
+      },
+      {
+        source: "/chi-sono",
+        destination: "/il-corso",
+        permanent: true,
+      },
+      {
+        source: "/contact",
+        destination: "/contatti",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

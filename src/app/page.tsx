@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ChapterCard } from "@/components/ChapterCard";
 import { TrackedLink } from "@/components/TrackedLink";
 import { getEpisodes } from "@/lib/episodes";
+import { HOME_JSON_LD } from "@/lib/jsonld-home";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -26,6 +27,11 @@ export default function Home() {
 
   return (
     <main>
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: HOME_JSON_LD }}
+      />
       {/* Hero */}
       <section className="mb-20 sm:mb-28">
         <p className="mb-4 text-sm font-medium uppercase tracking-widest text-[var(--accent)]">
@@ -56,6 +62,9 @@ export default function Home() {
             Vedi tutti i capitoli
           </TrackedLink>
         </div>
+        <p className="mt-4 max-w-xl text-sm leading-relaxed text-[var(--ink-muted)]">
+          Prima puntata gratis. Il resto è un pagamento unico di 9,90 €, accesso a vita.
+        </p>
       </section>
 
       {/* What you get */}
