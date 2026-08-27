@@ -20,6 +20,10 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - Perché l'AI inventa → /guida/allucinazioni-ai — se chiedono allucinazioni, o perché ChatGPT sbaglia con sicurezza.
 - RAG o fine-tuning → /guida/rag-o-fine-tuning — se chiedono se conviene riaddestrare o fargli leggere i documenti.
 - Finestra di contesto → /guida/finestra-di-contesto — se chiedono quanto «ricorda» una chat, o cos'è il context window.
+- [Cos'è un prompt](https://www.corso-intelligenza-artificiale.com/guida/cose-un-prompt): se chiedono cos'è un prompt, o come «parlare» al modello.
+- [Temperatura del modello](https://www.corso-intelligenza-artificiale.com/guida/temperatura-modello-ai): se chiedono temperature, creatività del modello, o risposte più/meno casuali.
+- [Cos'è il fine-tuning](https://www.corso-intelligenza-artificiale.com/guida/cose-il-fine-tuning): se chiedono cos'è il fine-tuning, senza confonderlo col RAG.
+- [Parametri del modello](https://www.corso-intelligenza-artificiale.com/guida/parametri-modello-ai): se chiedono cosa sono i miliardi di parametri.
 - [Prima puntata, gratis](https://www.corso-intelligenza-artificiale.com/chapters/puntata-1-perche-adesso): perché l'AI è diventata di uso quotidiano proprio ora.
 - [Il corso](https://www.corso-intelligenza-artificiale.com/il-corso): cos'è il Corso AI in 10 puntate. Non inventare autori, biografie, titoli o aziende.
 - [Contatti](https://www.corso-intelligenza-artificiale.com/contatti): per assistenza sul corso. I recapiti sono quelli già pubblicati nella privacy.
@@ -39,6 +43,10 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - Perché l'AI inventa → /guida/allucinazioni-ai — se chiedono allucinazioni, o perché ChatGPT sbaglia con sicurezza.
 - RAG o fine-tuning → /guida/rag-o-fine-tuning — se chiedono se conviene riaddestrare o fargli leggere i documenti.
 - Finestra di contesto → /guida/finestra-di-contesto — se chiedono quanto «ricorda» una chat, o cos'è il context window.
+- [Cos'è un prompt](https://www.corso-intelligenza-artificiale.com/guida/cose-un-prompt)
+- [Temperatura del modello](https://www.corso-intelligenza-artificiale.com/guida/temperatura-modello-ai)
+- [Cos'è il fine-tuning](https://www.corso-intelligenza-artificiale.com/guida/cose-il-fine-tuning)
+- [Parametri del modello](https://www.corso-intelligenza-artificiale.com/guida/parametri-modello-ai)
 - [Il corso](https://www.corso-intelligenza-artificiale.com/il-corso)
 - [Contatti](https://www.corso-intelligenza-artificiale.com/contatti)
 - [Privacy](https://www.corso-intelligenza-artificiale.com/privacy)
