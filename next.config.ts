@@ -38,6 +38,11 @@ const securityHeaders = [
   },
 ];
 
+const publicHtmlVaryHeader = {
+  key: "Vary",
+  value: "Accept, rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+};
+
 const nextConfig: NextConfig = {
   agentRules: false,
   turbopack: {
@@ -67,6 +72,22 @@ const nextConfig: NextConfig = {
       {
         source: "/(.*)",
         headers: securityHeaders,
+      },
+      {
+        source: "/",
+        headers: [publicHtmlVaryHeader],
+      },
+      {
+        source: "/il-corso",
+        headers: [publicHtmlVaryHeader],
+      },
+      {
+        source: "/contatti",
+        headers: [publicHtmlVaryHeader],
+      },
+      {
+        source: "/guida/:path*",
+        headers: [publicHtmlVaryHeader],
       },
     ];
   },
