@@ -12,6 +12,22 @@ export async function generateStaticParams() {
   return getGuides().map((guide) => ({ slug: guide.slug }));
 }
 
+function stripMarkdownInline(text: string): string {
+  return (
+    text
+      // Links: keep the label, drop the destination.
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1")
+      // Inline code
+      .replace(/`([^`]+)`/g, "$1")
+      // Basic emphasis
+      .replace(/\*\*([^*]+)\*\*/g, "$1")
+      .replace(/\*([^*]+)\*/g, "$1")
+      .replace(/_([^_]+)_/g, "$1")
+      .replace(/\s+/g, " ")
+      .trim()
+  );
+}
+
 function firstParagraph(markdown: string): string {
   const lines = markdown.split("\n");
   const startIdx = lines.findIndex((line) => line.trim().length > 0 && !line.startsWith("#"));
@@ -23,7 +39,7 @@ function firstParagraph(markdown: string): string {
     if (line.startsWith("#")) continue;
     collected.push(line.trim());
   }
-  return collected.join(" ").trim();
+  return stripMarkdownInline(collected.join(" ").trim());
 }
 
 export async function generateMetadata({ params }: GuidePageProps): Promise<Metadata> {
