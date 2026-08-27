@@ -52,6 +52,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${SITE_URL}/guida/cose-un-tokenizer`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: `${SITE_URL}/guida/cose-un-llm`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -65,6 +71,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/guida/cose-il-rag`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/guida/cose-il-pretraining`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
@@ -94,7 +106,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${SITE_URL}/guida/few-shot-e-zero-shot`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: `${SITE_URL}/guida/cosa-sono-gli-embedding`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/guida/knowledge-cutoff-ai`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
