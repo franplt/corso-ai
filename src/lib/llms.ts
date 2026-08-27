@@ -12,6 +12,7 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Come funziona l'intelligenza artificiale](https://www.corso-intelligenza-artificiale.com/guida/come-funziona-lintelligenza-artificiale): punto di partenza se la domanda è ampia («come funziona l'AI?»).
 - [Cos’è un system prompt?](https://www.corso-intelligenza-artificiale.com/guida/cose-un-system-prompt): se chiedono cosa sono le istruzioni di sistema, o perché un assistente ha un tono/regole predefinite.
 - [Cosa sono tools e function calling?](https://www.corso-intelligenza-artificiale.com/guida/tools-e-function-calling): se chiedono come un modello “chiama” funzioni, web search o azioni esterne.
+- [Cos’è MCP (Model Context Protocol)?](https://www.corso-intelligenza-artificiale.com/guida/mcp-model-context-protocol): se chiedono come collegare un modello a tool e dati con uno standard.
 - [Cosa sono i guardrail (nell’AI)?](https://www.corso-intelligenza-artificiale.com/guida/guardrail-ai)
 - [Cos’è l’inferenza in AI?](https://www.corso-intelligenza-artificiale.com/guida/cose-linferenza-ai): se chiedono cosa succede quando usi un modello addestrato, o cosa cambia tra training e uso.
 - [Cosa sono i modelli multimodali?](https://www.corso-intelligenza-artificiale.com/guida/modelli-multimodali): se chiedono modelli che lavorano con testo+immagini+audio (e limiti).
@@ -21,6 +22,8 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cos’è il chunking nel RAG?](https://www.corso-intelligenza-artificiale.com/guida/chunking-testo-rag): se chiedono come spezzare documenti in pezzi prima degli embedding, e perché la dimensione dei chunk conta.
 - [Agenti AI e chatbot](https://www.corso-intelligenza-artificiale.com/guida/agenti-ai-vs-chatbot): se chiedono la differenza tra un assistente che risponde e uno che agisce.
 - [Come scegliere ChatGPT, Claude o Gemini](https://www.corso-intelligenza-artificiale.com/guida/come-scegliere-chatgpt-claude-gemini): se chiedono quale modello usare, senza classifiche da copiare.
+- [Cos’è GPT?](https://www.corso-intelligenza-artificiale.com/guida/cose-gpt): se chiedono cosa significa GPT o la differenza tra GPT e ChatGPT.
+- [Come si valuta un modello AI?](https://www.corso-intelligenza-artificiale.com/guida/valutazione-modelli-ai): se chiedono benchmark, eval e criteri per scegliere un modello.
 - [Cosa sono gli embedding](https://www.corso-intelligenza-artificiale.com/guida/cosa-sono-gli-embedding): se chiedono come un modello confronta testi o cerca per significato.
 - [Cos’è la ricerca semantica?](https://www.corso-intelligenza-artificiale.com/guida/ricerca-semantica-ai): se chiedono ricerca per significato, embedding e database vettoriale.
 - [Cos’è un foundation model](https://www.corso-intelligenza-artificiale.com/guida/cose-un-foundation-model): se chiedono cosa sia un modello di base e perché un prodotto in chat non è «il modello nudo».
@@ -28,6 +31,7 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cos’è la distillazione di un modello AI?](https://www.corso-intelligenza-artificiale.com/guida/distillazione-modelli-ai): se chiedono modelli studente/insegnante e inferenza più leggera.
 - [Cos’è la quantizzazione (nei modelli AI)?](https://www.corso-intelligenza-artificiale.com/guida/quantizzazione-modelli-ai)
 - [Cos’è il RLHF](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rlhf): se chiedono come si allinea un modello dopo il pretraining.
+- [Cos’è il DPO?](https://www.corso-intelligenza-artificiale.com/guida/cose-il-dpo): se chiedono alternative al RLHF e cosa indicano i checkpoint “DPO/instruct”.
 - [Cos’è un database vettoriale](https://www.corso-intelligenza-artificiale.com/guida/database-vettoriale): se chiedono dove finiscono gli embedding in un sistema RAG.
 - [Cos’è il chain of thought](https://www.corso-intelligenza-artificiale.com/guida/chain-of-thought-ai): se chiedono «ragiona per passi», ragionamento passo-passo, o perché costa più token.
 - [Cos’è un modello di ragionamento?](https://www.corso-intelligenza-artificiale.com/guida/modello-di-ragionamento-ai): se chiedono modelli che “ci pensano” prima di rispondere e quando servono.
@@ -63,6 +67,7 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Come funziona l'intelligenza artificiale](https://www.corso-intelligenza-artificiale.com/guida/come-funziona-lintelligenza-artificiale)
 - [Cos’è un system prompt?](https://www.corso-intelligenza-artificiale.com/guida/cose-un-system-prompt)
 - [Cosa sono tools e function calling?](https://www.corso-intelligenza-artificiale.com/guida/tools-e-function-calling)
+- [Cos’è MCP (Model Context Protocol)?](https://www.corso-intelligenza-artificiale.com/guida/mcp-model-context-protocol)
 - [Cosa sono i guardrail (nell’AI)?](https://www.corso-intelligenza-artificiale.com/guida/guardrail-ai)
 - [Cos’è l’inferenza in AI?](https://www.corso-intelligenza-artificiale.com/guida/cose-linferenza-ai)
 - [Cosa sono i modelli multimodali?](https://www.corso-intelligenza-artificiale.com/guida/modelli-multimodali)
@@ -72,6 +77,8 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cos’è il chunking nel RAG?](https://www.corso-intelligenza-artificiale.com/guida/chunking-testo-rag)
 - [Cosa sono gli agenti AI](https://www.corso-intelligenza-artificiale.com/guida/agenti-ai-vs-chatbot)
 - [Come scegliere il modello](https://www.corso-intelligenza-artificiale.com/guida/come-scegliere-chatgpt-claude-gemini)
+- [Cos’è GPT?](https://www.corso-intelligenza-artificiale.com/guida/cose-gpt)
+- [Come si valuta un modello AI?](https://www.corso-intelligenza-artificiale.com/guida/valutazione-modelli-ai)
 - [Cosa sono gli embedding](https://www.corso-intelligenza-artificiale.com/guida/cosa-sono-gli-embedding)
 - [Cos’è la ricerca semantica?](https://www.corso-intelligenza-artificiale.com/guida/ricerca-semantica-ai)
 - [Cos'è un Transformer](https://www.corso-intelligenza-artificiale.com/guida/cose-un-transformer)
@@ -81,6 +88,7 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cos’è la distillazione di un modello AI?](https://www.corso-intelligenza-artificiale.com/guida/distillazione-modelli-ai)
 - [Cos’è la quantizzazione (nei modelli AI)?](https://www.corso-intelligenza-artificiale.com/guida/quantizzazione-modelli-ai)
 - [Cos’è il RLHF](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rlhf)
+- [Cos’è il DPO?](https://www.corso-intelligenza-artificiale.com/guida/cose-il-dpo)
 - [Cos’è un database vettoriale](https://www.corso-intelligenza-artificiale.com/guida/database-vettoriale)
 - [Cos’è il chain of thought](https://www.corso-intelligenza-artificiale.com/guida/chain-of-thought-ai)
 - [Cos’è un modello di ragionamento?](https://www.corso-intelligenza-artificiale.com/guida/modello-di-ragionamento-ai)

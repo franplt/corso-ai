@@ -58,6 +58,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${SITE_URL}/guida/mcp-model-context-protocol`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: `${SITE_URL}/guida/cose-linferenza-ai`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -101,6 +107,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/guida/cose-il-rlhf`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/guida/cose-il-dpo`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
@@ -209,6 +221,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/guida/come-scegliere-chatgpt-claude-gemini`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/guida/cose-gpt`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/guida/valutazione-modelli-ai`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,

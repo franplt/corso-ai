@@ -12,6 +12,7 @@ Se vuoi entrare nel dettaglio, da qui:
 - Cos’è un foundation model → /guida/cose-un-foundation-model
 - Modelli open source → /guida/modelli-open-source-ai
 - Cos’è il RLHF → /guida/cose-il-rlhf
+- Cos’è il DPO → /guida/cose-il-dpo
 - Perché l'AI inventa → /guida/allucinazioni-ai
 - Cos'è il RAG → /guida/cose-il-rag
 - Chunking (nel RAG) → /guida/chunking-testo-rag
@@ -28,11 +29,14 @@ Se vuoi entrare nel dettaglio, da qui:
 - Parametri del modello → /guida/parametri-modello-ai
 - Cos’è un system prompt → /guida/cose-un-system-prompt
 - Tools e function calling → /guida/tools-e-function-calling
+- Cos’è MCP (Model Context Protocol) → /guida/mcp-model-context-protocol
 - Guardrail → /guida/guardrail-ai
 - Cos’è l’inferenza → /guida/cose-linferenza-ai
 - Modelli multimodali → /guida/modelli-multimodali
 - Agenti AI e chatbot → /guida/agenti-ai-vs-chatbot
 - Come scegliere ChatGPT, Claude o Gemini → /guida/come-scegliere-chatgpt-claude-gemini
+- Cos’è GPT → /guida/cose-gpt
+- Valutazione modelli AI → /guida/valutazione-modelli-ai
 - Few-shot e zero-shot → /guida/few-shot-e-zero-shot
 - Cosa sono gli embedding → /guida/cosa-sono-gli-embedding
 - Knowledge cutoff → /guida/knowledge-cutoff-ai

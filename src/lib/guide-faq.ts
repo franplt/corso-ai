@@ -66,6 +66,26 @@ const GUIDE_FAQ_BY_SLUG: Record<string, GuideFaq> = {
     answer:
       "RLHF è una fase dopo il pretraining: persone confrontano due risposte e il modello impara a preferire quella giudicata meglio. Non insegna fatti nuovi: insegna uno stile più utile e cauto. Non elimina le allucinazioni.",
   },
+  "cose-gpt": {
+    question: "Cos’è GPT?",
+    answer:
+      "GPT (Generative Pre-trained Transformer) è una famiglia di LLM decoder-only che completano testo. ChatGPT è un prodotto che usa modelli GPT, non il modello nudo. Non è l’AI in generale né un agente da solo.",
+  },
+  "cose-il-dpo": {
+    question: "Cos’è il DPO?",
+    answer:
+      "DPO (Direct Preference Optimization) allinea un LLM alle preferenze umane senza un reward model a parte. È un’alternativa al RLHF; non è RAG e non elimina le allucinazioni.",
+  },
+  "mcp-model-context-protocol": {
+    question: "Cos’è MCP (Model Context Protocol)?",
+    answer:
+      "MCP è uno standard per collegare un LLM a dati e strumenti in modo uniforme. Non è un modello né il RAG: è la «presa» verso i tool, accanto al function calling.",
+  },
+  "valutazione-modelli-ai": {
+    question: "Come si valuta un modello AI?",
+    answer:
+      "Si valuta un LLM su compiti concreti (benchmark, eval tuoi, confronti umani), non sull’intelligenza in astratto. Un punteggio alto non garantisce i tuoi documenti né l’assenza di allucinazioni.",
+  },
   "few-shot-e-zero-shot": {
     question: "Cosa sono few-shot e zero-shot?",
     answer:
