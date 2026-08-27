@@ -14,6 +14,14 @@ on:
         options:
           - execution
           - strategy
+      quality:
+        description: Cost and quality tier
+        required: true
+        default: efficient
+        type: choice
+        options:
+          - efficient
+          - important
 
 concurrency:
   group: cloud-marketing-agent
@@ -45,6 +53,7 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           EVENT_SCHEDULE: ${{ github.event.schedule }}
           MANUAL_MODE: ${{ inputs.mode }}
+          MANUAL_QUALITY: ${{ inputs.quality }}
           CODEX_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
@@ -61,6 +70,19 @@ jobs:
             prompt_file=".github/codex/prompts/marketing-execution.md"
           fi
 
+          # Scheduled work always uses the cost-efficient policy. The frontier
+          # model is available only through an explicit manual "important" run.
+          if [ "$EVENT_NAME" = "workflow_dispatch" ] && [ "$MANUAL_QUALITY" = "important" ]; then
+            model="gpt-5.6-sol"
+            effort="medium"
+          elif [ "$mode" = "strategy" ]; then
+            model="gpt-5.6-terra"
+            effort="low"
+          else
+            model="gpt-5.6-luna"
+            effort="low"
+          fi
+
           if [ -n "$CODEX_KEY" ]; then
             configured="true"
           else
@@ -70,7 +92,10 @@ jobs:
 
           echo "mode=$mode" >> "$GITHUB_OUTPUT"
           echo "prompt_file=$prompt_file" >> "$GITHUB_OUTPUT"
+          echo "model=$model" >> "$GITHUB_OUTPUT"
+          echo "effort=$effort" >> "$GITHUB_OUTPUT"
           echo "configured=$configured" >> "$GITHUB_OUTPUT"
+          echo "Agent mode: $mode; model: $model; reasoning effort: $effort." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Prepare persistent automation branch
         id: branch
@@ -130,6 +155,8 @@ jobs:
           permission-profile: ":workspace"
           safety-strategy: drop-sudo
           prompt-file: ${{ steps.setup.outputs.prompt_file }}
+          model: ${{ steps.setup.outputs.model }}
+          effort: ${{ steps.setup.outputs.effort }}
 
       - name: Enforce marketing guardrails
         id: guardrails
