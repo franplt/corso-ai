@@ -44,6 +44,10 @@ Se vuoi entrare nel dettaglio, da qui:
 - Mixture of Experts (MoE) → /guida/mixture-of-experts-ai
 - Prompt injection → /guida/prompt-injection-ai
 - Reranking (nel RAG) → /guida/reranking-rag
+- Top-p (nucleus sampling) → /guida/top-p-nucleus-sampling
+- KV cache → /guida/kv-cache-ai
+- Distillazione modelli → /guida/distillazione-modelli-ai
+- Ricerca semantica → /guida/ricerca-semantica-ai
 
 Il Corso AI in 10 puntate è lo stesso percorso, in ordine, in italiano, pochi minuti a capitolo: dalle basi (dati, token, modelli) fino a RAG, agenti e scelta dello strumento.
 

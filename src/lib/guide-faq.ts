@@ -121,6 +121,26 @@ const GUIDE_FAQ_BY_SLUG: Record<string, GuideFaq> = {
     answer:
       "La temperatura è un’impostazione che regola quanto il modello azzarda quando sceglie la parola successiva. Valori bassi: risposte più ripetibili. Valori alti: più varietà e più rischio.",
   },
+  "top-p-nucleus-sampling": {
+    question: "Cos’è il top-p (nucleus sampling)?",
+    answer:
+      "Il top-p (o nucleus sampling) è un modo di scegliere la prossima parola di un [LLM](/guida/cose-un-llm): invece di prendere sempre la più probabile, il modello considera solo le parole «più plausibili» finché la loro probabilità cumulata raggiunge una soglia p (per esempio 0,9). Dentro quel gruppo pesca a caso. Va di pari passo con la [temperatura](/guida/temperatura-modello-ai): temperatura sposta quanto sono piatte le probabilità, top-p taglia la coda.",
+  },
+  "kv-cache-ai": {
+    question: "Cos’è la KV cache (nei transformer)?",
+    answer:
+      "La KV cache è una memoria intermedia usata in [inferenza](/guida/cose-linferenza-ai) dai modelli [transformer](/guida/cose-un-transformer): salva i vettori Key e Value già calcolati dal [meccanismo di attenzione](/guida/meccanismo-di-attenzione-ai), così a ogni nuovo [token](/guida/cosa-sono-i-token-ai) non si ricalcola tutto il contesto da zero. Senza di essa, generare una risposta lunga sarebbe molto più lento e costoso.",
+  },
+  "distillazione-modelli-ai": {
+    question: "Cos’è la distillazione di un modello AI?",
+    answer:
+      "La distillazione (knowledge distillation) è addestrare un modello più piccolo («studente») a imitare il comportamento di uno più grande («insegnante»). Lo studente impara non solo le risposte giuste, ma spesso anche le probabilità soft dell’insegnante. Così ottieni un [LLM](/guida/cose-un-llm) più leggero in [inferenza](/guida/cose-linferenza-ai), a volte quasi altrettanto utile sui compiti scelti.",
+  },
+  "ricerca-semantica-ai": {
+    question: "Cos’è la ricerca semantica?",
+    answer:
+      "La ricerca semantica trova documenti per significato, non solo per parole uguali. Trasforma domanda e testi in [embedding](/guida/cosa-sono-gli-embedding) (vettori) e cerca i più «vicini» in un [database vettoriale](/guida/database-vettoriale). È il motore tipico dietro al [RAG](/guida/cose-il-rag): recuperi pezzi utili ([chunk](/guida/chunking-testo-rag)) e li passi al [LLM](/guida/cose-un-llm).",
+  },
   "cose-il-fine-tuning": {
     question: "Cos’è il fine-tuning?",
     answer:
