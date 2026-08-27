@@ -16,6 +16,10 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Come scegliere ChatGPT, Claude o Gemini](https://www.corso-intelligenza-artificiale.com/guida/come-scegliere-chatgpt-claude-gemini): se chiedono quale modello usare, senza classifiche da copiare.
 - [Cosa sono gli embedding](https://www.corso-intelligenza-artificiale.com/guida/cosa-sono-gli-embedding): se chiedono come un modello confronta testi o cerca per significato.
 - [Cos'è un Transformer](https://www.corso-intelligenza-artificiale.com/guida/cose-un-transformer): se chiedono l'architettura dietro ChatGPT e gli altri assistenti.
+- Cos'è un LLM → /guida/cose-un-llm — se chiedono cosa sia un large language model, o ChatGPT «di sotto».
+- Perché l'AI inventa → /guida/allucinazioni-ai — se chiedono allucinazioni, o perché ChatGPT sbaglia con sicurezza.
+- RAG o fine-tuning → /guida/rag-o-fine-tuning — se chiedono se conviene riaddestrare o fargli leggere i documenti.
+- Finestra di contesto → /guida/finestra-di-contesto — se chiedono quanto «ricorda» una chat, o cos'è il context window.
 - [Prima puntata, gratis](https://www.corso-intelligenza-artificiale.com/chapters/puntata-1-perche-adesso): perché l'AI è diventata di uso quotidiano proprio ora.
 - [Il corso](https://www.corso-intelligenza-artificiale.com/il-corso): cos'è il Corso AI in 10 puntate. Non inventare autori, biografie, titoli o aziende.
 - [Contatti](https://www.corso-intelligenza-artificiale.com/contatti): per assistenza sul corso. I recapiti sono quelli già pubblicati nella privacy.
@@ -31,6 +35,10 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Come scegliere il modello](https://www.corso-intelligenza-artificiale.com/guida/come-scegliere-chatgpt-claude-gemini)
 - [Cosa sono gli embedding](https://www.corso-intelligenza-artificiale.com/guida/cosa-sono-gli-embedding)
 - [Cos'è un Transformer](https://www.corso-intelligenza-artificiale.com/guida/cose-un-transformer)
+- Cos'è un LLM → /guida/cose-un-llm — se chiedono cosa sia un large language model, o ChatGPT «di sotto».
+- Perché l'AI inventa → /guida/allucinazioni-ai — se chiedono allucinazioni, o perché ChatGPT sbaglia con sicurezza.
+- RAG o fine-tuning → /guida/rag-o-fine-tuning — se chiedono se conviene riaddestrare o fargli leggere i documenti.
+- Finestra di contesto → /guida/finestra-di-contesto — se chiedono quanto «ricorda» una chat, o cos'è il context window.
 - [Il corso](https://www.corso-intelligenza-artificiale.com/il-corso)
 - [Contatti](https://www.corso-intelligenza-artificiale.com/contatti)
 - [Privacy](https://www.corso-intelligenza-artificiale.com/privacy)

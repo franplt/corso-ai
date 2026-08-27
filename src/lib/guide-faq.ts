@@ -6,6 +6,26 @@ type GuideFaq = {
 };
 
 const GUIDE_FAQ_BY_SLUG: Record<string, GuideFaq> = {
+  "cose-un-llm": {
+    question: "Cos'è un LLM?",
+    answer:
+      "Un LLM è un modello di linguaggio grande: un programma addestrato su moltissimo testo, che predice il pezzo successivo. Non è un database e non è una persona. ChatGPT, Claude e Gemini sono interfacce sopra modelli di questo tipo.",
+  },
+  "allucinazioni-ai": {
+    question: "Perché l'AI inventa?",
+    answer:
+      "Perché è fatta per continuare il testo, non per consultare un fatto. Sceglie il pezzo successivo più plausibile. Se non ha la risposta, produce comunque una frase che sembra una risposta. Si chiama allucinazione: una continuazione fluida e falsa, non una bugia voluta.",
+  },
+  "rag-o-fine-tuning": {
+    question: "RAG o fine-tuning?",
+    answer:
+      "Se il modello deve usare i tuoi documenti, in genere basta il RAG: al momento della domanda cerchi i pezzi utili e glieli mostri. Il fine-tuning riaddestra il modello su esempi, per stile o un compito ripetuto. Non è il modo economico di fargli sapere un PDF di ieri.",
+  },
+  "finestra-di-contesto": {
+    question: "Cos'è la finestra di contesto?",
+    answer:
+      "È quanto testo il modello può tenere sotto gli occhi in una volta sola: la richiesta, la chat, e gli eventuali documenti. Non è memoria a vita. Quando la finestra è piena, i pezzi più vecchi escono.",
+  },
   "cosa-sono-i-token-ai": {
     question: "Cosa sono i token nell'intelligenza artificiale?",
     answer:

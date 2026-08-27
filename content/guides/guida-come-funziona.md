@@ -7,7 +7,11 @@ Non è un database di risposte pronte e non è un motore di ricerca. È una macc
 
 Se vuoi entrare nel dettaglio, da qui:
 - Cosa sono i token → /guida/cosa-sono-i-token-ai
+- Cos'è un LLM → /guida/cose-un-llm
+- Perché l'AI inventa → /guida/allucinazioni-ai
 - Cos'è il RAG → /guida/cose-il-rag
+- RAG o fine-tuning → /guida/rag-o-fine-tuning
+- Finestra di contesto → /guida/finestra-di-contesto
 - Agenti AI e chatbot → /guida/agenti-ai-vs-chatbot
 - Come scegliere ChatGPT, Claude o Gemini → /guida/come-scegliere-chatgpt-claude-gemini
 - Cosa sono gli embedding → /guida/cosa-sono-gli-embedding
