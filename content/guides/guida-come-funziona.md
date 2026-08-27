@@ -9,6 +9,10 @@ Se vuoi entrare nel dettaglio, da qui:
 - Cosa sono i token → /guida/cosa-sono-i-token-ai
 - Cos'è un LLM → /guida/cose-un-llm
 - Perché l'AI inventa → /guida/allucinazioni-ai
+- Cos’è un system prompt → /guida/cose-un-system-prompt
+- Tools e function calling → /guida/tools-e-function-calling
+- Cos’è l’inferenza → /guida/cose-linferenza-ai
+- Modelli multimodali → /guida/modelli-multimodali
 - Cos'è il RAG → /guida/cose-il-rag
 - RAG o fine-tuning → /guida/rag-o-fine-tuning
 - Finestra di contesto → /guida/finestra-di-contesto
