@@ -65,10 +65,28 @@ export default function RootLayout({
             </Link>
             <nav className="flex items-center gap-1 sm:gap-2">
               <Link
+                href="/il-corso"
+                className="rounded-full px-3 py-2 text-sm font-medium text-[var(--ink-muted)] transition-colors hover:bg-[var(--border)] hover:text-[var(--ink)] sm:px-4"
+              >
+                Il corso
+              </Link>
+              <Link
+                href="/guida/come-funziona-lintelligenza-artificiale"
+                className="rounded-full px-3 py-2 text-sm font-medium text-[var(--ink-muted)] transition-colors hover:bg-[var(--border)] hover:text-[var(--ink)] sm:px-4"
+              >
+                Guida
+              </Link>
+              <Link
                 href="/chapters"
                 className="rounded-full px-3 py-2 text-sm font-medium text-[var(--ink-muted)] transition-colors hover:bg-[var(--border)] hover:text-[var(--ink)] sm:px-4"
               >
                 Capitoli
+              </Link>
+              <Link
+                href="/contatti"
+                className="rounded-full px-3 py-2 text-sm font-medium text-[var(--ink-muted)] transition-colors hover:bg-[var(--border)] hover:text-[var(--ink)] sm:px-4"
+              >
+                Contatti
               </Link>
               <AuthNav variant="header" />
             </nav>
@@ -85,6 +103,18 @@ export default function RootLayout({
               </Link>
               <nav className="flex flex-wrap items-center gap-x-5 gap-y-2">
                 <Link
+                  href="/il-corso"
+                  className="text-sm text-[var(--ink-muted)] hover:text-[var(--ink)] transition-colors"
+                >
+                  Il corso
+                </Link>
+                <Link
+                  href="/guida/come-funziona-lintelligenza-artificiale"
+                  className="text-sm text-[var(--ink-muted)] hover:text-[var(--ink)] transition-colors"
+                >
+                  Guida
+                </Link>
+                <Link
                   href="/chapters"
                   className="text-sm text-[var(--ink-muted)] hover:text-[var(--ink)] transition-colors"
                 >
@@ -95,6 +125,12 @@ export default function RootLayout({
                   className="text-sm text-[var(--ink-muted)] hover:text-[var(--ink)] transition-colors"
                 >
                   Inizia gratis
+                </Link>
+                <Link
+                  href="/contatti"
+                  className="text-sm text-[var(--ink-muted)] hover:text-[var(--ink)] transition-colors"
+                >
+                  Contatti
                 </Link>
                 <AuthNav variant="footer" />
               </nav>
