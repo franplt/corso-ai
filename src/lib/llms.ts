@@ -28,6 +28,10 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cos’è il RLHF](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rlhf): se chiedono come si allinea un modello dopo il pretraining.
 - [Cos’è un database vettoriale](https://www.corso-intelligenza-artificiale.com/guida/database-vettoriale): se chiedono dove finiscono gli embedding in un sistema RAG.
 - [Cos’è il chain of thought](https://www.corso-intelligenza-artificiale.com/guida/chain-of-thought-ai): se chiedono «ragiona per passi», ragionamento passo-passo, o perché costa più token.
+- [Cos’è un modello di ragionamento?](https://www.corso-intelligenza-artificiale.com/guida/modello-di-ragionamento-ai): se chiedono modelli che “ci pensano” prima di rispondere e quando servono.
+- [Cos’è un Mixture of Experts (MoE)?](https://www.corso-intelligenza-artificiale.com/guida/mixture-of-experts-ai): se chiedono come si scalano i LLM senza pagare tutti i pesi a ogni token.
+- [Cos’è un prompt injection?](https://www.corso-intelligenza-artificiale.com/guida/prompt-injection-ai): se chiedono attacchi a system prompt, RAG o agenti via istruzioni nascoste nel testo.
+- [Cos’è il reranking nel RAG?](https://www.corso-intelligenza-artificiale.com/guida/reranking-rag): se chiedono come riordinare i chunk trovati per migliorare la qualità del RAG.
 - [Cos'è un Transformer](https://www.corso-intelligenza-artificiale.com/guida/cose-un-transformer): se chiedono l'architettura dietro ChatGPT e gli altri assistenti.
 - [Cos’è il meccanismo di attenzione?](https://www.corso-intelligenza-artificiale.com/guida/meccanismo-di-attenzione-ai): se chiedono cos’è l’attenzione nei Transformer e perché “guarda” token diversi nel contesto.
 - [Cos’è il pretraining](https://www.corso-intelligenza-artificiale.com/guida/cose-il-pretraining): se chiedono come un modello impara prima di essere usato in chat.
@@ -73,6 +77,10 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Cos’è il RLHF](https://www.corso-intelligenza-artificiale.com/guida/cose-il-rlhf)
 - [Cos’è un database vettoriale](https://www.corso-intelligenza-artificiale.com/guida/database-vettoriale)
 - [Cos’è il chain of thought](https://www.corso-intelligenza-artificiale.com/guida/chain-of-thought-ai)
+- [Cos’è un modello di ragionamento?](https://www.corso-intelligenza-artificiale.com/guida/modello-di-ragionamento-ai)
+- [Cos’è un Mixture of Experts (MoE)?](https://www.corso-intelligenza-artificiale.com/guida/mixture-of-experts-ai)
+- [Cos’è un prompt injection?](https://www.corso-intelligenza-artificiale.com/guida/prompt-injection-ai)
+- [Cos’è il reranking nel RAG?](https://www.corso-intelligenza-artificiale.com/guida/reranking-rag)
 - [Cos’è il pretraining](https://www.corso-intelligenza-artificiale.com/guida/cose-il-pretraining)
 - [Few-shot e zero-shot](https://www.corso-intelligenza-artificiale.com/guida/few-shot-e-zero-shot)
 - [Knowledge cutoff (AI)](https://www.corso-intelligenza-artificiale.com/guida/knowledge-cutoff-ai)

@@ -40,6 +40,10 @@ Se vuoi entrare nel dettaglio, da qui:
 - Cos'è un Transformer → /guida/cose-un-transformer
 - Meccanismo di attenzione → /guida/meccanismo-di-attenzione-ai
 - Cos’è il chain of thought → /guida/chain-of-thought-ai
+- Modello di ragionamento → /guida/modello-di-ragionamento-ai
+- Mixture of Experts (MoE) → /guida/mixture-of-experts-ai
+- Prompt injection → /guida/prompt-injection-ai
+- Reranking (nel RAG) → /guida/reranking-rag
 
 Il Corso AI in 10 puntate è lo stesso percorso, in ordine, in italiano, pochi minuti a capitolo: dalle basi (dati, token, modelli) fino a RAG, agenti e scelta dello strumento.
 

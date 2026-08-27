@@ -26,6 +26,26 @@ const GUIDE_FAQ_BY_SLUG: Record<string, GuideFaq> = {
     answer:
       "I guardrail sono regole e filtri intorno a un LLM che limitano cosa può dire o quali tools può usare. Completano l’allineamento (es. RLHF) a runtime; non sono una garanzia assoluta e non eliminano le allucinazioni sui fatti.",
   },
+  "modello-di-ragionamento-ai": {
+    question: "Cos’è un modello di ragionamento?",
+    answer:
+      "Un modello di ragionamento è un LLM addestrato a pensare a passi interni prima di rispondere. Non è solo chain of thought nel prompt: costa più token e tempo di inferenza, aiuta sui compiti a più passi, ma non garantisce verità.",
+  },
+  "mixture-of-experts-ai": {
+    question: "Cos’è un Mixture of Experts (MoE)?",
+    answer:
+      "Un Mixture of Experts è un’architettura in cui, per ogni token, si accendono solo alcuni gruppi di parametri («esperti»). Serve a scalare i LLM senza pagare tutti i pesi a ogni parola; non è un agente né RAG.",
+  },
+  "prompt-injection-ai": {
+    question: "Cos’è un prompt injection?",
+    answer:
+      "Un prompt injection è testo che prova a far ignorare a un LLM le regole del prodotto, perché istruzioni e dati stanno nello stesso flusso di token. I guardrail aiutano ma non azzerano il rischio, soprattutto con RAG e agenti.",
+  },
+  "reranking-rag": {
+    question: "Cos’è il reranking nel RAG?",
+    answer:
+      "Il reranking è un secondo passaggio dopo la ricerca vettoriale: riordina i chunk già trovati rispetto alla domanda. Migliora il RAG se il pezzo utile è tra i candidati; non inventa documenti e non è fine-tuning.",
+  },
   "cose-un-tokenizer": {
     question: "Cos’è un tokenizer?",
     answer:
