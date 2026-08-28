@@ -13,6 +13,7 @@ Stack:
 - Episodes 2-10 gated behind payment
 - Email/password signup and login
 - One-time payment (€9.90) to unlock premium access
+- Contextual Agent-Native tutor on every unlocked chapter
 
 ## Local setup
 
@@ -37,6 +38,20 @@ cp .env.example .env.local
 - `STRIPE_SECRET_KEY`
 - `STRIPE_WEBHOOK_SECRET`
 - `STRIPE_PRICE_ID`
+- `OPENAI_API_KEY` (server-only key used by the chapter tutor)
+- `OPENAI_MODEL` (optional; defaults to `gpt-5.6-luna`)
+
+## Tutor AI
+
+Unlocked chapters include an Agent-Native chat panel. The panel sends the
+current chapter and the signed-in user's conversation to the server-side
+OpenAI Responses API. The API route verifies Supabase authentication and the
+Stripe-backed course entitlement before reading premium lesson content.
+
+Tutor conversations are kept in the browser session in this version. Course
+content and responses are sent with OpenAI response storage disabled.
+
+Agent-Native requires Node.js 22.22 or newer.
 
 ## Analytics e conversioni
 

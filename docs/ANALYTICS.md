@@ -32,6 +32,9 @@ Non inviare mai email, ID Supabase, nomi o altri dati personali negli eventi.
 | `begin_checkout` | Creazione riuscita di una sessione Stripe | valore, valuta, origine e prodotto |
 | `checkout_cancel` | Ritorno da Stripe senza pagamento | — |
 | `purchase` | Sessione Stripe verificata come pagata | transazione, valore, valuta e prodotto |
+| `tutor_open` | Apertura del tutor contestuale | `chapter_number` |
+| `tutor_conversation_started` | Primo messaggio inviato al tutor | `chapter_number` |
+| `tutor_explain_selection` | Richiesta di spiegazione del testo selezionato | `chapter_number`, `selection_length` |
 
 `purchase` è protetto dai duplicati nel browser e usa l'ID della sessione
 Stripe come `transaction_id`. La pagina di conferma recupera valore e valuta

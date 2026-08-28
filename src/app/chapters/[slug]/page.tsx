@@ -8,6 +8,7 @@ import { DevUnlockBanner } from "@/components/DevUnlockBanner";
 import { KeyTakeaways } from "@/components/KeyTakeaways";
 import { PaywallCard } from "@/components/PaywallCard";
 import { ReadingProgressBar } from "@/components/ReadingProgressBar";
+import { TutorPanel } from "@/components/TutorPanel";
 import { getCurrentUser, isDevUnlocked, userHasAccess } from "@/lib/auth";
 import { getEpisodeBySlug, getEpisodes } from "@/lib/episodes";
 
@@ -190,6 +191,14 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
 
       {process.env.NODE_ENV === "development" && !isFreeEpisode && (
         <DevUnlockBanner unlocked={devUnlocked} />
+      )}
+
+      {canReadFull && episode.isPublished && (
+        <TutorPanel
+          chapterNumber={episode.number}
+          chapterSlug={episode.slug}
+          isLoggedIn={Boolean(user)}
+        />
       )}
     </main>
   );
