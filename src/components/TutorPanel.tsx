@@ -5,6 +5,7 @@ import {
   createOpenAIResponsesChatRuntime,
   type AssistantChatHandle,
 } from "@agent-native/core/client/chat";
+import { AgentNativeI18nProvider } from "@agent-native/core/client/i18n";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -245,33 +246,38 @@ export function TutorPanel({
             </div>
           ) : (
             <QueryClientProvider client={queryClient}>
-              <AssistantChat
-                ref={chatRef}
-                runtime={runtime}
-                tabId={`corso-tutor-${chapterSlug}`}
-                agentChatSurface="app"
-                className="min-h-0 flex-1"
-                showHeader={false}
-                showModelSelector={false}
-                providerStatusChecksEnabled={false}
-                plusMenuMode="hidden"
-                planModeDisabled
-                dynamicSuggestions={false}
-                emptyStateText="Cosa vuoi chiarire di questa puntata?"
-                suggestions={[
-                  "Riassumi i tre concetti più importanti",
-                  "Fammi un esempio concreto",
-                  "Fammi un quiz di 3 domande",
-                ]}
-                composerPlaceholder="Chiedi qualcosa sulla puntata…"
-                onMessageCountChange={(count) => {
-                  if (count === 1) {
-                    trackEvent("tutor_conversation_started", {
-                      chapter_number: chapterNumber,
-                    });
-                  }
-                }}
-              />
+              <AgentNativeI18nProvider
+                initialLocale="en-US"
+                persistPreference={false}
+              >
+                <AssistantChat
+                  ref={chatRef}
+                  runtime={runtime}
+                  tabId={`corso-tutor-${chapterSlug}`}
+                  agentChatSurface="app"
+                  className="min-h-0 flex-1"
+                  showHeader={false}
+                  showModelSelector={false}
+                  providerStatusChecksEnabled={false}
+                  plusMenuMode="hidden"
+                  planModeDisabled
+                  dynamicSuggestions={false}
+                  emptyStateText="Cosa vuoi chiarire di questa puntata?"
+                  suggestions={[
+                    "Riassumi i tre concetti più importanti",
+                    "Fammi un esempio concreto",
+                    "Fammi un quiz di 3 domande",
+                  ]}
+                  composerPlaceholder="Chiedi qualcosa sulla puntata…"
+                  onMessageCountChange={(count) => {
+                    if (count === 1) {
+                      trackEvent("tutor_conversation_started", {
+                        chapter_number: chapterNumber,
+                      });
+                    }
+                  }}
+                />
+              </AgentNativeI18nProvider>
             </QueryClientProvider>
           )}
         </section>
