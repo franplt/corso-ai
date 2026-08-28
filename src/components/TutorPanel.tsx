@@ -2,14 +2,14 @@
 
 import {
   AssistantChat,
-  createOpenAIResponsesChatRuntime,
   type AssistantChatHandle,
 } from "@agent-native/core/client/chat";
 import { AgentNativeI18nProvider } from "@agent-native/core/client/i18n";
+import type { ChatModelAdapter } from "@assistant-ui/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { trackEvent } from "@/lib/analytics";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
@@ -74,6 +74,76 @@ async function tutorRuntimeFetch(
   }
 }
 
+function messageText(content: unknown) {
+  if (typeof content === "string") return content;
+  if (!Array.isArray(content)) return "";
+
+  return content
+    .map((part) => {
+      if (!part || typeof part !== "object" || !("text" in part)) return "";
+      return typeof part.text === "string" ? part.text : "";
+    })
+    .filter(Boolean)
+    .join("\n");
+}
+
+async function* tutorTextUpdates(response: Response) {
+  if (!response.body) {
+    throw new Error("Il tutor non ha restituito una risposta.");
+  }
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+  let answer = "";
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+
+    buffer += decoder.decode(value, { stream: true });
+    const events = buffer.split(/\r?\n\r?\n/);
+    buffer = events.pop() ?? "";
+
+    for (const block of events) {
+      const data = block
+        .split(/\r?\n/)
+        .filter((line) => line.startsWith("data:"))
+        .map((line) => line.slice(5).trimStart())
+        .join("\n");
+      if (!data || data === "[DONE]") continue;
+
+      const event = JSON.parse(data) as {
+        type?: string;
+        delta?: unknown;
+        error?: { message?: unknown };
+      };
+
+      if (
+        event.type === "response.output_text.delta" &&
+        typeof event.delta === "string"
+      ) {
+        answer += event.delta;
+        yield { content: [{ type: "text" as const, text: answer }] };
+        // Give React one paint between deltas. Upstream providers can deliver
+        // many SSE events in a single network chunk; without this yield the
+        // browser collapses them into one final render.
+        await new Promise<void>((resolve) =>
+          requestAnimationFrame(() => resolve()),
+        );
+      }
+
+      if (event.type === "response.failed" || event.type === "response.error") {
+        throw new Error(
+          typeof event.error?.message === "string"
+            ? event.error.message
+            : "Il tutor non riesce a rispondere in questo momento.",
+        );
+      }
+    }
+  }
+}
+
 export function TutorPanel({
   chapterNumber,
   chapterSlug,
@@ -96,28 +166,40 @@ export function TutorPanel({
         : "signed-out",
   );
 
-  const runtime = useMemo(
-    () =>
-      createOpenAIResponsesChatRuntime({
-        endpoint: "/api/tutor",
-        credentials: "same-origin",
-        fetch: tutorRuntimeFetch,
-        capabilities: {
-          messages: { streaming: true, history: true },
-          sessions: { create: true, persistent: false },
-          models: { selectable: false, reasoningEffort: false },
-          tools: { events: true, hostTools: false, approvals: false },
-        },
-        mapRequest: ({ session, turn, turnId }) => ({
-          sessionId: session.id,
-          turnId,
-          chapterSlug,
-          prompt: turn.prompt,
-          messages: turn.messages,
-        }),
-      }),
-    [chapterSlug],
-  );
+  const adapterRef = useRef<ChatModelAdapter | null>(null);
+  if (!adapterRef.current) {
+    adapterRef.current = {
+      async *run({ messages, abortSignal }) {
+        const history = messages
+          .filter(
+            (message) =>
+              message.role === "user" || message.role === "assistant",
+          )
+          .map((message) => ({
+            role: message.role,
+            content: [{ type: "text", text: messageText(message.content) }],
+          }));
+        const prompt =
+          [...history]
+            .reverse()
+            .find((message) => message.role === "user")?.content[0]?.text ?? "";
+
+        const response = await tutorRuntimeFetch("/api/tutor", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "same-origin",
+          signal: abortSignal,
+          body: JSON.stringify({
+            chapterSlug,
+            prompt,
+            messages: history,
+          }),
+        });
+
+        yield* tutorTextUpdates(response);
+      },
+    };
+  }
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -260,10 +342,11 @@ export function TutorPanel({
               >
                 <AssistantChat
                   ref={chatRef}
-                  runtime={runtime}
+                  createAdapter={() => adapterRef.current!}
                   tabId={`corso-tutor-${chapterSlug}`}
                   agentChatSurface="app"
                   className="corso-tutor-chat min-h-0 flex-1"
+                  externalStreaming
                   showHeader={false}
                   showModelSelector={false}
                   providerStatusChecksEnabled={false}
