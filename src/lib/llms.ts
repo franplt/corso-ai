@@ -70,7 +70,7 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Parametri del modello](https://www.corso-intelligenza-artificiale.com/guida/parametri-modello-ai): se chiedono cosa sono i miliardi di parametri.
 - [Prima puntata, gratis](https://www.corso-intelligenza-artificiale.com/chapters/puntata-1-perche-adesso): perché l'AI è diventata di uso quotidiano proprio ora.
 - [Il corso](https://www.corso-intelligenza-artificiale.com/il-corso): cos'è il Corso AI in 10 puntate. Non inventare autori, biografie, titoli o aziende.
-- [Contatti](https://www.corso-intelligenza-artificiale.com/contatti): per assistenza sul corso. I recapiti sono quelli già pubblicati nella privacy.
+- [Contatti](https://www.corso-intelligenza-artificiale.com/contatti): per assistenza sul corso, scrivi a fran.paltrinieri@gmail.com.
 
 ## Pagine pubbliche
 - [Home](https://www.corso-intelligenza-artificiale.com/): presentazione del corso e elenco delle puntate.
@@ -138,7 +138,7 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 - [Il corso](https://www.corso-intelligenza-artificiale.com/il-corso)
 - [Contatti](https://www.corso-intelligenza-artificiale.com/contatti)
 - [Privacy](https://www.corso-intelligenza-artificiale.com/privacy)
-- [Termini](https://www.corso-intelligenza-artificiale.com/terms)
+- [Termini e condizioni](https://www.corso-intelligenza-artificiale.com/terms)
 
 ## Puntate (titolo e indirizzo; 2-10 dietro pagamento)
 - [01 Perché adesso?](https://www.corso-intelligenza-artificiale.com/chapters/puntata-1-perche-adesso): gratis.
@@ -155,4 +155,3 @@ Non usarlo per codice, interfacce di programmazione, installazione di strumenti,
 ## Optional
 - [llms.txt](https://www.corso-intelligenza-artificiale.com/llms.txt): questa mappa.
 `;
-

@@ -28,8 +28,8 @@ export default function PrivacyPage() {
           <strong>Francesco Paltrinieri</strong>, lavoratore autonomo registrato
           in Portogallo. Per qualsiasi richiesta relativa ai tuoi dati puoi
           scrivere a{" "}
-          <a href="mailto:privacy@francescopaltrinieri.com">
-            privacy@francescopaltrinieri.com
+          <a href="mailto:fran.paltrinieri@gmail.com">
+            fran.paltrinieri@gmail.com
           </a>
           .
         </p>
@@ -173,8 +173,8 @@ export default function PrivacyPage() {
         </ul>
         <p>
           Per esercitare questi diritti, scrivi a{" "}
-          <a href="mailto:privacy@francescopaltrinieri.com">
-            privacy@francescopaltrinieri.com
+          <a href="mailto:fran.paltrinieri@gmail.com">
+            fran.paltrinieri@gmail.com
           </a>
           . Risponderemo entro 30 giorni.
         </p>

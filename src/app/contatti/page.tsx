@@ -19,14 +19,14 @@ const CONTACT_PAGE_JSON_LD = {
 export const metadata: Metadata = {
   title: "Contatti",
   description:
-    "Per domande sul Corso AI in 10 puntate, sull'account o sui tuoi dati, usa i recapiti già indicati nella informativa sulla privacy.",
+    "Contatta Francesco Paltrinieri per domande sul Corso AI in 10 puntate, sull'account, sui pagamenti o sui tuoi dati.",
   alternates: {
     canonical: "/contatti",
   },
   openGraph: {
     title: "Contatti",
     description:
-      "Per domande sul Corso AI in 10 puntate, sull'account o sui tuoi dati, usa i recapiti già indicati nella informativa sulla privacy.",
+      "Contatta Francesco Paltrinieri per domande sul Corso AI in 10 puntate, sull'account, sui pagamenti o sui tuoi dati.",
     url: "/contatti",
     type: "article",
   },
@@ -44,4 +44,3 @@ export default async function ContattiPage() {
     </main>
   );
 }
-

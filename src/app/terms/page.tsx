@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Termini di Servizio",
+  title: "Termini e condizioni",
   description:
     "Consulta le condizioni di acquisto, accesso, rimborso e utilizzo del corso digitale Corso AI in 10 puntate.",
   alternates: {
@@ -14,7 +14,7 @@ export default function TermsPage() {
     <main>
       <div className="mb-10">
         <h1 className="font-heading mb-2 text-3xl font-semibold text-[var(--ink)]">
-          Termini di Servizio
+          Termini e condizioni
         </h1>
         <p className="text-[var(--ink-muted)]">
           Ultimo aggiornamento: aprile 2026
@@ -62,8 +62,8 @@ export default function TermsPage() {
         </p>
         <p>
           Per richiedere il rimborso, scrivi a{" "}
-          <a href="mailto:supporto@francescopaltrinieri.com">
-            supporto@francescopaltrinieri.com
+          <a href="mailto:fran.paltrinieri@gmail.com">
+            fran.paltrinieri@gmail.com
           </a>{" "}
           indicando l&apos;email associata al tuo account. Il rimborso verrà
           elaborato entro 10 giorni lavorativi tramite lo stesso metodo di
@@ -120,8 +120,8 @@ export default function TermsPage() {
         <h2>10. Contatti</h2>
         <p>
           Per qualsiasi domanda relativa a questi termini, scrivi a{" "}
-          <a href="mailto:supporto@francescopaltrinieri.com">
-            supporto@francescopaltrinieri.com
+          <a href="mailto:fran.paltrinieri@gmail.com">
+            fran.paltrinieri@gmail.com
           </a>
           .
         </p>

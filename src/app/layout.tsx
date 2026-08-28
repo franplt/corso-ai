@@ -151,7 +151,7 @@ export default function RootLayout({
                   href="/terms"
                   className="text-xs text-[var(--ink-faint)] hover:text-[var(--ink-muted)] transition-colors"
                 >
-                  Termini
+                  Termini e condizioni
                 </Link>
               </nav>
             </div>
