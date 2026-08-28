@@ -1,14 +1,13 @@
 # Contatti
 
-Per domande sul Corso AI in 10 puntate, sull'account o sui tuoi dati, usa i recapiti già indicati nella [informativa sulla privacy](/privacy). I [termini di servizio](/terms) sono sulla stessa fascia del sito.
+Per domande sul Corso AI in 10 puntate, sull'account, sui pagamenti o sui tuoi dati, scrivi a [fran.paltrinieri@gmail.com](mailto:fran.paltrinieri@gmail.com).
 
-## Nessun recapito nuovo
+## Come posso aiutarti
 
-Questa pagina non aggiunge email, telefoni o profili. Non c'è un modulo. Se un indirizzo non compare nella privacy, non è un canale del corso.
+Puoi chiedere aiuto per l'accesso al corso, un pagamento, un rimborso, la cancellazione dell'account o una richiesta relativa ai dati personali.
 
-## Cosa puoi chiedere
+Se vuoi prima capire se il corso fa per te, la [prima puntata è pubblica](/chapters/puntata-1-perche-adesso). Il resto costa 9,90 € una tantum.
 
-Puoi chiedere aiuto su accesso, pagamento, cancellazione account, o sui dati personali. Se vuoi prima capire se il corso fa per te, la [prima puntata è pubblica](/chapters/puntata-1-perche-adesso). Il resto costa 9,90 € una tantum.
+## Informazioni legali
 
-[Il corso](/il-corso) · [Privacy](/privacy) · [Termini](/terms)
-
+Consulta l'[Informativa sulla privacy](/privacy) e i [Termini e condizioni](/terms).

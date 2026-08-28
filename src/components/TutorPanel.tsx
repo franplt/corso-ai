@@ -284,7 +284,7 @@ export function TutorPanel({
         onClick={togglePanel}
         aria-expanded={open}
         aria-controls="corso-ai-tutor"
-        className="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-5 py-3 text-sm font-semibold text-white shadow-xl transition hover:-translate-y-0.5 hover:bg-[var(--accent-hover)] sm:right-8"
+        className="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full bg-[hsl(var(--primary))] px-5 py-3 text-sm font-semibold text-[hsl(var(--primary-foreground))] shadow-xl transition hover:-translate-y-0.5 hover:bg-[#924208] sm:right-8"
       >
         <span aria-hidden>{open ? "×" : "✦"}</span>
         {open ? "Chiudi" : "Chiedi al tutor"}
