@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@agent-native/core/styles/agent-native.css";
 
 :root {
   --bg: #faf8f5;
@@ -14,6 +15,38 @@
   --radius-lg: 20px;
   --shadow: 0 2px 12px rgba(26, 24, 22, 0.06);
   --shadow-hover: 0 8px 28px rgba(26, 24, 22, 0.1);
+}
+
+/* Agent-Native uses HSL component tokens internally. Scope them to the tutor
+   so the rest of Corso AI can keep its existing hex-based design tokens. */
+.corso-tutor-theme {
+  --background: 30 33% 98%;
+  --foreground: 30 8% 9%;
+  --card: 0 0% 100%;
+  --card-foreground: 30 8% 9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 30 8% 9%;
+  --primary: 28 91% 37%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 30 13% 94%;
+  --secondary-foreground: 30 8% 9%;
+  --muted: 30 13% 94%;
+  --muted-foreground: 28 6% 40%;
+  --accent: 30 13% 94%;
+  --accent-foreground: 30 8% 9%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 30 13% 89%;
+  --input: 30 13% 89%;
+  --ring: 28 91% 37%;
+  --sidebar-background: 30 20% 97%;
+  --sidebar-foreground: 28 6% 40%;
+  --sidebar-primary: 28 91% 37%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 30 13% 94%;
+  --sidebar-accent-foreground: 30 8% 9%;
+  --sidebar-border: 30 13% 89%;
+  --sidebar-ring: 28 91% 37%;
 }
 
 @theme inline {
@@ -359,4 +392,9 @@ a {
 .surface-hover:hover {
   box-shadow: var(--shadow-hover);
   border-color: var(--ink-faint);
+}
+
+/* Voice needs a separate provider; keep the chapter tutor text-only for now. */
+.corso-tutor-theme button[aria-label="Use microphone"] {
+  display: none;
 }
