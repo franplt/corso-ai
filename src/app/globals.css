@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @import "@agent-native/core/styles/agent-native.css";
 
+/* Agent Native ships component class names from its compiled packages. Tailwind
+   does not scan dependencies automatically, so include those sources explicitly. */
+@source "../../node_modules/@agent-native/core/dist/client";
+@source "../../node_modules/@agent-native/toolkit/dist";
+
 :root {
   --bg: #faf8f5;
   --bg-elevated: #ffffff;
@@ -396,5 +401,16 @@ a {
 
 /* Voice needs a separate provider; keep the chapter tutor text-only for now. */
 .corso-tutor-theme button[aria-label="Use microphone"] {
+  display: none;
+}
+
+/* The embedded tutor is intentionally simpler than the full Agent Native app. */
+.corso-tutor-chat button[aria-label="Edit message"],
+.corso-tutor-chat button[aria-label="Message actions"],
+.corso-tutor-chat button[aria-label="Regenerate response"],
+.corso-tutor-chat button[aria-label="Previous branch"],
+.corso-tutor-chat button[aria-label="Next branch"],
+.corso-tutor-chat button[aria-label="Thumbs up"],
+.corso-tutor-chat button[aria-label="Thumbs down"] {
   display: none;
 }

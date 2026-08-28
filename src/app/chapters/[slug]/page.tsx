@@ -197,7 +197,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
         <TutorPanel
           chapterNumber={episode.number}
           chapterSlug={episode.slug}
-          isLoggedIn={Boolean(user)}
+          isLoggedIn={Boolean(user) || devUnlocked}
         />
       )}
     </main>

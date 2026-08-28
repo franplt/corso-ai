@@ -75,62 +75,61 @@ export async function POST(request: Request) {
 
   const client = new OpenAI({ apiKey });
 
-  try {
-    const upstream = await client.responses.create({
-      model: process.env.OPENAI_MODEL ?? "gpt-5.6-luna",
-      instructions: buildTutorInstructions(context),
-      input: buildTutorInput(parsed.data),
-      reasoning: { effort: "low" },
-      text: { verbosity: "low" },
-      max_output_tokens: 1_200,
-      safety_identifier: tutorSafetyIdentifier(rateLimitKey),
-      store: false,
-      stream: true,
-    });
+  const body = new ReadableStream<Uint8Array>({
+    async start(controller) {
+      // Flush the response immediately. This prevents hosting proxies from
+      // waiting for the model's first token before opening the event stream.
+      controller.enqueue(encoder.encode(": tutor-connected\n\n"));
 
-    const body = new ReadableStream<Uint8Array>({
-      async start(controller) {
-        try {
+      try {
+        const upstream = await client.responses.create({
+          model: process.env.OPENAI_MODEL ?? "gpt-5.6-luna",
+          instructions: buildTutorInstructions(context),
+          input: buildTutorInput(parsed.data),
+          reasoning: { effort: "low" },
+          text: { verbosity: "low" },
+          max_output_tokens: 1_200,
+          safety_identifier: tutorSafetyIdentifier(rateLimitKey),
+          store: false,
+          stream: true,
+        });
+
           for await (const event of upstream) {
             controller.enqueue(
               encoder.encode(`data: ${JSON.stringify(event)}\n\n`),
             );
           }
-        } catch (error) {
-          console.error("Tutor stream failed", error);
-          const fallbackMessage = "Il tutor si è interrotto. Riprova tra poco.";
-          controller.enqueue(
-            encoder.encode(
-              `data: ${JSON.stringify({
-                type: "response.output_text.delta",
-                item_id: "tutor-stream-error",
-                delta: fallbackMessage,
-              })}\n\ndata: ${JSON.stringify({
-                type: "response.output_text.done",
-                item_id: "tutor-stream-error",
-                text: fallbackMessage,
-              })}\n\ndata: ${JSON.stringify({
-                type: "response.completed",
-                response: { status: "completed" },
-              })}\n\n`,
-            ),
-          );
-        } finally {
-          controller.close();
-        }
-      },
-    });
+      } catch (error) {
+        console.error("Tutor stream failed", error);
+        const fallbackMessage = "Il tutor si è interrotto. Riprova tra poco.";
+        controller.enqueue(
+          encoder.encode(
+            `data: ${JSON.stringify({
+              type: "response.output_text.delta",
+              item_id: "tutor-stream-error",
+              delta: fallbackMessage,
+            })}\n\ndata: ${JSON.stringify({
+              type: "response.output_text.done",
+              item_id: "tutor-stream-error",
+              text: fallbackMessage,
+            })}\n\ndata: ${JSON.stringify({
+              type: "response.completed",
+              response: { status: "completed" },
+            })}\n\n`,
+          ),
+        );
+      } finally {
+        controller.close();
+      }
+    },
+  });
 
-    return new Response(body, {
-      headers: {
-        "Cache-Control": "no-store",
-        Connection: "keep-alive",
-        "Content-Type": "text/event-stream; charset=utf-8",
-        "X-Accel-Buffering": "no",
-      },
-    });
-  } catch (error) {
-    console.error("Unable to start tutor response", error);
-    return jsonError("Il tutor non riesce a rispondere in questo momento.", 502);
-  }
+  return new Response(body, {
+    headers: {
+      "Cache-Control": "no-cache, no-transform",
+      Connection: "keep-alive",
+      "Content-Type": "text/event-stream; charset=utf-8",
+      "X-Accel-Buffering": "no",
+    },
+  });
 }

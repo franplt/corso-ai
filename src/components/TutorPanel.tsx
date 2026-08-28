@@ -22,6 +22,13 @@ type TutorPanelProps = {
 type AuthState = "checking" | "signed-in" | "signed-out";
 
 const MAX_SELECTION_LENGTH = 1_800;
+const TUTOR_MESSAGES = {
+  agentChat: {
+    composer: { stopResponse: "Interrompi la risposta" },
+    queue: { followUp: "Scrivi un altro messaggio…" },
+    status: { thinking: "Sto pensando…" },
+  },
+};
 
 function tutorRuntimeErrorStream(message: string) {
   const itemId = "tutor-runtime-error";
@@ -184,7 +191,7 @@ export function TutorPanel({
         <button
           type="button"
           onClick={explainSelection}
-          className="fixed bottom-24 right-5 z-40 rounded-full border border-[var(--border)] bg-white px-4 py-2 text-sm font-semibold text-[var(--ink)] shadow-lg transition hover:-translate-y-0.5 hover:border-[var(--ink-faint)] sm:right-8"
+          className="fixed bottom-24 right-5 z-40 rounded-full border border-[hsl(var(--border))] bg-white px-4 py-2 text-sm font-semibold text-[var(--ink)] shadow-lg transition hover:-translate-y-0.5 hover:border-[var(--ink-faint)] sm:right-8"
         >
           Spiega la selezione
         </button>
@@ -205,9 +212,9 @@ export function TutorPanel({
         <section
           id="corso-ai-tutor"
           aria-label="Tutor AI della puntata"
-          className="fixed inset-x-3 bottom-20 z-40 flex h-[min(680px,calc(100dvh-7rem))] flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-white shadow-2xl sm:inset-x-auto sm:right-8 sm:w-[420px]"
+          className="fixed inset-x-3 bottom-20 z-40 flex h-[min(680px,calc(100dvh-7rem))] flex-col overflow-hidden rounded-2xl border border-[hsl(var(--border))] bg-white shadow-2xl sm:inset-x-auto sm:right-8 sm:w-[420px]"
         >
-          <header className="flex items-center justify-between border-b border-[var(--border)] px-4 py-3">
+          <header className="flex items-center justify-between border-b border-[hsl(var(--border))] px-4 py-3">
             <div>
               <p className="font-heading font-semibold text-[var(--ink)]">Tutor AI</p>
               <p className="text-xs text-[var(--ink-muted)]">
@@ -218,7 +225,7 @@ export function TutorPanel({
               type="button"
               onClick={() => setOpen(false)}
               aria-label="Chiudi il tutor"
-              className="rounded-full px-3 py-1 text-xl text-[var(--ink-muted)] hover:bg-[var(--border)] hover:text-[var(--ink)]"
+              className="rounded-full px-3 py-1 text-xl text-[var(--ink-muted)] hover:bg-[hsl(var(--border))] hover:text-[var(--ink)]"
             >
               ×
             </button>
@@ -248,6 +255,7 @@ export function TutorPanel({
             <QueryClientProvider client={queryClient}>
               <AgentNativeI18nProvider
                 initialLocale="en-US"
+                initialMessages={TUTOR_MESSAGES}
                 persistPreference={false}
               >
                 <AssistantChat
@@ -255,7 +263,7 @@ export function TutorPanel({
                   runtime={runtime}
                   tabId={`corso-tutor-${chapterSlug}`}
                   agentChatSurface="app"
-                  className="min-h-0 flex-1"
+                  className="corso-tutor-chat min-h-0 flex-1"
                   showHeader={false}
                   showModelSelector={false}
                   providerStatusChecksEnabled={false}
