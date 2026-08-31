@@ -15,7 +15,7 @@ export function CourseContinuationCard() {
         </h2>
         <p className="mt-3 leading-relaxed text-[var(--ink-muted)]">
           Prosegui dalle basi fino a RAG, agenti e scelta del modello. L&apos;accesso
-          completo costa <strong className="text-[var(--ink)]">€9,90 una tantum</strong> e
+          completo costa <strong className="text-[var(--ink)]">9,90 € una tantum</strong> e
           resta tuo: nessun abbonamento.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
@@ -29,7 +29,7 @@ export function CourseContinuationCard() {
               chapter_number: 1,
             }}
           >
-            Sblocca il corso completo · €9,90
+            Sblocca il corso completo · 9,90 €
           </TrackedLink>
           <TrackedLink
             href="/chapters"

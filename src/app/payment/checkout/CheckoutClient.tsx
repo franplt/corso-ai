@@ -64,7 +64,7 @@ export default function CheckoutClient() {
           Reindirizzamento al pagamento...
         </h1>
         <p className="text-[var(--ink-muted)]">
-          Stai per essere redirectato su Stripe per completare l&apos;acquisto.
+          Stai per essere reindirizzato su Stripe per completare l&apos;acquisto.
         </p>
       </div>
     </main>
