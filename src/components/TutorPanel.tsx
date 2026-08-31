@@ -9,7 +9,7 @@ import type { ChatModelAdapter } from "@assistant-ui/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { trackEvent } from "@/lib/analytics";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
@@ -166,9 +166,8 @@ export function TutorPanel({
         : "signed-out",
   );
 
-  const adapterRef = useRef<ChatModelAdapter | null>(null);
-  if (!adapterRef.current) {
-    adapterRef.current = {
+  const adapter = useMemo<ChatModelAdapter>(() => {
+    return {
       async *run({ messages, abortSignal }) {
         const history = messages
           .filter(
@@ -199,7 +198,7 @@ export function TutorPanel({
         yield* tutorTextUpdates(response);
       },
     };
-  }
+  }, [chapterSlug]);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -342,7 +341,7 @@ export function TutorPanel({
               >
                 <AssistantChat
                   ref={chatRef}
-                  createAdapter={() => adapterRef.current!}
+                  createAdapter={() => adapter}
                   tabId={`corso-tutor-${chapterSlug}`}
                   agentChatSurface="app"
                   className="corso-tutor-chat min-h-0 flex-1"
