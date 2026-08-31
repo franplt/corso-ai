@@ -38,6 +38,10 @@ jobs:
 
     env:
       BOT_BRANCH: codex/cloud-marketing-agent
+      # Prefer a PAT so the bot can open PRs. The default GITHUB_TOKEN cannot
+      # create PRs until the repo setting "Allow GitHub Actions to create and
+      # approve pull requests" is enabled.
+      GH_TOKEN: ${{ secrets.MARKETING_BOT_TOKEN || github.token }}
 
     steps:
       - name: Check out main
@@ -55,6 +59,7 @@ jobs:
           MANUAL_MODE: ${{ inputs.mode }}
           MANUAL_QUALITY: ${{ inputs.quality }}
           CODEX_KEY: ${{ secrets.OPENAI_API_KEY }}
+          HAS_BOT_TOKEN: ${{ secrets.MARKETING_BOT_TOKEN != '' }}
         run: |
           if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
             mode="$MANUAL_MODE"
@@ -96,12 +101,13 @@ jobs:
           echo "effort=$effort" >> "$GITHUB_OUTPUT"
           echo "configured=$configured" >> "$GITHUB_OUTPUT"
           echo "Agent mode: $mode; model: $model; reasoning effort: $effort." >> "$GITHUB_STEP_SUMMARY"
+          if [ "$HAS_BOT_TOKEN" != "true" ]; then
+            echo "PR creation uses GITHUB_TOKEN. If GitHub Actions is not allowed to create pull requests, the job will push \`$BOT_BRANCH\` and stay green." >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Prepare persistent automation branch
         id: branch
         if: steps.setup.outputs.configured == 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
           git fetch origin main
           open_pr="$(gh pr list --head "$BOT_BRANCH" --base main --state open --json url --jq '.[0].url')"
@@ -110,20 +116,29 @@ jobs:
             echo "Waiting for approval on $open_pr" >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
-          echo "blocked=false" >> "$GITHUB_OUTPUT"
 
+          # If Actions cannot open PRs, unmerged work still lives on the bot
+          # branch. Treat that as a pending review so we do not spend credits
+          # every day rewriting the same branch.
           if git ls-remote --exit-code --heads origin "$BOT_BRANCH" >/dev/null 2>&1; then
             git fetch origin "$BOT_BRANCH"
+            if ! git diff --quiet origin/main "origin/$BOT_BRANCH"; then
+              echo "blocked=true" >> "$GITHUB_OUTPUT"
+              echo "Unmerged marketing work is already on \`$BOT_BRANCH\`. Open a PR from that branch, or enable Settings → Actions → General → Workflow permissions → Allow GitHub Actions to create and approve pull requests, or add a \`MARKETING_BOT_TOKEN\` repo secret (classic/fine-grained PAT with contents + pull requests)." >> "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
             git switch -C "$BOT_BRANCH" origin/main
           else
             git switch -c "$BOT_BRANCH"
           fi
 
+          echo "blocked=false" >> "$GITHUB_OUTPUT"
+
       - name: Set up Node.js
         if: steps.setup.outputs.configured == 'true' && steps.branch.outputs.blocked == 'false'
         uses: actions/setup-node@v4
         with:
-          node-version: "22.22.0"
+          node-version: "24"
           cache: npm
 
       - name: Install dependencies
@@ -156,6 +171,7 @@ jobs:
         if: steps.setup.outputs.configured == 'true' && steps.branch.outputs.blocked == 'false'
         id: codex
         timeout-minutes: 30
+        continue-on-error: true
         uses: openai/codex-action@v1
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
@@ -166,44 +182,74 @@ jobs:
           model: ${{ steps.setup.outputs.model }}
           effort: ${{ steps.setup.outputs.effort }}
 
+      - name: Note agent failure without failing the job
+        if: steps.setup.outputs.configured == 'true' && steps.branch.outputs.blocked == 'false' && steps.codex.outcome == 'failure'
+        run: |
+          echo "Cloud marketing agent did not finish (common causes: OpenAI credits, model outage, or sandbox limits). The scheduled job stays green so it does not email on a skipped day." >> "$GITHUB_STEP_SUMMARY"
+
       - name: Enforce marketing guardrails
         id: guardrails
         if: steps.setup.outputs.configured == 'true' && steps.branch.outputs.blocked == 'false'
         env:
           MODE: ${{ steps.setup.outputs.mode }}
         run: |
+          revert_path() {
+            local path="$1"
+            if git ls-files --error-unmatch -- "$path" >/dev/null 2>&1; then
+              git checkout -- "$path"
+            else
+              rm -rf -- "$path"
+            fi
+          }
+
           mapfile -t changed < <(git ls-files --modified --deleted --others --exclude-standard)
           if [ "${#changed[@]}" -eq 0 ]; then
+            echo "approval_required=true" >> "$GITHUB_OUTPUT"
             echo "No changes proposed." >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
 
+          discarded=0
           for path in "${changed[@]}"; do
+            drop=""
             case "$path" in
-                .github/*|package.json|package-lock.json|next.config.*|middleware.*|.env*|supabase/*|src/app/api/*)
-                echo "Forbidden path changed: $path" >&2
-                exit 1
+              .github/*|package.json|package-lock.json|next.config.*|middleware.*|.env*|supabase/*|src/app/api/*)
+                drop="Forbidden path changed: $path"
                 ;;
             esac
 
-            if [ "$MODE" = "strategy" ]; then
+            if [ -z "$drop" ] && [ "$MODE" = "strategy" ]; then
               case "$path" in
                 .agents/*|docs/marketing/*) ;;
-                *) echo "Strategy mode cannot change: $path" >&2; exit 1 ;;
+                *) drop="Strategy mode cannot change: $path" ;;
               esac
-            else
+            elif [ -z "$drop" ]; then
               case "$path" in
                 .agents/*|docs/marketing/*|src/app/*|src/components/*|src/lib/*|content/episodes/*|public/*) ;;
-                *) echo "Execution mode cannot change: $path" >&2; exit 1 ;;
+                *) drop="Execution mode cannot change: $path" ;;
               esac
               case "$path" in
                 *stripe*|*checkout*|*supabase*|*auth*|*entitlement*)
-                  echo "Sensitive product surface changed: $path" >&2
-                  exit 1
+                  drop="Sensitive product surface changed: $path"
                   ;;
               esac
             fi
+
+            if [ -n "$drop" ]; then
+              echo "$drop (reverted; job stays green)." | tee -a "$GITHUB_STEP_SUMMARY" >&2
+              revert_path "$path"
+              discarded=$((discarded + 1))
+            fi
           done
+
+          mapfile -t changed < <(git ls-files --modified --deleted --others --exclude-standard)
+          if [ "${#changed[@]}" -eq 0 ]; then
+            echo "approval_required=true" >> "$GITHUB_OUTPUT"
+            if [ "$discarded" -gt 0 ]; then
+              echo "All proposed files were outside the allowed surface and were discarded." >> "$GITHUB_STEP_SUMMARY"
+            fi
+            exit 0
+          fi
 
           approval_required="true"
           if jq -e '.approval_required == false' .agents/run-decision.json >/dev/null 2>&1; then
@@ -221,13 +267,16 @@ jobs:
           if [ -z "$(git status --porcelain)" ]; then
             exit 0
           fi
-          npm run lint
-          npm run build
+          if npm run lint && npm run build; then
+            exit 0
+          fi
+          echo "Lint or build failed; discarding the proposal so the scheduled job stays green." >> "$GITHUB_STEP_SUMMARY"
+          git reset --hard HEAD
+          git clean -fd
 
       - name: Commit and update pull request
         if: steps.setup.outputs.configured == 'true' && steps.branch.outputs.blocked == 'false'
         env:
-          GH_TOKEN: ${{ github.token }}
           MODE: ${{ steps.setup.outputs.mode }}
           APPROVAL_REQUIRED: ${{ steps.guardrails.outputs.approval_required }}
         run: |
@@ -242,21 +291,30 @@ jobs:
           git add -A
           git commit -m "marketing: run cloud $MODE agent"
           git push --force-with-lease origin "HEAD:$BOT_BRANCH"
+          echo "Pushed marketing proposal to \`$BOT_BRANCH\`." >> "$GITHUB_STEP_SUMMARY"
 
-          existing_pr="$(gh pr list --head "$BOT_BRANCH" --base main --state open --json url --jq '.[0].url')"
+          existing_pr="$(gh pr list --head "$BOT_BRANCH" --base main --state open --json url --jq '.[0].url' || true)"
           if [ -z "$existing_pr" ]; then
-            existing_pr="$(gh pr create \
+            if existing_pr="$(gh pr create \
               --base main \
               --head "$BOT_BRANCH" \
               --title "marketing: cloud agent proposals" \
-              --body "Automated cloud work toward a low-maintenance revenue stream. The agent may prepare substantial, coherent improvements, while consequential external actions, spend and sensitive product areas require explicit approval. Lint and build must pass. See .agents/marketing-operating-system.md and .agents/approval-queue.md.")"
+              --body "Automated cloud work toward a low-maintenance revenue stream. The agent may prepare substantial, coherent improvements, while consequential external actions, spend and sensitive product areas require explicit approval. Lint and build must pass. See .agents/marketing-operating-system.md and .agents/approval-queue.md.")"; then
+              echo "Opened $existing_pr" >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo "Could not open a pull request (GitHub Actions is not permitted to create PRs with the default token). Branch \`$BOT_BRANCH\` is ready: open a PR from it in the GitHub UI, or enable Settings → Actions → General → Workflow permissions → Allow GitHub Actions to create and approve pull requests, or add a \`MARKETING_BOT_TOKEN\` repo secret." >> "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
           fi
 
           if [ "$APPROVAL_REQUIRED" = "false" ]; then
-            gh pr merge "$existing_pr" --squash --delete-branch
-            echo "Validated Level A change merged automatically: $existing_pr" >> "$GITHUB_STEP_SUMMARY"
+            if gh pr merge "$existing_pr" --squash --delete-branch; then
+              echo "Validated Level A change merged automatically: $existing_pr" >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo "Could not auto-merge $existing_pr; left open for review." >> "$GITHUB_STEP_SUMMARY"
+            fi
           else
             gh label create "approval-required" --color "B60205" --description "Requires owner approval before merge" 2>/dev/null || true
-            gh pr edit "$existing_pr" --add-label "approval-required"
+            gh pr edit "$existing_pr" --add-label "approval-required" || true
             echo "Approval required: $existing_pr" >> "$GITHUB_STEP_SUMMARY"
           fi
