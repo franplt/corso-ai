@@ -35,7 +35,7 @@ export function PaywallCard({ isLoggedIn }: PaywallCardProps) {
           </h2>
           <p className="mb-6 text-[var(--ink-muted)]">
             Un solo pagamento di{" "}
-            <strong className="text-[var(--ink)]">€9,90</strong>.
+            <strong className="text-[var(--ink)]">9,90 €</strong>.
           </p>
         </div>
 
@@ -63,7 +63,7 @@ export function PaywallCard({ isLoggedIn }: PaywallCardProps) {
                 eventName="paywall_cta_click"
                 eventParameters={{ action: "checkout" }}
               >
-                Vai al pagamento · €9,90
+                Vai al pagamento · 9,90 €
               </TrackedLink>
               <TrackedLink
                 href="/login?next=checkout"

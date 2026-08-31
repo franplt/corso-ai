@@ -85,8 +85,8 @@ export function AuthNav({ variant }: { variant: "header" | "footer" }) {
       >
         Accedi
       </Link>
-      <Link href="/signup" className="btn btn-primary btn-sm">
-        Inizia
+      <Link href="/chapters/puntata-1-perche-adesso" className="btn btn-primary btn-sm">
+        Inizia gratis
       </Link>
     </>
   );
