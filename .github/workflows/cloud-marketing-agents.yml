@@ -38,9 +38,9 @@ jobs:
 
     env:
       BOT_BRANCH: codex/cloud-marketing-agent
-      # Prefer a PAT so the bot can open PRs. The default GITHUB_TOKEN cannot
-      # create PRs until the repo setting "Allow GitHub Actions to create and
-      # approve pull requests" is enabled.
+      # GITHUB_TOKEN can open PRs when the repo allows Actions to create PRs.
+      # Optional MARKETING_BOT_TOKEN (PAT with contents + pull requests) is a
+      # fallback if the default token is still rejected.
       GH_TOKEN: ${{ secrets.MARKETING_BOT_TOKEN || github.token }}
 
     steps:
@@ -101,8 +101,10 @@ jobs:
           echo "effort=$effort" >> "$GITHUB_OUTPUT"
           echo "configured=$configured" >> "$GITHUB_OUTPUT"
           echo "Agent mode: $mode; model: $model; reasoning effort: $effort." >> "$GITHUB_STEP_SUMMARY"
-          if [ "$HAS_BOT_TOKEN" != "true" ]; then
-            echo "PR creation uses GITHUB_TOKEN. If GitHub Actions is not allowed to create pull requests, the job will push \`$BOT_BRANCH\` and stay green." >> "$GITHUB_STEP_SUMMARY"
+          if [ "$HAS_BOT_TOKEN" = "true" ]; then
+            echo "PR creation uses MARKETING_BOT_TOKEN." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "PR creation uses GITHUB_TOKEN." >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Prepare persistent automation branch
@@ -124,7 +126,7 @@ jobs:
             git fetch origin "$BOT_BRANCH"
             if ! git diff --quiet origin/main "origin/$BOT_BRANCH"; then
               echo "blocked=true" >> "$GITHUB_OUTPUT"
-              echo "Unmerged marketing work is already on \`$BOT_BRANCH\`. Open a PR from that branch, or enable Settings → Actions → General → Workflow permissions → Allow GitHub Actions to create and approve pull requests, or add a \`MARKETING_BOT_TOKEN\` repo secret (classic/fine-grained PAT with contents + pull requests)." >> "$GITHUB_STEP_SUMMARY"
+              echo "Unmerged marketing work is already on \`$BOT_BRANCH\` (no open PR). Open a PR from that branch in the GitHub UI, or add a \`MARKETING_BOT_TOKEN\` repo secret if Actions still cannot open PRs." >> "$GITHUB_STEP_SUMMARY"
               exit 0
             fi
             git switch -C "$BOT_BRANCH" origin/main
@@ -295,14 +297,17 @@ jobs:
 
           existing_pr="$(gh pr list --head "$BOT_BRANCH" --base main --state open --json url --jq '.[0].url' || true)"
           if [ -z "$existing_pr" ]; then
+            pr_err="$(mktemp)"
             if existing_pr="$(gh pr create \
+              --repo "${GITHUB_REPOSITORY}" \
               --base main \
               --head "$BOT_BRANCH" \
               --title "marketing: cloud agent proposals" \
-              --body "Automated cloud work toward a low-maintenance revenue stream. The agent may prepare substantial, coherent improvements, while consequential external actions, spend and sensitive product areas require explicit approval. Lint and build must pass. See .agents/marketing-operating-system.md and .agents/approval-queue.md.")"; then
+              --body "Automated cloud work toward a low-maintenance revenue stream. The agent may prepare substantial, coherent improvements, while consequential external actions, spend and sensitive product areas require explicit approval. Lint and build must pass. See .agents/marketing-operating-system.md and .agents/approval-queue.md." 2>"$pr_err")"; then
               echo "Opened $existing_pr" >> "$GITHUB_STEP_SUMMARY"
             else
-              echo "Could not open a pull request (GitHub Actions is not permitted to create PRs with the default token). Branch \`$BOT_BRANCH\` is ready: open a PR from it in the GitHub UI, or enable Settings → Actions → General → Workflow permissions → Allow GitHub Actions to create and approve pull requests, or add a \`MARKETING_BOT_TOKEN\` repo secret." >> "$GITHUB_STEP_SUMMARY"
+              echo "Could not open a pull request; branch \`$BOT_BRANCH\` was pushed and the job stays green. Next scheduled runs skip while that branch is ahead of main." >> "$GITHUB_STEP_SUMMARY"
+              echo "gh pr create error: $(tr '\n' ' ' < "$pr_err")" >> "$GITHUB_STEP_SUMMARY"
               exit 0
             fi
           fi
