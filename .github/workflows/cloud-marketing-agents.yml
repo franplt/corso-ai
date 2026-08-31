@@ -119,6 +119,13 @@ jobs:
             git switch -c "$BOT_BRANCH"
           fi
 
+      - name: Set up Node.js
+        if: steps.setup.outputs.configured == 'true' && steps.branch.outputs.blocked == 'false'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.22.0"
+          cache: npm
+
       - name: Install dependencies
         if: steps.setup.outputs.configured == 'true' && steps.branch.outputs.blocked == 'false'
         run: npm ci --no-audit --no-fund
