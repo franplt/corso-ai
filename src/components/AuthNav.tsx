@@ -63,7 +63,7 @@ export function AuthNav({ variant }: { variant: "header" | "footer" }) {
   if (state === "loading") {
     // Reserve roughly the same width as the signed-out pair of links so the
     // header does not visibly reflow once the session resolves.
-    return <span aria-hidden className="inline-block h-9 w-[9.5rem]" />;
+    return <span aria-hidden className="inline-block h-9 w-[7rem] sm:w-[9.5rem]" />;
   }
 
   if (state === "signedIn") {
@@ -81,7 +81,7 @@ export function AuthNav({ variant }: { variant: "header" | "footer" }) {
     <>
       <Link
         href="/login"
-        className="rounded-full px-3 py-2 text-sm font-medium text-[var(--ink-muted)] transition-colors hover:bg-[var(--border)] hover:text-[var(--ink)] sm:px-4"
+        className="hidden rounded-full px-3 py-2 text-sm font-medium text-[var(--ink-muted)] transition-colors hover:bg-[var(--border)] hover:text-[var(--ink)] sm:inline-flex sm:px-4"
       >
         Accedi
       </Link>
