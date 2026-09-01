@@ -56,35 +56,35 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen antialiased">
         <div className="mx-auto max-w-4xl px-5 py-8 sm:px-8 md:px-10">
-          <header className="mb-12 flex items-center justify-between sm:mb-16">
+          <header className="mb-12 flex items-center justify-between gap-3 sm:mb-16">
             <Link
               href="/"
-              className="font-heading text-xl font-semibold text-[var(--ink)] sm:text-2xl"
+              className="font-heading min-w-0 text-lg font-semibold leading-tight text-[var(--ink)] md:text-2xl"
             >
               Corso AI in 10 puntate
             </Link>
-            <nav className="flex items-center gap-1 sm:gap-2">
+            <nav className="flex shrink-0 items-center gap-1 sm:gap-2">
               <Link
                 href="/il-corso"
-                className="rounded-full px-3 py-2 text-sm font-medium text-[var(--ink-muted)] transition-colors hover:bg-[var(--border)] hover:text-[var(--ink)] sm:px-4"
+                className="hidden rounded-full px-3 py-2 text-sm font-medium text-[var(--ink-muted)] transition-colors hover:bg-[var(--border)] hover:text-[var(--ink)] sm:px-4 lg:inline-flex"
               >
                 Il corso
               </Link>
               <Link
                 href="/guida/come-funziona-lintelligenza-artificiale"
-                className="rounded-full px-3 py-2 text-sm font-medium text-[var(--ink-muted)] transition-colors hover:bg-[var(--border)] hover:text-[var(--ink)] sm:px-4"
+                className="hidden rounded-full px-3 py-2 text-sm font-medium text-[var(--ink-muted)] transition-colors hover:bg-[var(--border)] hover:text-[var(--ink)] sm:px-4 lg:inline-flex"
               >
                 Guida
               </Link>
               <Link
                 href="/chapters"
-                className="rounded-full px-3 py-2 text-sm font-medium text-[var(--ink-muted)] transition-colors hover:bg-[var(--border)] hover:text-[var(--ink)] sm:px-4"
+                className="hidden rounded-full px-3 py-2 text-sm font-medium text-[var(--ink-muted)] transition-colors hover:bg-[var(--border)] hover:text-[var(--ink)] sm:px-4 lg:inline-flex"
               >
                 Capitoli
               </Link>
               <Link
                 href="/contatti"
-                className="rounded-full px-3 py-2 text-sm font-medium text-[var(--ink-muted)] transition-colors hover:bg-[var(--border)] hover:text-[var(--ink)] sm:px-4"
+                className="hidden rounded-full px-3 py-2 text-sm font-medium text-[var(--ink-muted)] transition-colors hover:bg-[var(--border)] hover:text-[var(--ink)] sm:px-4 lg:inline-flex"
               >
                 Contatti
               </Link>
