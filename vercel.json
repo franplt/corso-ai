@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "corso-intelligenza-artificiale.com" }],
+      "destination": "https://www.corso-intelligenza-artificiale.com/:path*",
+      "statusCode": 308
+    }
+  ]
+}

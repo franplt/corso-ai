@@ -1,7 +1,7 @@
 /**
  * Canonical origin for the site.
  *
- * The apex domain 301-redirects to the www host, so this MUST include `www`.
+ * The apex domain permanently redirects (301/308) to the www host, so this MUST include `www`.
  * Pointing canonical tags and sitemap entries at the apex sends search engines
  * to a redirect on every single URL, which wastes crawl budget and muddies
  * which version of a page is authoritative.
