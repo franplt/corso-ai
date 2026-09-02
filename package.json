@@ -2,9 +2,6 @@
   "name": "corso-ai-in-10-puntate",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": ">=22.14.0"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
