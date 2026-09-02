@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
+import { getRequestHost, isProductionHost } from "@/lib/hosts";
 
 function wantsMarkdown(request: NextRequest): boolean {
   const accept = request.headers.get("accept");
@@ -46,9 +47,18 @@ function needsSessionRefresh(pathname: string): boolean {
 
 export async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+  const host = getRequestHost(request.headers);
+  const isProd = isProductionHost(host);
+
+  function withRobotsHeader(response: NextResponse): NextResponse {
+    if (!isProd) {
+      response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    }
+    return response;
+  }
 
   if (request.headers.get("x-internal-html-proxy") === "1") {
-    return NextResponse.next({ request });
+    return withRobotsHeader(NextResponse.next({ request }));
   }
 
   if (wantsMarkdown(request) && !isMarkdownExcludedPath(pathname)) {
@@ -56,7 +66,7 @@ export async function proxy(request: NextRequest) {
     url.pathname = "/markdown";
     url.search = "";
     url.searchParams.set("path", pathname);
-    return NextResponse.rewrite(url);
+    return withRobotsHeader(NextResponse.rewrite(url));
   }
 
   // For public HTML documents, Next.js may override custom `Vary` headers in the
@@ -67,14 +77,15 @@ export async function proxy(request: NextRequest) {
     url.pathname = "/html";
     url.search = "";
     url.searchParams.set("path", pathname);
-    return NextResponse.rewrite(url);
+    return withRobotsHeader(NextResponse.rewrite(url));
   }
 
   if (needsSessionRefresh(pathname)) {
-    return updateSession(request);
+    const response = await updateSession(request);
+    return withRobotsHeader(response);
   }
 
-  return NextResponse.next({ request });
+  return withRobotsHeader(NextResponse.next({ request }));
 }
 
 export const config = {
