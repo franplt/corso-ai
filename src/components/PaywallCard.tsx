@@ -58,12 +58,12 @@ export function PaywallCard({ isLoggedIn }: PaywallCardProps) {
           <div className="text-center">
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
               <TrackedLink
-                href="/payment/checkout?source=chapter_paywall"
+                href="/signup?intent=buy"
                 className="btn btn-primary"
                 eventName="paywall_cta_click"
-                eventParameters={{ action: "checkout" }}
+                eventParameters={{ action: "signup" }}
               >
-                Vai al pagamento · 9,90 €
+                Crea un account e continua · 9,90 €
               </TrackedLink>
               <TrackedLink
                 href="/login?next=checkout"
@@ -75,15 +75,7 @@ export function PaywallCard({ isLoggedIn }: PaywallCardProps) {
               </TrackedLink>
             </div>
             <p className="mt-4 text-sm text-[var(--ink-muted)]">
-              Preferisci creare un account prima?{" "}
-              <TrackedLink
-                href="/signup?intent=buy"
-                className="font-medium text-[var(--accent)] underline-offset-2 hover:underline"
-                eventName="paywall_cta_click"
-                eventParameters={{ action: "signup" }}
-              >
-                Registrati
-              </TrackedLink>
+              Dopo la registrazione andrai direttamente al pagamento su Stripe.
             </p>
           </div>
         )}
