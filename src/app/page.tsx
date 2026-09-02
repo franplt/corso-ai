@@ -37,8 +37,11 @@ export default function Home() {
           Corso online · 10 puntate
         </p>
         <h1 className="font-heading mb-6 max-w-2xl text-4xl font-semibold leading-[1.15] tracking-tight text-[var(--ink)] sm:text-5xl md:text-6xl">
-          Capisci davvero come funziona l&apos;AI. Senza tecnicismi inutili.
+          Corso AI in 10 puntate
         </h1>
+        <p className="mb-6 max-w-2xl text-lg leading-relaxed text-[var(--ink-muted)] sm:text-xl">
+          Capisci davvero come funziona l&apos;AI. Senza tecnicismi inutili.
+        </p>
         <p className="mb-10 max-w-xl text-lg leading-relaxed text-[var(--ink-muted)] sm:text-xl">
           Un percorso pensato per chi non è tecnico: pochi minuti a puntata per
           imparare i concetti chiave e usare l&apos;AI meglio ogni giorno.
