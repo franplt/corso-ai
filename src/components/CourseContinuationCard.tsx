@@ -29,7 +29,7 @@ export function CourseContinuationCard() {
               chapter_number: 1,
             }}
           >
-            Crea un account e continua · 9,90 €
+            Crea un account e vai al pagamento · 9,90 €
           </TrackedLink>
           <TrackedLink
             href="/chapters"

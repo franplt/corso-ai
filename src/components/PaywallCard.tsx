@@ -63,7 +63,7 @@ export function PaywallCard({ isLoggedIn }: PaywallCardProps) {
                 eventName="paywall_cta_click"
                 eventParameters={{ action: "signup" }}
               >
-                Crea un account e continua · 9,90 €
+                Crea un account e vai al pagamento · 9,90 €
               </TrackedLink>
               <TrackedLink
                 href="/login?next=checkout"
