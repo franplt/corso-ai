@@ -1,19 +1,20 @@
 import type { Metadata } from "next";
 import { MarkdownContent } from "@/components/MarkdownContent";
 import { getPublicPageMarkdown } from "@/lib/public-pages";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const CONTACT_PAGE_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   name: "Contatti — Corso AI in 10 puntate",
-  url: "https://www.corso-intelligenza-artificiale.com/contatti",
+  url: `${SITE_URL}/contatti`,
   inLanguage: "it",
   isPartOf: {
     "@type": "WebSite",
-    name: "Corso AI in 10 puntate",
-    url: "https://www.corso-intelligenza-artificiale.com/",
+    name: SITE_NAME,
+    url: SITE_URL,
   },
-  about: { "@id": "https://www.corso-intelligenza-artificiale.com/#organization" },
+  about: { "@id": `${SITE_URL}/#organization` },
 };
 
 export const metadata: Metadata = {
