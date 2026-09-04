@@ -70,7 +70,7 @@ export function LoginForm() {
         </h1>
         <p className="text-[var(--ink-muted)]">
           {searchParams.get("next") === "checkout"
-            ? "Accedi per procedere con l'acquisto."
+            ? "Accedi per proseguire al pagamento sicuro su Stripe. Il corso costa 9,90 € una tantum, senza abbonamento."
             : "Rientra nel tuo account per continuare a leggere il corso."}
         </p>
       </div>
@@ -122,7 +122,11 @@ export function LoginForm() {
           type="submit"
           disabled={loading}
         >
-          {loading ? "Accesso in corso..." : "Accedi"}
+          {loading
+            ? "Accesso in corso..."
+            : searchParams.get("next") === "checkout"
+              ? "Accedi e vai al pagamento · €9,90"
+              : "Accedi"}
         </button>
         {error ? (
           <p className="mt-4 text-sm font-medium text-red-600">{error}</p>
