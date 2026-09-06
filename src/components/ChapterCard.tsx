@@ -43,7 +43,7 @@ export function ChapterCard({ episode }: ChapterCardProps) {
       )}
       <div className="mt-auto flex items-center justify-between">
         <span className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--accent)] group-hover:gap-2 transition-all">
-          {isFree ? "Leggi" : "Apri"}
+          {isFree ? "Leggi gratis" : "Leggi l'anteprima"}
           <span aria-hidden>→</span>
         </span>
         {episode.readingTimeMinutes > 0 && (

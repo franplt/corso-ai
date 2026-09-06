@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ChapterCard } from "@/components/ChapterCard";
+import { TrackedLink } from "@/components/TrackedLink";
 import { getEpisodes } from "@/lib/episodes";
 
 export const metadata: Metadata = {
@@ -31,6 +32,18 @@ export default function ChaptersPage() {
           La puntata 1 è gratuita. Dalla 2 alla 10 sblocchi tutto il corso con un
           unico pagamento di €9,90.
         </p>
+        <TrackedLink
+          href="/chapters/puntata-1-perche-adesso"
+          className="btn btn-primary mt-6"
+          eventName="select_content"
+          eventParameters={{
+            content_type: "chapter_catalog_cta",
+            content_id: "free_chapter",
+            chapter_number: 1,
+          }}
+        >
+          Inizia dalla prima puntata gratis
+        </TrackedLink>
       </div>
       <section className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {episodes.map((episode) => (
