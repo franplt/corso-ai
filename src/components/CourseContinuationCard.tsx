@@ -20,7 +20,7 @@ export function CourseContinuationCard() {
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <TrackedLink
-            href="/signup?intent=buy"
+            href="/payment/checkout?source=free_chapter_completion"
             className="btn btn-primary"
             eventName="select_content"
             eventParameters={{
@@ -29,7 +29,7 @@ export function CourseContinuationCard() {
               chapter_number: 1,
             }}
           >
-            Crea un account e vai al pagamento · 9,90 €
+            Sblocca le puntate 2–10 · 9,90 €
           </TrackedLink>
           <TrackedLink
             href="/chapters"
@@ -44,6 +44,9 @@ export function CourseContinuationCard() {
             Vedi il programma
           </TrackedLink>
         </div>
+        <p className="mt-3 text-sm text-[var(--ink-muted)]">
+          Paghi subito su Stripe. Nessuna registrazione obbligatoria prima del pagamento.
+        </p>
       </div>
     </aside>
   );

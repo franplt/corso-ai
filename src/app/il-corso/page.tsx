@@ -51,11 +51,11 @@ export default async function IlCorsoPage() {
           Pronto a continuare?
         </h2>
         <p className="mt-3 max-w-2xl leading-relaxed text-[var(--ink-muted)]">
-          Crea il tuo account, poi completa il pagamento sicuro su Stripe: 9,90 € una
-          tantum per le puntate 2–10, con accesso a vita e senza abbonamento.
+          Sblocca le puntate 2–10 con un pagamento unico di 9,90 € su Stripe: accesso a
+          vita, nessun abbonamento. Nessuna registrazione obbligatoria prima del pagamento.
         </p>
         <TrackedLink
-          href="/signup?intent=buy"
+          href="/payment/checkout?source=course_page"
           className="btn btn-primary mt-6"
           eventName="select_content"
           eventParameters={{
@@ -63,7 +63,7 @@ export default async function IlCorsoPage() {
             content_id: "purchase_intent",
           }}
         >
-          Crea un account e vai al pagamento · 9,90 €
+          Sblocca le puntate 2–10 · 9,90 €
         </TrackedLink>
       </aside>
     </main>
