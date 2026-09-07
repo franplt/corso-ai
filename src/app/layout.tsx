@@ -6,6 +6,7 @@ import { AuthNav } from "@/components/AuthNav";
 import { CookieConsent } from "@/components/CookieConsent";
 import { ConditionalAnalytics } from "@/components/ConditionalAnalytics";
 import { CookiePreferences } from "@/components/CookiePreferences";
+import { TrackedLink } from "@/components/TrackedLink";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/site";
 
 const fraunces = Fraunces({
@@ -120,12 +121,14 @@ export default function RootLayout({
                 >
                   Capitoli
                 </Link>
-                <Link
+                <TrackedLink
                   href="/chapters/puntata-1-perche-adesso"
                   className="text-sm text-[var(--ink-muted)] hover:text-[var(--ink)] transition-colors"
+                  eventName="select_content"
+                  eventParameters={{ content_type: "footer_cta", content_id: "free_chapter" }}
                 >
                   Inizia gratis
-                </Link>
+                </TrackedLink>
                 <Link
                   href="/contatti"
                   className="text-sm text-[var(--ink-muted)] hover:text-[var(--ink)] transition-colors"

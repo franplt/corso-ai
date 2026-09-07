@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { TrackedLink } from "@/components/TrackedLink";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 type AuthState = "loading" | "signedIn" | "signedOut";
@@ -51,12 +52,17 @@ export function AuthNav({ variant }: { variant: "header" | "footer" }) {
       return <span className="text-sm text-transparent select-none">Account</span>;
     }
     return (
-      <Link
+      <TrackedLink
         href={state === "signedIn" ? "/account" : "/signup"}
         className="text-sm text-[var(--ink-muted)] hover:text-[var(--ink)] transition-colors"
+        eventName="select_content"
+        eventParameters={{
+          content_type: "footer_account_link",
+          content_id: state === "signedIn" ? "account" : "signup",
+        }}
       >
         {state === "signedIn" ? "Account" : "Iscriviti"}
-      </Link>
+      </TrackedLink>
     );
   }
 
@@ -85,9 +91,14 @@ export function AuthNav({ variant }: { variant: "header" | "footer" }) {
       >
         Accedi
       </Link>
-      <Link href="/chapters/puntata-1-perche-adesso" className="btn btn-primary btn-sm">
+      <TrackedLink
+        href="/chapters/puntata-1-perche-adesso"
+        className="btn btn-primary btn-sm"
+        eventName="select_content"
+        eventParameters={{ content_type: "header_cta", content_id: "free_chapter" }}
+      >
         Inizia gratis
-      </Link>
+      </TrackedLink>
     </>
   );
 }
