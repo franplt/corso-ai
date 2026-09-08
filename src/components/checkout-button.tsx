@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 import { createCheckoutUrl } from "@/lib/checkout-client";
 
 export function CheckoutButton({ source = "paywall" }: { source?: string }) {
@@ -8,12 +9,22 @@ export function CheckoutButton({ source = "paywall" }: { source?: string }) {
   const [error, setError] = useState<string | null>(null);
 
   async function handleCheckout() {
+    trackEvent("select_content", {
+      content_type: "checkout_cta",
+      content_id: "paywall_checkout",
+      checkout_source: source,
+    });
+
     setLoading(true);
     setError(null);
 
     try {
       window.location.assign(await createCheckoutUrl(source));
     } catch (checkoutError) {
+      trackEvent("checkout_start_failed", {
+        checkout_source: source,
+        error_kind: checkoutError instanceof Error ? "exception" : "unknown",
+      });
       setError(
         checkoutError instanceof Error
           ? checkoutError.message

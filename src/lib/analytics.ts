@@ -37,11 +37,24 @@ export function hasAnalyticsConsent() {
 export function trackEvent(name: string, parameters: AnalyticsParameters = {}) {
   if (!hasAnalyticsConsent()) return false;
 
+  const enriched: AnalyticsParameters = { ...parameters };
+
+  // Add safe context helpful for funnels/breakdowns without leaking query params.
+  if (typeof window !== "undefined") {
+    enriched.page_path ??= window.location.pathname;
+  }
+
+  // Convenience aliases so CTA analysis doesn't depend on GA4-specific naming.
+  const contentId = (parameters as Record<string, unknown>).content_id;
+  const contentType = (parameters as Record<string, unknown>).content_type;
+  if (typeof contentId === "string") enriched.cta_id ??= contentId;
+  if (typeof contentType === "string") enriched.cta_type ??= contentType;
+
   let sent = false;
   if (process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID) {
-    sendGAEvent("event", name, parameters);
+    sendGAEvent("event", name, enriched);
     sent = true;
   }
-  if (capturePostHogEvent(name, parameters)) sent = true;
+  if (capturePostHogEvent(name, enriched)) sent = true;
   return sent;
 }

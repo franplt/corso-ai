@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { AnalyticsEvent } from "@/components/AnalyticsEvent";
+import { trackEvent } from "@/lib/analytics";
 import { createCheckoutUrl } from "@/lib/checkout-client";
 
 export default function CheckoutClient() {
@@ -18,6 +20,10 @@ export default function CheckoutClient() {
         if (!cancelled) window.location.assign(checkoutUrl);
       } catch (checkoutError) {
         if (!cancelled) {
+          trackEvent("checkout_start_failed", {
+            checkout_source: source,
+            error_kind: checkoutError instanceof Error ? "exception" : "unknown",
+          });
           setError(
             checkoutError instanceof Error
               ? checkoutError.message
@@ -36,6 +42,11 @@ export default function CheckoutClient() {
   if (error) {
     return (
       <main className="mx-auto max-w-xl">
+        <AnalyticsEvent
+          name="checkout_viewed"
+          parameters={{ checkout_source: source }}
+          oncePerSessionKey={`checkout_viewed:${source}`}
+        />
         <div className="surface rounded-[var(--radius-lg)] p-8 text-center">
           <h1 className="font-heading mb-3 text-2xl font-semibold text-[var(--ink)]">
             Qualcosa è andato storto
@@ -58,6 +69,11 @@ export default function CheckoutClient() {
 
   return (
     <main className="mx-auto max-w-xl">
+      <AnalyticsEvent
+        name="checkout_viewed"
+        parameters={{ checkout_source: source }}
+        oncePerSessionKey={`checkout_viewed:${source}`}
+      />
       <div className="surface rounded-[var(--radius-lg)] p-8 text-center">
         <div className="mb-4 inline-block h-8 w-8 animate-spin rounded-full border-2 border-[var(--border)] border-t-[var(--accent)]" />
         <h1 className="font-heading mb-2 text-2xl font-semibold text-[var(--ink)]">

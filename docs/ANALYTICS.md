@@ -29,6 +29,8 @@ Non inviare mai email, ID Supabase, nomi o altri dati personali negli eventi.
 | `paywall_cta_click` | Click su registrazione o accesso dal paywall | azione scelta |
 | `sign_up` | Registrazione riuscita | metodo e intento di acquisto |
 | `login` | Accesso riuscito | metodo e intento di acquisto |
+| `checkout_viewed` | Visualizzazione della pagina di redirect verso Stripe | `checkout_source` |
+| `checkout_start_failed` | Errore nel tentativo di avvio checkout | `checkout_source`, `error_kind` |
 | `begin_checkout` | Creazione riuscita di una sessione Stripe | valore, valuta, origine e prodotto |
 | `checkout_cancel` | Ritorno da Stripe senza pagamento | — |
 | `purchase` | Sessione Stripe verificata come pagata | transazione, valore, valuta e prodotto |
@@ -44,6 +46,12 @@ Gli eventi espliciti della tabella vengono inviati con gli stessi nomi sia a
 GA4 sia a PostHog. Questo permette di costruire in PostHog un funnel unico:
 `chapter_view` → `paywall_view` → `sign_up`/`login` → `begin_checkout` →
 `purchase`, e di aprire i replay delle sessioni che abbandonano un passaggio.
+
+Tutti gli eventi espliciti includono inoltre automaticamente:
+
+- `page_path`: pathname della pagina (senza query string)
+- `cta_id` / `cta_type` quando presenti `content_id` / `content_type` (es. eventi `select_content`)
+- `link_path` per i click tracciati con `TrackedLink`
 
 ## Eventi chiave consigliati in GA4
 
