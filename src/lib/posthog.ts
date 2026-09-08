@@ -57,6 +57,12 @@ export function capturePostHogEvent(
   return true;
 }
 
+export function registerPostHogProperties(properties: Record<string, unknown>) {
+  if (!initPostHog()) return false;
+  posthog.register(properties);
+  return true;
+}
+
 export function identifyPostHogUser(userId: string) {
   if (!initPostHog()) return;
   posthog.identify(userId);

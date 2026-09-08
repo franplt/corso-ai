@@ -22,9 +22,11 @@ Non inviare mai email, ID Supabase, nomi o altri dati personali negli eventi.
 | --- | --- | --- |
 | `page_view` | Navigazione o cambio pagina | Automatico tramite GA4 e PostHog |
 | `select_content` | Click su CTA o capitolo | `content_type`, `content_id`, `chapter_number` |
+| `scroll_depth` | 25%, 50%, 75% e 90% di scroll sulle pagine pubbliche (escluse le puntate) | `percent`, `page_path`, `page_type` |
 | `chapter_view` | Apertura di una puntata | numero, titolo, tipo di accesso, minuti |
 | `chapter_progress` | 25%, 50%, 75% e 90% di lettura | puntata, tipo di accesso, percentuale |
 | `chapter_complete` | 90% di una puntata leggibile | puntata e tipo di accesso |
+| `page_left` | Uscita dalla pagina o tab non visibile (una sola volta per visita) | `seconds_visible`, `max_scroll_percent`, `engaged`, `exit_type`, `page_path`, `page_type` |
 | `paywall_view` | Visualizzazione del blocco di acquisto | stato anonimo/autenticato |
 | `paywall_cta_click` | Click su registrazione o accesso dal paywall | azione scelta |
 | `sign_up` | Registrazione riuscita | metodo e intento di acquisto |
