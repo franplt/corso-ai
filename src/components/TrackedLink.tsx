@@ -16,8 +16,18 @@ export function TrackedLink({
   onClick,
   ...props
 }: TrackedLinkProps) {
+  function toTrackedLinkPath(href: LinkProps["href"]) {
+    if (typeof href === "string") return href.split("?")[0]?.split("#")[0];
+    const pathname = href?.pathname;
+    return typeof pathname === "string" ? pathname : undefined;
+  }
+
   function handleClick(event: MouseEvent<HTMLAnchorElement>) {
-    trackEvent(eventName, eventParameters);
+    const linkPath = toTrackedLinkPath(props.href);
+    trackEvent(eventName, {
+      ...(eventParameters ?? {}),
+      link_path: linkPath,
+    });
     onClick?.(event);
   }
 
