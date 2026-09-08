@@ -33,6 +33,7 @@ Non inviare mai email, ID Supabase, nomi o altri dati personali negli eventi.
 | `checkout_start_failed` | Errore nel tentativo di avvio checkout | `checkout_source`, `error_kind` |
 | `begin_checkout` | Creazione riuscita di una sessione Stripe | valore, valuta, origine e prodotto |
 | `checkout_cancel` | Ritorno da Stripe senza pagamento | — |
+| `payment_success_viewed` | Apertura della pagina di conferma pagamento | esito verifica Stripe (senza PII) |
 | `purchase` | Sessione Stripe verificata come pagata | transazione, valore, valuta e prodotto |
 | `tutor_open` | Apertura del tutor contestuale | `chapter_number` |
 | `tutor_conversation_started` | Primo messaggio inviato al tutor | `chapter_number` |

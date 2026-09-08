@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AnalyticsEvent } from "@/components/AnalyticsEvent";
 import { PurchaseAnalytics } from "@/components/PurchaseAnalytics";
 import { getCurrentUser } from "@/lib/auth";
 import { getStripeClient } from "@/lib/stripe";
@@ -13,8 +14,11 @@ export default async function PaymentSuccessPage({
   const { session_id: sessionId } = await searchParams;
   let purchase: { transactionId: string; value: number; currency: string } | null = null;
   let buyerEmail: string | null = null;
+  let verificationAttempted = false;
+  let verificationError = false;
 
   if (sessionId?.startsWith("cs_")) {
+    verificationAttempted = true;
     try {
       const session = await getStripeClient().checkout.sessions.retrieve(sessionId);
       const expectedPriceId = process.env.STRIPE_PRICE_ID;
@@ -35,6 +39,7 @@ export default async function PaymentSuccessPage({
         };
       }
     } catch (error) {
+      verificationError = true;
       console.error("Unable to verify Checkout session for analytics", error);
     }
   }
@@ -50,6 +55,16 @@ export default async function PaymentSuccessPage({
 
   return (
     <main className="mx-auto max-w-xl">
+      <AnalyticsEvent
+        name="payment_success_viewed"
+        oncePerSessionKey={`payment_success_viewed:${sessionId ?? "missing"}`}
+        parameters={{
+          has_session_id: Boolean(sessionId),
+          verification_attempted: verificationAttempted,
+          verification_error: verificationError,
+          purchase_verified: Boolean(purchase),
+        }}
+      />
       {purchase ? <PurchaseAnalytics {...purchase} /> : null}
       <div className="surface rounded-[var(--radius-lg)] p-8 sm:p-10 text-center">
         <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-green-100 text-2xl text-green-600">
