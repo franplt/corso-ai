@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { PostHogAnalytics } from "@/components/PostHogAnalytics";
+import { PageEngagementAnalytics } from "@/components/PageEngagementAnalytics";
 
 /**
  * Vercel Analytics + Speed Insights, gated behind the cookie consent banner.
@@ -59,6 +60,7 @@ export function ConditionalAnalytics() {
       <SpeedInsights />
       {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
       <PostHogAnalytics />
+      <PageEngagementAnalytics />
     </>
   );
 }
