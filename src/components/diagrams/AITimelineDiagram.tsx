@@ -8,6 +8,8 @@ const EVENTS = [
   { year: 2020, label: "GPT-3 — 175B parametri", category: "scale", note: "Emergono capacità inattese" },
   { year: 2022, label: "ChatGPT — 100M utenti in 60 gg", category: "milestone", note: "Più veloce di qualunque prodotto nella storia" },
   { year: 2023, label: "GPT-4, Llama, Claude, Gemini", category: "scale", note: "Esplosione di modelli" },
+  { year: 2024, label: "Chat multimodale", category: "milestone", note: "Testo + immagini (e spesso audio) diventano normali" },
+  { year: 2025, label: "Tool use e agenti", category: "milestone", note: "Dalla chat al workflow: ricerca, file, azioni controllate" },
 ];
 
 const CATEGORY_STYLE: Record<string, { dot: string; label: string }> = {
@@ -69,7 +71,7 @@ export function AITimelineDiagram() {
       </div>
 
       <p className="diagram-caption">
-        Tre forze si sono allineate tra il 2017 e il 2023: potenza di calcolo (GPU), dati (internet), e una nuova architettura (Transformer). Nessuna da sola sarebbe bastata.
+        Tre forze si sono allineate tra il 2017 e il 2023: potenza di calcolo (GPU), dati (internet), e una nuova architettura (Transformer). Nessuna da sola sarebbe bastata. Dal 2024 in poi, multimodalità e strumenti hanno spinto l&apos;AI fuori dal solo testo.
       </p>
     </figure>
   );
