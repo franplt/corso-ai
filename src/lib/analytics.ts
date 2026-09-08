@@ -2,6 +2,7 @@
 
 import { sendGAEvent } from "@next/third-parties/google";
 import { capturePostHogEvent } from "@/lib/posthog";
+import { SITE_NAME } from "@/lib/site";
 
 export type AnalyticsItem = {
   item_id: string;
@@ -20,7 +21,7 @@ export type AnalyticsParameters = Record<
 export const COURSE_ITEM: AnalyticsItem = {
   item_id: "corso-ai-10-puntate",
   item_name: "Corso AI in 10 puntate",
-  item_brand: "Francesco Paltrinieri",
+  item_brand: SITE_NAME,
   item_category: "Corso online",
   price: 9.9,
   quantity: 1,
